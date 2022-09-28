@@ -1,16 +1,36 @@
 
 import * as vscode from 'vscode';
 import { HelloWorldPanel } from './HelloWordPanel';
+import { SidebarProvider } from './SidebarProvider';
 
 export function activate(context: vscode.ExtensionContext) {
 
 
-	console.log('Congratulations, your extension "devarmory" is now active!');
+	const sidebarProvider = new SidebarProvider(context.extensionUri);
+	context.subscriptions.push(
+	  vscode.window.registerWebviewViewProvider(
+		"devarmory-sidebar",
+		sidebarProvider
+	  )
+	);
 
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('devarmory.helloWorld', () => {
 			HelloWorldPanel.createOrShow(context.extensionUri);
+		})
+	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand('devarmory.refresh', async () => {
+			// HelloWorldPanel.kill();
+			// HelloWorldPanel.createOrShow(context.extensionUri);
+			await vscode.commands.executeCommand("workbench.action.closeSidebar");
+			await vscode.commands.executeCommand("workbench.view.extension.devarmory-sidebar-view");
+			// setTimeout(() => {
+			// 	vscode.commands.executeCommand("workbench.action.webview.openDeveloperTools");
+			// }, 500);
+			
 		})
 	);
 
