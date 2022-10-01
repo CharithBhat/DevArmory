@@ -1,7 +1,7 @@
 {
   "name": "devarmory",
   "displayName": "DevArmory",
-  "description": "A developers pocket knife",
+  "description": "Build faster with all your devtools in one extension.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.71.0"

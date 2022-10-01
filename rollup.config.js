@@ -23,6 +23,7 @@ export default fs
       },
       plugins: [
         svelte({
+        
           // enable run-time checks when not in production
           dev: !production,
           // we'll extract any component CSS out into
@@ -41,12 +42,14 @@ export default fs
         resolve({
           browser: true,
           dedupe: ["svelte"],
+        
         }),
         commonjs(),
         typescript({
           tsconfig: "webviews/tsconfig.json",
           sourceMap: !production,
           inlineSources: !production,
+          
         }),
 
         // In dev mode, call `npm run start` once
