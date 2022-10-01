@@ -13,6 +13,7 @@
     "onCommand:devarmory.helloWorld",
     "onCommand:devarmory.askQuestion",
     "onCommand:devarmory.refresh",
+    "onCommand:devarmory.addTodo",
     "onView:devarmory-sidebar"
   ],
   "main": "./dist/extension.js",
@@ -52,6 +53,11 @@
         "command": "devarmory.refresh",
         "category": "DevArmory",
         "title": "Refresh"
+      },
+      {
+        "command": "devarmory.addTodo",
+        "category": "DevArmory",
+        "title": "Add Todo From Selection"
       }
     ]
   },
