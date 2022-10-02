@@ -1,5 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import * as _vscode from "vscode";
+    // import HelloWorld from "./HelloWorld.svelte";
 
     let todos: Array<{ text: String; completed: boolean }> = [];
     let text = "";
@@ -40,7 +42,7 @@
 <!-- Responsible for webview sidebar items -->
 <ul id="myUL">
     <!-- all item here -->
-    <img src="/media/rocket.svg" alt="damn" />
+    <!-- <img src="/media/rocket.svg" alt="damn" /> -->
     <li>
         <span
             class="caret"
@@ -48,7 +50,8 @@
             on:click={() => (allBoolean = !allBoolean)}>All</span
         >
         <ul class="nested" class:active={allBoolean}>
-            <li>Water</li>
+            <li on:click={ () => _vscode.commands.executeCommand('runHelloWorld')}>Water</li>
+            <!-- <li class="addThisClassForPointer"><span on:click={() => runHelloWorld}>click me please</span></li> -->
             <li>Coffee</li>
         </ul>
     </li>
@@ -67,6 +70,8 @@
     </li>
 </ul>
 <!--  -->
+
+<br /><br />
 
 <form
     on:submit|preventDefault={() => {
@@ -139,6 +144,11 @@
     .caret {
         cursor: pointer;
         user-select: none; /* Prevent text selection */
+    }
+
+    .addThisClassForPointer {
+        cursor: pointer;
+        user-select: none;
     }
 
     /* Create the caret/arrow with a unicode, and style it */
