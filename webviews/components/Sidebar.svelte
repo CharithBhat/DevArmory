@@ -22,12 +22,22 @@
     });
 
     // variables for webview sidebar
-    let allBoolean: boolean = false;
-    let convertersBoolean: boolean = false;
+    let allBoolean: true | false = tsvscode.getState().allBoolean || false;
+    let convertersBoolean: true | false =
+        tsvscode.getState()?.convertersBoolean || false;  
     let generatorsBoolean: boolean = false;
     let graphicsBoolean: boolean = false;
     let codersBoolean: boolean = false;
-    // ends here
+
+
+    $: {
+        tsvscode.setState({ allBoolean });
+
+    }
+    $: {
+        tsvscode.setState({ convertersBoolean });
+    }
+   
 </script>
 
 <!-- adding head tage here -->
@@ -47,10 +57,14 @@
         <span
             class="caret"
             class:caret-down={allBoolean}
-            on:click={() => (allBoolean = !allBoolean)}>All</span
+            on:click={() => {
+                allBoolean = !allBoolean;
+                
+            }}>All</span
         >
         <ul class="nested" class:active={allBoolean}>
             <li
+                class="addThisClassForPointer"
                 on:click={() => {
                     tsvscode.postMessage({
                         type: "onHelloWorld",
@@ -58,9 +72,9 @@
                     });
                 }}
             >
-                Water
+                All
             </li>
-            <li>Coffee</li>
+            <li class="addThisClassForPointer">Coffee</li>
         </ul>
     </li>
     <!-- converters item here-->
@@ -68,12 +82,14 @@
         <span
             class="caret"
             class:caret-down={convertersBoolean}
-            on:click={() => (convertersBoolean = !convertersBoolean)}
-            >Converters</span
+            on:click={() => {
+                convertersBoolean = !convertersBoolean;
+                
+            }}>Converters</span
         >
         <ul class="nested" class:active={convertersBoolean}>
-            <li>Water</li>
-            <li>Coffee</li>
+            <li class="addThisClassForPointer">Water</li>
+            <li class="addThisClassForPointer">Coffee</li>
         </ul>
     </li>
 </ul>
@@ -140,6 +156,7 @@
     ul,
     #myUL {
         list-style-type: none;
+        padding-left: 50;
     }
 
     /* Remove margins and padding from the parent ul */
@@ -157,6 +174,10 @@
     .addThisClassForPointer {
         cursor: pointer;
         user-select: none;
+    }
+
+    li {
+        margin-top: 3px;
     }
 
     /* Create the caret/arrow with a unicode, and style it */
@@ -180,6 +201,7 @@
     /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
     .active {
         display: block;
+        margin-left: 10px;
     }
     /*  */
 </style>
