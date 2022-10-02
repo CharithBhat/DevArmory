@@ -30,16 +30,17 @@
 
 <!-- adding head tage here -->
 <!-- <svelte:head>
+ 
     <meta
     httpequiv="Content-Security-Policy"
-        content="default-src *"
+        content="img src= /media/rocket.svg"
     />
 </svelte:head> -->
 
 <!-- Responsible for webview sidebar items -->
 <ul id="myUL">
     <!-- all item here -->
-    <!-- <img src="/media/activity.svg" alt="damn" /> -->
+    <img src="/media/rocket.svg" alt="damn" />
     <li>
         <span
             class="caret"
