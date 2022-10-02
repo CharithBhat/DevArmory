@@ -10,12 +10,8 @@ declare global {
         getState: () => any;
         setState: (state: any) => void;
 
-
+        
     };
-    
-     export function runHelloWorld(): void {
-        await _vscode.commands.executeCommand('devarmory.helloWorld');
-      }
     
 }
 

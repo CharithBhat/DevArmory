@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import * as _vscode from "vscode";
+    // import * as _vscode from "vscode";
     // import HelloWorld from "./HelloWorld.svelte";
 
     let todos: Array<{ text: String; completed: boolean }> = [];
@@ -50,8 +50,16 @@
             on:click={() => (allBoolean = !allBoolean)}>All</span
         >
         <ul class="nested" class:active={allBoolean}>
-            <li on:click={ () => _vscode.commands.executeCommand('runHelloWorld')}>Water</li>
-            <!-- <li class="addThisClassForPointer"><span on:click={() => runHelloWorld}>click me please</span></li> -->
+            <li
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onHelloWorld",
+                        value: "valueForOnHelloWorld",
+                    });
+                }}
+            >
+                Water
+            </li>
             <li>Coffee</li>
         </ul>
     </li>

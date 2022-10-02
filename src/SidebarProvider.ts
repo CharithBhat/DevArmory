@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { getNonce } from "./getNonce";
+import { HelloWorldPanel } from "./HelloWordPanel";
 
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
@@ -36,6 +37,15 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
             return;
           }
           vscode.window.showErrorMessage(data.value);
+          break;
+        }
+
+        case "onHelloWorld": {
+          if (!data.value) {
+            return;
+          }
+          HelloWorldPanel.createOrShow(this._extensionUri);
+          
           break;
         }
 
