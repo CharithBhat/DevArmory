@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { DummyPanel } from "./dummyPanel";
 import { getNonce } from "./getNonce";
 import { HelloWorldPanel } from "./HelloWordPanel";
 
@@ -16,6 +17,10 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
       // Allow scripts in the webview
       enableScripts: true,
       localResourceRoots: [this._extensionUri],
+      //   localResourceRoots: [
+      //     vscode.Uri.joinPath(this._extensionUri, "media"),
+      //     vscode.Uri.joinPath(this._extensionUri, "out/compiled"),
+      // ],
     };
 
     webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
@@ -44,10 +49,18 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           //   return;
           // }
           HelloWorldPanel.createOrShow(this._extensionUri);
-          
+
           break;
         }
 
+        case "onDummy": {
+          // if (!data.value) {
+          //   return;
+          // }
+          DummyPanel.createOrShow(this._extensionUri);
+
+          break;
+        }
       }
     });
   }
@@ -89,7 +102,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 					Use a content security policy to only allow loading images from https or from our extension directory,
 					and only allow scripts that have a specific nonce.
         -->
-        <meta http-equiv="Content-Security-Policy" content="img-src https: data:; style-src 'unsafe-inline' ${webview.cspSource
+        <meta http-equiv="Content-Security-Policy" content="img-src https: data: ; style-src 'unsafe-inline' ${webview.cspSource
       }; script-src 'nonce-${nonce}';">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<link href="${styleResetUri}" rel="stylesheet">

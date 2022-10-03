@@ -25,35 +25,26 @@
     // variables for webview sidebar
     let allBoolean: true | false = tsvscode.getState().allBoolean || false;
     let convertersBoolean: true | false =
-        tsvscode.getState()?.convertersBoolean || false;  
+        tsvscode.getState()?.convertersBoolean || false;
     let generatorsBoolean: boolean = false;
     let graphicsBoolean: boolean = false;
     let codersBoolean: boolean = false;
 
-
     $: {
-        tsvscode.setState({ allBoolean , convertersBoolean });
-
-    };
-    // $: {
-    //     tsvscode.setState({ convertersBoolean });
-    // };
-   
+        tsvscode.setState({ allBoolean, convertersBoolean });
+    }
 </script>
-
-
 
 <!-- Responsible for webview sidebar items -->
 <ul id="myUL">
     <!-- all item here -->
-    <!-- <img src="/media/rocket.svg" alt="damn" /> -->
+    <img src="/media/rocket.svg" alt="damn" />
     <li>
         <span
             class="caret"
             class:caret-down={allBoolean}
             on:click={() => {
                 allBoolean = !allBoolean;
-                
             }}>All</span
         >
         <ul class="nested" class:active={allBoolean}>
@@ -68,7 +59,17 @@
             >
                 All
             </li>
-            <li class="addThisClassForPointer">Coffee</li>
+            <li
+                class="addThisClassForPointer"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onDummy",
+                        value: "valueForDummy",
+                    });
+                }}
+            >
+                Coffee
+            </li>
         </ul>
     </li>
     <!-- converters item here-->
@@ -78,7 +79,6 @@
             class:caret-down={convertersBoolean}
             on:click={() => {
                 convertersBoolean = !convertersBoolean;
-                
             }}>Converters</span
         >
         <ul class="nested" class:active={convertersBoolean}>
