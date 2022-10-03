@@ -115,22 +115,21 @@ export class DummyPanel {
                     vscode.window.showErrorMessage(data.value);
                     break;
                 }
-                // case "tokens": {
-                //   await Util.globalState.update(accessTokenKey, data.accessToken);
-                //   await Util.globalState.update(refreshTokenKey, data.refreshToken);
-                //   break;
-                // }
+                
             }
         });
     }
 
     private _getHtmlForWebview(webview: vscode.Webview) {
-        // // And the uri we use to load this script in the webview
+        // used specifically for this page
         const scriptUri = webview.asWebviewUri(
             vscode.Uri.joinPath(this._extensionUri, "out/compiled", "DummyWorld.js")
         );
+        const cssUri = webview.asWebviewUri(
+            vscode.Uri.joinPath(this._extensionUri, "out", "compiled/DummyWorld.css")
+        );
 
-        // Uri to load styles into webview
+        // used for all webviews
         const stylesResetUri = webview.asWebviewUri(vscode.Uri.joinPath(
             this._extensionUri,
             "media",
@@ -141,9 +140,7 @@ export class DummyPanel {
             "media",
             "vscode.css"
         ),);
-        // const cssUri = webview.asWebviewUri(
-        //     vscode.Uri.joinPath(this._extensionUri, "out", "compiled/swiper.css")
-        // );
+        
 
         // // Use a nonce to only allow specific scripts to be run
         const nonce = getNonce();

@@ -125,12 +125,15 @@ export class HelloWorldPanel {
     }
 
     private _getHtmlForWebview(webview: vscode.Webview) {
-        // // And the uri we use to load this script in the webview
+        // specific to this file
         const scriptUri = webview.asWebviewUri(
             vscode.Uri.joinPath(this._extensionUri, "out/compiled", "HelloWorld.js")
         );
+        const cssUri = webview.asWebviewUri(
+            vscode.Uri.joinPath(this._extensionUri, "out", "compiled/HelloWorld.css")
+        );
 
-        // Uri to load styles into webview
+        // add to all webviews
         const stylesResetUri = webview.asWebviewUri(vscode.Uri.joinPath(
             this._extensionUri,
             "media",
@@ -141,9 +144,7 @@ export class HelloWorldPanel {
             "media",
             "vscode.css"
         ),);
-        // const cssUri = webview.asWebviewUri(
-        //     vscode.Uri.joinPath(this._extensionUri, "out", "compiled/swiper.css")
-        // );
+        
 
         // // Use a nonce to only allow specific scripts to be run
         const nonce = getNonce();
@@ -156,7 +157,7 @@ export class HelloWorldPanel {
 					Use a content security policy to only allow loading images from https or from our extension directory,
 					and only allow scripts that have a specific nonce.
         -->
-        <meta http-equiv="Content-Security-Policy" content="img-src https: data: ; style-src 'unsafe-inline' ${webview.cspSource
+        <meta http-equiv="Content-Security-Policy" content="default-src 'http://www.w3.org/2000/svg' img-src https: data: ; style-src 'unsafe-inline' ${webview.cspSource
             }; script-src 'nonce-${nonce}';">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				
