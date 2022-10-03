@@ -15,7 +15,6 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     webviewView.webview.options = {
       // Allow scripts in the webview
       enableScripts: true,
-
       localResourceRoots: [this._extensionUri],
     };
 
@@ -41,9 +40,9 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
         }
 
         case "onHelloWorld": {
-          if (!data.value) {
-            return;
-          }
+          // if (!data.value) {
+          //   return;
+          // }
           HelloWorldPanel.createOrShow(this._extensionUri);
           
           break;

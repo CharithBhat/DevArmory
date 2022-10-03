@@ -1,11 +1,12 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    // import * as _vscode from "vscode";
     // import HelloWorld from "./HelloWorld.svelte";
 
+    // remove all this later
     let todos: Array<{ text: String; completed: boolean }> = [];
     let text = "";
 
+    // remove this later
     onMount(() => {
         // Handle messages sent from the extension to the webview
         window.addEventListener("message", (event) => {
@@ -31,23 +32,16 @@
 
 
     $: {
-        tsvscode.setState({ allBoolean });
+        tsvscode.setState({ allBoolean , convertersBoolean });
 
-    }
-    $: {
-        tsvscode.setState({ convertersBoolean });
-    }
+    };
+    // $: {
+    //     tsvscode.setState({ convertersBoolean });
+    // };
    
 </script>
 
-<!-- adding head tage here -->
-<!-- <svelte:head>
- 
-    <meta
-    httpequiv="Content-Security-Policy"
-        content="img src= /media/rocket.svg"
-    />
-</svelte:head> -->
+
 
 <!-- Responsible for webview sidebar items -->
 <ul id="myUL">
@@ -97,6 +91,7 @@
 
 <br /><br />
 
+<!-- remove this form -->
 <form
     on:submit|preventDefault={() => {
         todos = [{ text, completed: false }, ...todos];
@@ -119,6 +114,7 @@
     {/each}
 </ul>
 
+<!-- remove these buttons -->
 <!-- svelte-ignore missing-declaration -->
 <button
     on:click={() => {
@@ -140,6 +136,7 @@
 >
 
 <style>
+    /* might just use this style for other buttons */
     input[type="text"] {
         /* this is gunmetal grey */
         /* border: 1px solid #71797e; */

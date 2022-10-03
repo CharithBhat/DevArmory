@@ -8,6 +8,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const sidebarProvider = new SidebarProvider(context.extensionUri);
 
+	// need to remove this before shipping
 	const item = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right);
 	item.text = "$(beaker) Add Todo";
 	item.command = 'devarmory.addTodo';
@@ -20,6 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
 		)
 	);
 
+	// need to remove this later
 	context.subscriptions.push(
 		vscode.commands.registerCommand('devarmory.addTodo', () => {
 			const { activeTextEditor } = vscode.window;
@@ -37,13 +39,15 @@ export function activate(context: vscode.ExtensionContext) {
 			});
 		})
 	);
-
+	
+	// maybe change this later
 	context.subscriptions.push(
 		vscode.commands.registerCommand('devarmory.helloWorld', () => {
 			HelloWorldPanel.createOrShow(context.extensionUri);
 		})
 	);
-
+	
+	// this is intersting
 	context.subscriptions.push(
 		vscode.commands.registerCommand('devarmory.refresh', async () => {
 			// HelloWorldPanel.kill();
@@ -56,7 +60,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 		})
 	);
-
+	
+	// remove this later
 	context.subscriptions.push(
 		vscode.commands.registerCommand('devarmory.askQuestion', async () => {
 			const answer = await vscode.window.showInformationMessage('How was your day?', 'Good', 'Bad');
