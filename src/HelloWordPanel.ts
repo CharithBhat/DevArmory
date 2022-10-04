@@ -126,26 +126,41 @@ export class HelloWorldPanel {
 
     private _getHtmlForWebview(webview: vscode.Webview) {
         // specific to this file
-        const scriptUri = webview.asWebviewUri(
-            vscode.Uri.joinPath(this._extensionUri, "out/compiled", "HelloWorld.js")
+        // const scriptUri = webview.asWebviewUri(
+        //     vscode.Uri.joinPath(this._extensionUri, "out/compiled", "HelloWorld.js")
+        // );
+        // const cssUri = webview.asWebviewUri(
+        //     vscode.Uri.joinPath(this._extensionUri, "out", "compiled/HelloWorld.css")
+        // );
+
+        // // add to all webviews
+        // const stylesResetUri = webview.asWebviewUri(vscode.Uri.joinPath(
+        //     this._extensionUri,
+        //     "media",
+        //     "reset.css"
+        // ),);
+        // const stylesMainUri = webview.asWebviewUri(vscode.Uri.joinPath(
+        //     this._extensionUri,
+        //     "media",
+        //     "vscode.css"
+        // ),);
+
+        // default css that your need to add to all the webviews
+        const styleResetUri = webview.asWebviewUri(
+            vscode.Uri.joinPath(this._extensionUri, "media", "reset.css")
         );
-        const cssUri = webview.asWebviewUri(
+        // default css that your need to add to all the webviews
+        const styleVSCodeUri = webview.asWebviewUri(
+            vscode.Uri.joinPath(this._extensionUri, "media", "vscode.css")
+        );
+        const scriptUri = webview.asWebviewUri(
+            vscode.Uri.joinPath(this._extensionUri, "out", "compiled/HelloWorld.js")
+        );
+        const styleMainUri = webview.asWebviewUri(
             vscode.Uri.joinPath(this._extensionUri, "out", "compiled/HelloWorld.css")
         );
-
-        // add to all webviews
-        const stylesResetUri = webview.asWebviewUri(vscode.Uri.joinPath(
-            this._extensionUri,
-            "media",
-            "reset.css"
-        ),);
-        const stylesMainUri = webview.asWebviewUri(vscode.Uri.joinPath(
-            this._extensionUri,
-            "media",
-            "vscode.css"
-        ),);
         
-
+            // http://www.w3.org/2000/svg
         // // Use a nonce to only allow specific scripts to be run
         const nonce = getNonce();
 
@@ -157,12 +172,13 @@ export class HelloWorldPanel {
 					Use a content security policy to only allow loading images from https or from our extension directory,
 					and only allow scripts that have a specific nonce.
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'http://www.w3.org/2000/svg' img-src https: data: ; style-src 'unsafe-inline' ${webview.cspSource
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' ; img-src ${webview.cspSource} https:; style-src 'unsafe-inline' ${webview.cspSource
             }; script-src 'nonce-${nonce}';">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				
-        <link href="${stylesResetUri}" rel="stylesheet">
-        <link href="${stylesMainUri}" rel="stylesheet">
+        <link rel='icon' type='image/svg' href='/media/rocket.svg'>
+        <link href="${styleVSCodeUri}" rel="stylesheet">	
+        <link href="${styleResetUri}" rel="stylesheet">
+        <link href="${styleMainUri}" rel="stylesheet">
         <script nonce="${nonce}">
            
         </script>

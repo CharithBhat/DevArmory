@@ -41,6 +41,7 @@ const extensionConfig = {
     ]
   },
   devtool: 'nosources-source-map',
+  // devtool: 'inline-source-map',
   infrastructureLogging: {
     level: "log", // enables logging required for problem matchers
   },

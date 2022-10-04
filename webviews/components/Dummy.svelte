@@ -6,7 +6,7 @@
     // $: fullName = firstName.toUpperCase();
 
     let regularText: string = "";
-    let convertedText: string =  "";
+    let convertedText: string = "";
     $: {
         convertedText = regularText.toLocaleUpperCase();
     }
@@ -14,10 +14,10 @@
 
 <!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
 <!-- --config ./build/node-extension.webpack.config.js  -->
-
-<h1>First Converter Ever</h1>
-<br /><br />
-<!-- 
+<div class="padding-for-whole-page">
+    <h1>Base64</h1>
+    <br />
+    <!-- 
 <p>{fullName} {beltColor} belt</p>
 
 <input type="text" bind:value={beltColor}>
@@ -26,23 +26,42 @@
 <h2>Last Name: </h2>
 <input type="text" bind:value={lastName}> -->
 
-<h2>Regular text goes here:</h2>
-<textarea
-    placeholder="add text here"
-    name="yo?"
-    id="yolo"
-    cols="30"
-    rows="10"
-    type="text"
-    bind:value={regularText}
-/>
-<h2>Converted text goes here:</h2>
-<textarea
-    placeholder="add converted text here"
-    name="hoe"
-    id="hoehoe"
-    cols="30"
-    rows="10"
-    type="text"
-    bind:value={convertedText}
-/>
+    <!-- <h4>Regular text goes here:</h4> -->
+    <p class="padding-for-textarea-below">Source</p>
+    <textarea
+        placeholder="Add text here"
+        name="yo?"
+        id="yolo"
+        cols="5"
+        rows="10"
+        type="text"
+        bind:value={regularText}
+    />
+    <br>
+    <!-- <h4>Converted text goes here:</h4> -->
+    <p class="padding-for-textarea-below">Base64</p>
+    <textarea
+        placeholder="Add converted text here"
+        name="hoe"
+        id="hoehoe"
+        cols="30"
+        rows="10"
+        type="text"
+        bind:value={convertedText}
+    />
+</div>
+
+<style>
+    textarea {
+        padding: 10px;
+        outline-style:solid;
+        outline-color: #191a21;
+        outline-width: 1px;
+     }
+    .padding-for-whole-page {
+        margin: 20px;
+    }
+    .padding-for-textarea-below {
+        padding-bottom: 5px;
+    }
+</style>

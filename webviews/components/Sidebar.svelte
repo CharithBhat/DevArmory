@@ -35,10 +35,11 @@
     }
 </script>
 
+
 <!-- Responsible for webview sidebar items -->
 <ul id="myUL">
     <!-- all item here -->
-    <img src="/media/rocket.svg" alt="damn" />
+    <!-- <img src="/media/rocket.svg" alt="damn" /> -->
     <li>
         <span
             class="caret"
@@ -200,5 +201,9 @@
         display: block;
         margin-left: 10px;
     }
+
+    /* .sidebar-background-color {
+        background-color: #21222c;
+    } */
     /*  */
 </style>
