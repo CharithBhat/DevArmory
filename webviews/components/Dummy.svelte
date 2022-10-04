@@ -1,29 +1,48 @@
 <script lang="ts">
+    // let beltColor: string = "black";
+    // let firstName: string = "Charith"
+    // let lastName: string = 'Bhat';
 
+    // $: fullName = firstName.toUpperCase();
 
-    let beltColor: string = "black";
-    let upperBeltColor: string = beltColor + 'yo';
-    let textcheck: string =  '';
-    const handleClick = ()  => {
-        beltColor = 'orange';
+    let regularText: string = "";
+    let convertedText: string =  "";
+    $: {
+        convertedText = regularText.toLocaleUpperCase();
     }
-
-    
 </script>
 
 <!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
 <!-- --config ./build/node-extension.webpack.config.js  -->
 
-<h1>Dummy world</h1>
-
-<p>{beltColor} belt</p>
+<h1>First Converter Ever</h1>
+<br /><br />
+<!-- 
+<p>{fullName} {beltColor} belt</p>
 
 <input type="text" bind:value={beltColor}>
+<h2>First Name: </h2>
+<input type="text" bind:value={firstName}>
+<h2>Last Name: </h2>
+<input type="text" bind:value={lastName}> -->
 
-<textarea name="yo?" id="yolo" cols="30" rows="10" type='text' bind:value={beltColor}></textarea>
-
-<textarea name="hoe" id="hoehoe" cols="30" rows="10" type='text' bind:value={upperBeltColor}></textarea>
-
-<p>{textcheck}</p>
-
-<button on:click={handleClick}>update belt color</button>
+<h2>Regular text goes here:</h2>
+<textarea
+    placeholder="add text here"
+    name="yo?"
+    id="yolo"
+    cols="30"
+    rows="10"
+    type="text"
+    bind:value={regularText}
+/>
+<h2>Converted text goes here:</h2>
+<textarea
+    placeholder="add converted text here"
+    name="hoe"
+    id="hoehoe"
+    cols="30"
+    rows="10"
+    type="text"
+    bind:value={convertedText}
+/>

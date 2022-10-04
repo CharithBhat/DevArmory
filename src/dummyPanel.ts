@@ -34,7 +34,7 @@ export class DummyPanel {
             {
                 // Enable javascript in the webview
                 enableScripts: true,
-                
+
                 // And restrict the webview to only loading content from our extension's `media` directory.
                 localResourceRoots: [
                     vscode.Uri.joinPath(extensionUri, "media"),
@@ -115,32 +115,47 @@ export class DummyPanel {
                     vscode.window.showErrorMessage(data.value);
                     break;
                 }
-                
+
             }
         });
     }
 
     private _getHtmlForWebview(webview: vscode.Webview) {
         // used specifically for this page
-        const scriptUri = webview.asWebviewUri(
-            vscode.Uri.joinPath(this._extensionUri, "out/compiled", "DummyWorld.js")
+        // const scriptUri = webview.asWebviewUri(
+        //     vscode.Uri.joinPath(this._extensionUri, "out/compiled", "DummyWorld.js")
+        // );
+        // const cssUri = webview.asWebviewUri(
+        //     vscode.Uri.joinPath(this._extensionUri, "out", "compiled/DummyWorld.css")
+        // );
+
+        // // used for all webviews
+        // const stylesResetUri = webview.asWebviewUri(vscode.Uri.joinPath(
+        //     this._extensionUri,
+        //     "media",
+        //     "reset.css"
+        // ),);
+        // const stylesMainUri = webview.asWebviewUri(vscode.Uri.joinPath(
+        //     this._extensionUri,
+        //     "media",
+        //     "vscode.css"
+        // ),);
+
+        // default css that your need to add to all the webviews
+        const styleResetUri = webview.asWebviewUri(
+            vscode.Uri.joinPath(this._extensionUri, "media", "reset.css")
         );
-        const cssUri = webview.asWebviewUri(
+        // default css that your need to add to all the webviews
+        const styleVSCodeUri = webview.asWebviewUri(
+            vscode.Uri.joinPath(this._extensionUri, "media", "vscode.css")
+        );
+        const scriptUri = webview.asWebviewUri(
+            vscode.Uri.joinPath(this._extensionUri, "out", "compiled/DummyWorld.js")
+        );
+        const styleMainUri = webview.asWebviewUri(
             vscode.Uri.joinPath(this._extensionUri, "out", "compiled/DummyWorld.css")
         );
 
-        // used for all webviews
-        const stylesResetUri = webview.asWebviewUri(vscode.Uri.joinPath(
-            this._extensionUri,
-            "media",
-            "reset.css"
-        ),);
-        const stylesMainUri = webview.asWebviewUri(vscode.Uri.joinPath(
-            this._extensionUri,
-            "media",
-            "vscode.css"
-        ),);
-        
 
         // // Use a nonce to only allow specific scripts to be run
         const nonce = getNonce();
@@ -156,9 +171,9 @@ export class DummyPanel {
         <meta http-equiv="Content-Security-Policy" content="img-src https: data: ; style-src 'unsafe-inline' ${webview.cspSource
             }; script-src 'nonce-${nonce}';">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				
-        <link href="${stylesResetUri}" rel="stylesheet">
-        <link href="${stylesMainUri}" rel="stylesheet">
+                <link href="${styleVSCodeUri}" rel="stylesheet">		
+        <link href="${styleResetUri}" rel="stylesheet">
+        <link href="${styleMainUri}" rel="stylesheet">
         <script nonce="${nonce}">
            
         </script>

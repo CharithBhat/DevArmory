@@ -8,7 +8,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
   _view?: vscode.WebviewView;
   _doc?: vscode.TextDocument;
 
-  constructor(private readonly _extensionUri: vscode.Uri) { }
+  constructor(private readonly _extensionUri: vscode.Uri) { } 
 
   public resolveWebviewView(webviewView: vscode.WebviewView) {
     this._view = webviewView;
