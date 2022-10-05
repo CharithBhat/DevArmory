@@ -1,10 +1,12 @@
-<script lang="ts"></script>
+<script lang="ts">
+    let image1: string = 'https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/codice-fiscale.svg';
+</script>
 
 
 
 <h1>Hello world 5</h1>
 
-<img src="/media/codice-fiscale.svg" alt="damn" />
+<img src={image1} alt="damn" />
 
 
 

@@ -159,9 +159,16 @@ export class HelloWorldPanel {
         const styleMainUri = webview.asWebviewUri(
             vscode.Uri.joinPath(this._extensionUri, "out", "compiled/HelloWorld.css")
         );
+
+        const ourImageUri = webview.asWebviewUri(
+            vscode.Uri.joinPath(this._extensionUri, "media", "codice-fiscale.svg")
+        );
+
+        const theString = ourImageUri.toString();
         
             // http://www.w3.org/2000/svg
-        // // Use a nonce to only allow specific scripts to be run
+        // // Use a nonce to only allow specific scripts to be run 
+        // <img src="${ourImageUri}" alt="damn" height="50px" width='50px'/>
         const nonce = getNonce();
 
         return `<!DOCTYPE html>
@@ -172,18 +179,19 @@ export class HelloWorldPanel {
 					Use a content security policy to only allow loading images from https or from our extension directory,
 					and only allow scripts that have a specific nonce.
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' ; img-src ${webview.cspSource} https:; style-src 'unsafe-inline' ${webview.cspSource
+        <meta http-equiv="Content-Security-Policy" content="default-src ${webview.cspSource} ; img-src ${webview.cspSource} https:; style-src 'unsafe-inline' ${webview.cspSource
             }; script-src 'nonce-${nonce}';">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel='icon' type='image/svg' href='/media/rocket.svg'>
+        <link rel='icon' type='image/svg' href='${ourImageUri}'>
         <link href="${styleVSCodeUri}" rel="stylesheet">	
         <link href="${styleResetUri}" rel="stylesheet">
         <link href="${styleMainUri}" rel="stylesheet">
         <script nonce="${nonce}">
-           
+
         </script>
 			</head>
       <body>
+      
 			</body>
             <script src="${scriptUri}" nonce="${nonce}">
 			</html>`;

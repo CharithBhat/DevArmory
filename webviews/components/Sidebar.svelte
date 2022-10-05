@@ -33,20 +33,24 @@
     $: {
         tsvscode.setState({ allBoolean, convertersBoolean });
     }
-</script>
 
+    // variables for images
+
+    let activityImage: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/activity.svg";
+</script>
 
 <!-- Responsible for webview sidebar items -->
 <ul id="myUL">
     <!-- all item here -->
-    <!-- <img src="/media/rocket.svg" alt="damn" /> -->
+
     <li>
         <span
             class="caret"
             class:caret-down={allBoolean}
             on:click={() => {
                 allBoolean = !allBoolean;
-            }}>All</span
+            }}><img class="sidebar-icons" src={activityImage} alt="damn"/> All</span
         >
         <ul class="nested" class:active={allBoolean}>
             <li
@@ -180,10 +184,14 @@
 
     /* Create the caret/arrow with a unicode, and style it */
     .caret::before {
-        content: "\25B6";
+        /* the default ugly one */
+        /* content: "\25B6"; */
+        /* THREE-D TOP-LIGHTED RIGHT ARROWHEAD */
+        /* content: '\27A2'; */
+        content: '\27A4';
         color: white;
         display: inline-block;
-        margin-right: 6px;
+        margin-right: 10px;
     }
 
     /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
@@ -202,8 +210,7 @@
         margin-left: 10px;
     }
 
-    /* .sidebar-background-color {
-        background-color: #21222c;
-    } */
-    /*  */
+    .sidebar-icons {
+        padding-right: 3px;
+    }
 </style>
