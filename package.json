@@ -24,7 +24,7 @@
         {
           "id": "devarmory-sidebar-view",
           "title": "DevArmory",
-          "icon": "media/rocket.svg"
+          "icon": "media/vs-code-icon.svg"
         }
       ]
     },
@@ -34,7 +34,7 @@
           "type": "webview",
           "id": "devarmory-sidebar",
           "name": "DevArmory",
-          "icon": "media/rocket.svg",
+          "icon": "media/vs-code-icon.svg",
           "contextualTitle": "DevArmory"
         }
       ]

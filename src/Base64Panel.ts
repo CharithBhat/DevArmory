@@ -2,13 +2,13 @@ import * as vscode from "vscode";
 import { getNonce } from "./getNonce";
 
 
-export class DummyPanel {
+export class Base64Panel {
     /**
      * Track the currently panel. Only allow a single panel to exist at a time.
      */
-    public static currentPanel: DummyPanel | undefined;
+    public static currentPanel: Base64Panel | undefined;
 
-    public static readonly viewType = "dummy";
+    public static readonly viewType = "Base64 Encoder/Decoder";
 
     private readonly _panel: vscode.WebviewPanel;
     private readonly _extensionUri: vscode.Uri;
@@ -20,16 +20,16 @@ export class DummyPanel {
             : undefined;
 
         // If we already have a panel, show it.
-        if (DummyPanel.currentPanel) {
-            DummyPanel.currentPanel._panel.reveal(column);
-            DummyPanel.currentPanel._update();
+        if (Base64Panel.currentPanel) {
+            Base64Panel.currentPanel._panel.reveal(column);
+            Base64Panel.currentPanel._update();
             return;
         }
 
         // Otherwise, create a new panel.
         const panel = vscode.window.createWebviewPanel(
-            DummyPanel.viewType,
-            "dummy-world",
+            Base64Panel.viewType,
+            "Base64 Encoder/Decoder",
             column || vscode.ViewColumn.One,
             {
                 // Enable javascript in the webview
@@ -43,16 +43,16 @@ export class DummyPanel {
             }
         );
 
-        DummyPanel.currentPanel = new DummyPanel(panel, extensionUri);
+        Base64Panel.currentPanel = new Base64Panel(panel, extensionUri);
     }
 
     public static kill() {
-        DummyPanel.currentPanel?.dispose();
-        DummyPanel.currentPanel = undefined;
+        Base64Panel.currentPanel?.dispose();
+        Base64Panel.currentPanel = undefined;
     }
 
     public static revive(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
-        DummyPanel.currentPanel = new DummyPanel(panel, extensionUri);
+        Base64Panel.currentPanel = new Base64Panel(panel, extensionUri);
     }
 
     private constructor(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
@@ -69,7 +69,7 @@ export class DummyPanel {
     }
 
     public dispose() {
-        DummyPanel.currentPanel = undefined;
+        Base64Panel.currentPanel = undefined;
 
         // Clean up our resources
         this._panel.dispose();
@@ -119,10 +119,10 @@ export class DummyPanel {
             vscode.Uri.joinPath(this._extensionUri, "media", "vscode.css")
         );
         const scriptUri = webview.asWebviewUri(
-            vscode.Uri.joinPath(this._extensionUri, "out", "compiled/DummyWorld.js")
+            vscode.Uri.joinPath(this._extensionUri, "out", "compiled/Base64.js")
         );
         const styleMainUri = webview.asWebviewUri(
-            vscode.Uri.joinPath(this._extensionUri, "out", "compiled/DummyWorld.css")
+            vscode.Uri.joinPath(this._extensionUri, "out", "compiled/Base64.css")
         );
 
 

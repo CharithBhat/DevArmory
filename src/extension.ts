@@ -1,6 +1,6 @@
 
 import * as vscode from 'vscode';
-import { DummyPanel } from './DummyPanel';
+import { Base64Panel } from './Base64Panel';
 import { HelloWorldPanel } from './HelloWordPanel';
 import { SidebarProvider } from './SidebarProvider';
 
@@ -51,7 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// using for noww i guess
 	context.subscriptions.push(
 		vscode.commands.registerCommand('devarmory.dummyWorld', () => {
-			DummyPanel.createOrShow(context.extensionUri);
+			Base64Panel.createOrShow(context.extensionUri);
 		})
 	);
 	

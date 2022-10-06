@@ -2,9 +2,22 @@
 
     let regularText: string =  tsvscode.getState()?.regularText || '';
     let convertedText: string =  tsvscode.getState()?.convertedText || '';
-    $: {
-        convertedText = regularText.toLocaleUpperCase();
-        tsvscode.setState({ regularText, convertedText });
+    // $: {
+    //     convertedText = regularText.toLocaleUpperCase();
+    //     tsvscode.setState({ regularText, convertedText });
+    // }
+    function onAddingSource(e: any): void {
+        regularText = (e.target as HTMLInputElement).value;
+        convertedText = btoa(regularText);
+        // convertedText = regularText.toLocaleUpperCase();
+        tsvscode.setState({ regularText, convertedText });  
+    }
+
+    function onAddingBase64(e: any): void {
+        convertedText = (e.target as HTMLInputElement).value;
+        // regularText = convertedText.toLocaleLowerCase();
+        regularText = atob(convertedText);
+        tsvscode.setState({ regularText, convertedText });  
     }
 </script>
 
@@ -22,7 +35,8 @@
         cols="5"
         rows="10"
         type="text"
-        bind:value={regularText}
+        on:input={onAddingSource}
+        value={regularText}
     />
     <br>
     <p class="padding-for-textarea-below">Base64</p>
@@ -33,7 +47,8 @@
         cols="30"
         rows="10"
         type="text"
-        bind:value={convertedText}
+        value={convertedText}
+        on:input={onAddingBase64}
     />
 </div>
 

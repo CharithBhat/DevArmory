@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { DummyPanel } from "./DummyPanel";
+import { Base64Panel } from "./Base64Panel";
 import { getNonce } from "./getNonce";
 import { HelloWorldPanel } from "./HelloWordPanel";
 
@@ -53,11 +53,11 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           break;
         }
 
-        case "onDummy": {
+        case "onBase64": {
           // if (!data.value) {
           //   return;
           // }
-          DummyPanel.createOrShow(this._extensionUri);
+          Base64Panel.createOrShow(this._extensionUri);
 
           break;
         }
