@@ -45,6 +45,7 @@ export default fs
         
         }),
         commonjs(),
+        // typeCheck(),
         typescript({
           tsconfig: "webviews/tsconfig.json",
           sourceMap: !production,
@@ -69,3 +70,14 @@ export default fs
       },
     };
   });
+
+  function typeCheck() {
+    return {
+      writeBundle() {
+        require('child_process').spawn('svelte-check', {
+          stdio: ['ignore', 'inherit', 'inherit'],
+          shell: true
+        });
+      }
+    }
+  }

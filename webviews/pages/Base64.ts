@@ -1,3 +1,4 @@
+// @ts-ignore
 import App from "../components/Base64.svelte";
 
 const app = new App({
@@ -5,3 +6,5 @@ const app = new App({
 }); 
 
 export default app;
+
+
