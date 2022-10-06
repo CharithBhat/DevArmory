@@ -10,6 +10,5 @@ declare global {
         getState: () => any;
         setState: (state: any) => void;
     };
-    
 }
 

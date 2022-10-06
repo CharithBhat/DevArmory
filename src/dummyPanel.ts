@@ -66,18 +66,6 @@ export class DummyPanel {
         // This happens when the user closes the panel or when the panel is closed programatically
         this._panel.onDidDispose(() => this.dispose(), null, this._disposables);
 
-        // // Handle messages from the webview
-        // this._panel.webview.onDidReceiveMessage(
-        //   (message) => {
-        //     switch (message.command) {
-        //       case "alert":
-        //         vscode.window.showErrorMessage(message.text);
-        //         return;
-        //     }
-        //   },
-        //   null,
-        //   this._disposables
-        // );
     }
 
     public dispose() {
@@ -121,25 +109,6 @@ export class DummyPanel {
     }
 
     private _getHtmlForWebview(webview: vscode.Webview) {
-        // used specifically for this page
-        // const scriptUri = webview.asWebviewUri(
-        //     vscode.Uri.joinPath(this._extensionUri, "out/compiled", "DummyWorld.js")
-        // );
-        // const cssUri = webview.asWebviewUri(
-        //     vscode.Uri.joinPath(this._extensionUri, "out", "compiled/DummyWorld.css")
-        // );
-
-        // // used for all webviews
-        // const stylesResetUri = webview.asWebviewUri(vscode.Uri.joinPath(
-        //     this._extensionUri,
-        //     "media",
-        //     "reset.css"
-        // ),);
-        // const stylesMainUri = webview.asWebviewUri(vscode.Uri.joinPath(
-        //     this._extensionUri,
-        //     "media",
-        //     "vscode.css"
-        // ),);
 
         // default css that your need to add to all the webviews
         const styleResetUri = webview.asWebviewUri(
@@ -175,12 +144,13 @@ export class DummyPanel {
         <link href="${styleResetUri}" rel="stylesheet">
         <link href="${styleMainUri}" rel="stylesheet">
         <script nonce="${nonce}">
-           
+            const tsvscode = acquireVsCodeApi();
         </script>
 			</head>
-      <body>
-			</body>
-            <script src="${scriptUri}" nonce="${nonce}">
+        <body>
+            
+		</body>
+        <script src="${scriptUri}" nonce="${nonce}">
 			</html>`;
     }
 }

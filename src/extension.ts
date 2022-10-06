@@ -1,6 +1,6 @@
 
 import * as vscode from 'vscode';
-import { DummyPanel } from './dummyPanel';
+import { DummyPanel } from './DummyPanel';
 import { HelloWorldPanel } from './HelloWordPanel';
 import { SidebarProvider } from './SidebarProvider';
 

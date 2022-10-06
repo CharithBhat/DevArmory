@@ -1,14 +1,10 @@
 <script lang="ts">
-    // let beltColor: string = "black";
-    // let firstName: string = "Charith"
-    // let lastName: string = 'Bhat';
 
-    // $: fullName = firstName.toUpperCase();
-
-    let regularText: string = "";
-    let convertedText: string = "";
+    let regularText: string =  tsvscode.getState()?.regularText || '';
+    let convertedText: string =  tsvscode.getState()?.convertedText || '';
     $: {
         convertedText = regularText.toLocaleUpperCase();
+        tsvscode.setState({ regularText, convertedText });
     }
 </script>
 
@@ -17,16 +13,7 @@
 <div class="padding-for-whole-page">
     <h1>Base64</h1>
     <br />
-    <!-- 
-<p>{fullName} {beltColor} belt</p>
 
-<input type="text" bind:value={beltColor}>
-<h2>First Name: </h2>
-<input type="text" bind:value={firstName}>
-<h2>Last Name: </h2>
-<input type="text" bind:value={lastName}> -->
-
-    <!-- <h4>Regular text goes here:</h4> -->
     <p class="padding-for-textarea-below">Source</p>
     <textarea
         placeholder="Add text here"
@@ -38,7 +25,6 @@
         bind:value={regularText}
     />
     <br>
-    <!-- <h4>Converted text goes here:</h4> -->
     <p class="padding-for-textarea-below">Base64</p>
     <textarea
         placeholder="Add converted text here"

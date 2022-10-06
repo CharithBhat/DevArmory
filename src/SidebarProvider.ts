@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { DummyPanel } from "./dummyPanel";
+import { DummyPanel } from "./DummyPanel";
 import { getNonce } from "./getNonce";
 import { HelloWorldPanel } from "./HelloWordPanel";
 
@@ -85,17 +85,24 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
       vscode.Uri.joinPath(this._extensionUri, "out", "compiled/sidebar.css")
     );
 
+    // images
     const activityImageUrl: string = webview.asWebviewUri(
       vscode.Uri.joinPath(this._extensionUri, "media", "activity.svg")
     ).toString();
+    
+    const rocketImageUrl: string = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, "media", "rocket.svg")
+    ).toString();
+    
+    console.log(rocketImageUrl);
 
-      console.log(activityImageUrl);
+      
       
     //img-src https: data:; style-src 'unsafe-inline'
     // Use a nonce to only allow a specific script to be run.
 
 
-    // <meta http-equiv="Content-Security-Policy" content="img-src https: data:; style-src 'unsafe-inline' ${webview.cspSource
+    // <meta http-equiv="Content-Security-Policy" content="img-src https: data:; style-src 'unsafe-inline' ${webview. cspSource
     // }; script-src 'nonce-${nonce}';">
     const nonce = getNonce();
 
@@ -118,8 +125,9 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
         </script>
 			</head>
       <body style="background-color:#21222c;">
-				<script nonce="${nonce}" src="${scriptUri}"></script>
+				
 			</body>
+      <script src="${scriptUri}" nonce="${nonce}">
 			</html>`;
   }
 }

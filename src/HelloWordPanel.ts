@@ -125,25 +125,6 @@ export class HelloWorldPanel {
     }
 
     private _getHtmlForWebview(webview: vscode.Webview) {
-        // specific to this file
-        // const scriptUri = webview.asWebviewUri(
-        //     vscode.Uri.joinPath(this._extensionUri, "out/compiled", "HelloWorld.js")
-        // );
-        // const cssUri = webview.asWebviewUri(
-        //     vscode.Uri.joinPath(this._extensionUri, "out", "compiled/HelloWorld.css")
-        // );
-
-        // // add to all webviews
-        // const stylesResetUri = webview.asWebviewUri(vscode.Uri.joinPath(
-        //     this._extensionUri,
-        //     "media",
-        //     "reset.css"
-        // ),);
-        // const stylesMainUri = webview.asWebviewUri(vscode.Uri.joinPath(
-        //     this._extensionUri,
-        //     "media",
-        //     "vscode.css"
-        // ),);
 
         // default css that your need to add to all the webviews
         const styleResetUri = webview.asWebviewUri(
@@ -164,7 +145,9 @@ export class HelloWorldPanel {
             vscode.Uri.joinPath(this._extensionUri, "media", "codice-fiscale.svg")
         );
 
-        const theString = ourImageUri.toString();
+        
+
+        // let theString: string = ourImageUri.toString();
         
             // http://www.w3.org/2000/svg
         // // Use a nonce to only allow specific scripts to be run 
@@ -187,11 +170,10 @@ export class HelloWorldPanel {
         <link href="${styleResetUri}" rel="stylesheet">
         <link href="${styleMainUri}" rel="stylesheet">
         <script nonce="${nonce}">
-
+            const tsvscode = acquireVsCodeApi();
         </script>
 			</head>
       <body>
-      
 			</body>
             <script src="${scriptUri}" nonce="${nonce}">
 			</html>`;
