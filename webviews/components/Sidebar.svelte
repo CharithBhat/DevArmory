@@ -22,11 +22,6 @@
         });
     });
 
-    // function myFunction() {
-    //     var element = document.getElementById("myDIV");
-    //     element?.classList.add("mystyle");
-    // }
-
     // variables for webview sidebar
     let allBoolean: boolean = tsvscode.getState().allBoolean || false;
     let convertersBoolean: boolean =
@@ -50,9 +45,9 @@
 <ul id="myUL">
     <!-- all item here -->
 
-    <li>
+    <li class="allBabe">
         <span
-            class="caret allBabe"
+            class="caret"
             class:caret-down={allBoolean}
             on:click={() => {
                 allBoolean = !allBoolean;
@@ -61,8 +56,9 @@
         >
         <ul class="nested" class:active={allBoolean}>
             <!-- svelte-ignore missing-declaration -->
+
             <li
-                class="addThisClassForPointer hello" 
+                class="addThisClassForPointer hello"
                 on:click={() => {
                     tsvscode.postMessage({
                         type: "onHelloWorld",
@@ -70,8 +66,9 @@
                     });
                 }}
             >
-                All
+                <p class="indent-left">All</p>
             </li>
+
             <!-- svelte-ignore missing-declaration -->
             <li
                 class="addThisClassForPointer basechan"
@@ -82,14 +79,14 @@
                     });
                 }}
             >
-                Base64
+            <p class="indent-left">Base64</p>
             </li>
         </ul>
     </li>
     <!-- converters item here-->
-    <li>
+    <li class="convertersBabe">
         <span
-            class="caret convertersBabe"
+            class="caret"
             class:caret-down={convertersBoolean}
             on:click={() => {
                 convertersBoolean = !convertersBoolean;
@@ -211,6 +208,13 @@
     .caret {
         cursor: pointer;
         user-select: none; /* Prevent text selection */
+        display: block;
+        height: 25px;
+        /* background-color: grey; */
+    }
+
+    .caret:hover {
+        background-color: #44475a75;
     }
 
     .addThisClassForPointer {
@@ -219,7 +223,7 @@
     }
 
     li {
-        margin-top: 3px;
+        /* margin: 4px 0px; */
     }
 
     /* Create the caret/arrow with a unicode, and style it */
@@ -239,6 +243,7 @@
     /* Hide the nested list */
     .nested {
         display: none;
+        /* background-color: #21222c; */
     }
 
     /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
@@ -247,26 +252,27 @@
         /* margin-left: 8px; */
     }
 
+   
+
     .sidebar-icons {
         padding-right: 3px;
     }
-
     /* hovering individually :( */
     .basechan:hover {
         background-color: #44475a75;
     }
-    
+
     .hello:hover {
         background-color: #44475a75;
     }
 
-    .allBabe:hover {    
+    ul > li .allBabe:hover {
         background-color: #44475a75;
     }
 
-   .convertersBabe:hover {
+    /* .convertersBabe:hover {
         background-color: #44475a75;
-    }
+    } */
 
     svg {
         fill: white;
@@ -283,5 +289,13 @@
 
     .margin-please {
         margin-top: 4px;
+    }
+
+    p{
+        margin-left: 60px;
+    }
+
+    .indent-left{
+        margin-left: 30px;
     }
 </style>
