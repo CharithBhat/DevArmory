@@ -44,7 +44,6 @@
 
 <ul id="myUL">
     <!-- all item here -->
-
     <li class="allBabe">
         <span
             class="caret"
@@ -52,8 +51,9 @@
             on:click={() => {
                 allBoolean = !allBoolean;
             }}
-            ><img class="sidebar-icons" src={activityImage} alt="damn" /> All</span
+            ><img class="sidebar-icons" style="vertical-align: middle;" src={activityImage} alt="damn" /> All</span
         >
+
         <ul class="nested" class:active={allBoolean}>
             <!-- svelte-ignore missing-declaration -->
 
@@ -79,7 +79,7 @@
                     });
                 }}
             >
-            <p class="indent-left">Base64</p>
+                <p class="indent-left">Base64</p>
             </li>
         </ul>
     </li>
@@ -180,8 +180,6 @@
 <style>
     /* might just use this style for other buttons */
     input[type="text"] {
-        /* this is gunmetal grey */
-        /* border: 1px solid #71797e; */
         border: black;
         background-color: #3d3d3d;
     }
@@ -198,19 +196,12 @@
         margin-left: 50;
     }
 
-    /* Remove margins and padding from the parent ul */
-    /* #myUL {
-        margin: 0;
-        padding: 0;
-    } */
-
     /* Style the caret/arrow */
     .caret {
         cursor: pointer;
         user-select: none; /* Prevent text selection */
         display: block;
-        height: 25px;
-        /* background-color: grey; */
+        height: 22px;
     }
 
     .caret:hover {
@@ -220,18 +211,16 @@
     .addThisClassForPointer {
         cursor: pointer;
         user-select: none;
-    }
-
-    li {
-        /* margin: 4px 0px; */
+        height: 22px;
     }
 
     /* Create the caret/arrow with a unicode, and style it */
     .caret::before {
         content: "\276F";
-        color: white;
+        color: grey;
         display: inline-block;
         margin-right: 10px;
+        margin-left: 15px;
     }
 
     /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
@@ -252,8 +241,6 @@
         /* margin-left: 8px; */
     }
 
-   
-
     .sidebar-icons {
         padding-right: 3px;
     }
@@ -265,14 +252,6 @@
     .hello:hover {
         background-color: #44475a75;
     }
-
-    ul > li .allBabe:hover {
-        background-color: #44475a75;
-    }
-
-    /* .convertersBabe:hover {
-        background-color: #44475a75;
-    } */
 
     svg {
         fill: white;
@@ -291,11 +270,11 @@
         margin-top: 4px;
     }
 
-    p{
+    p {
         margin-left: 60px;
     }
 
-    .indent-left{
+    .indent-left {
         margin-left: 30px;
     }
 </style>
