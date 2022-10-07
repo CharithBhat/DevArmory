@@ -2,26 +2,6 @@
     import { onMount } from "svelte";
     // import HelloWorld from "./HelloWorld.svelte";
 
-    // remove all this later
-    let todos: Array<{ text: String; completed: boolean }> = [];
-    let text = "";
-
-    // remove this later
-    onMount(() => {
-        // Handle messages sent from the extension to the webview
-        window.addEventListener("message", (event) => {
-            const message = event.data; // The json data that the extension sent
-            switch (message.type) {
-                case "new-todo":
-                    todos = [
-                        { text: message.value, completed: false },
-                        ...todos,
-                    ];
-                    break;
-            }
-        });
-    });
-
     // variables for webview sidebar
     let allBoolean: boolean = tsvscode.getState().allBoolean || false;
     let convertersBoolean: boolean =
@@ -35,7 +15,6 @@
     }
 
     // variables for images
-
     let activityImage: string =
         "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/activity.svg";
 </script>
@@ -44,21 +23,26 @@
 
 <ul id="myUL">
     <!-- all item here -->
-    <li class="allBabe">
+    <li>
         <span
             class="caret"
             class:caret-down={allBoolean}
             on:click={() => {
                 allBoolean = !allBoolean;
             }}
-            ><img class="sidebar-icons" style="vertical-align: middle;" src={activityImage} alt="damn" /> All</span
+            ><img
+                class="sidebar-icons"
+                style="vertical-align: middle;"
+                src={activityImage}
+                alt="damn"
+            /> All</span
         >
 
         <ul class="nested" class:active={allBoolean}>
             <!-- svelte-ignore missing-declaration -->
 
             <li
-                class="addThisClassForPointer hello"
+                class="addThisClassForPointer"
                 on:click={() => {
                     tsvscode.postMessage({
                         type: "onHelloWorld",
@@ -71,7 +55,7 @@
 
             <!-- svelte-ignore missing-declaration -->
             <li
-                class="addThisClassForPointer basechan"
+                class="addThisClassForPointer"
                 on:click={() => {
                     tsvscode.postMessage({
                         type: "onBase64",
@@ -84,17 +68,48 @@
         </ul>
     </li>
     <!-- converters item here-->
-    <li class="convertersBabe">
+    <li>
         <span
             class="caret"
             class:caret-down={convertersBoolean}
             on:click={() => {
                 convertersBoolean = !convertersBoolean;
-            }}>Converters</span
+            }}
+            ><img
+                class="sidebar-icons"
+                style="vertical-align: middle;"
+                src={activityImage}
+                alt="damn"
+            /> Converters</span
         >
+
         <ul class="nested" class:active={convertersBoolean}>
-            <li class="addThisClassForPointer">Water</li>
-            <li class="addThisClassForPointer">Coffee</li>
+            <!-- svelte-ignore missing-declaration -->
+
+            <li
+                class="addThisClassForPointer"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onHelloWorld",
+                        value: "valueForOnHelloWorld",
+                    });
+                }}
+            >
+                <p class="indent-left">Hello</p>
+            </li>
+
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onBase64",
+                        value: "notusingthisvalue",
+                    });
+                }}
+            >
+                <p class="indent-left">Base64</p>
+            </li>
         </ul>
     </li>
 </ul>
@@ -130,31 +145,13 @@
 <!-- remove this form -->
 
 <div class="want-some-margin">
-    <form
-        on:submit|preventDefault={() => {
-            todos = [{ text, completed: false }, ...todos];
-            text = "";
-        }}
-    >
-        <input bind:value={text} type="text" />
+    <form>
+        <input type="text" />
     </form>
 
-    <ul>
-        {#each todos as todo (todo.text)}
-            <li
-                class:complete={todo.completed}
-                on:click={() => {
-                    todo.completed = !todo.completed;
-                }}
-            >
-                {todo.text}
-            </li>
-        {/each}
-    </ul>
-
-    <!-- remove these buttons -->
     <!-- svelte-ignore missing-declaration -->
     <button
+        class="margin-please"
         on:click={() => {
             tsvscode.postMessage({
                 type: "onInfo",
@@ -184,12 +181,7 @@
         background-color: #3d3d3d;
     }
 
-    .complete {
-        text-decoration: line-through;
-    }
-
     /* CSS for webview sidebar items*/
-    /* Remove default bullets */
     ul,
     #myUL {
         list-style-type: none;
@@ -219,6 +211,7 @@
         content: "\276F";
         color: grey;
         display: inline-block;
+        font-size: 14px;
         margin-right: 10px;
         margin-left: 15px;
     }
@@ -226,13 +219,13 @@
     /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
     .caret-down::before {
         transform: rotate(90deg);
+        transform-origin: 4px;
         /* transition-duration: 50ms; */
     }
 
     /* Hide the nested list */
     .nested {
         display: none;
-        /* background-color: #21222c; */
     }
 
     /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
@@ -245,11 +238,15 @@
         padding-right: 3px;
     }
     /* hovering individually :( */
-    .basechan:hover {
+    /* .basechan:hover {
         background-color: #44475a75;
     }
 
     .hello:hover {
+        background-color: #44475a75;
+    } */
+
+    .nested > li:hover {
         background-color: #44475a75;
     }
 
@@ -270,11 +267,7 @@
         margin-top: 4px;
     }
 
-    p {
-        margin-left: 60px;
-    }
-
     .indent-left {
-        margin-left: 30px;
+        margin-left: 37px;
     }
 </style>
