@@ -1,7 +1,4 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    // import HelloWorld from "./HelloWorld.svelte";
-
     // variables for webview sidebar
     let allBoolean: boolean = tsvscode.getState().allBoolean || false;
     let convertersBoolean: boolean =
@@ -11,8 +8,10 @@
     let codersBoolean: boolean = false;
 
     $: {
-        tsvscode.setState({ allBoolean, convertersBoolean });
+        tsvscode.setState({ allBoolean, convertersBoolean, current });
     }
+
+    let current = tsvscode.getState().current || "";
 
     // variables for images
     let activityImage: string =
@@ -25,10 +24,11 @@
     <!-- all item here -->
     <li>
         <span
-            class="caret"
+            class="caret {current === 'booger' ? 'selected' : ''}"
             class:caret-down={allBoolean}
             on:click={() => {
                 allBoolean = !allBoolean;
+                current = "booger";
             }}
             ><img
                 class="sidebar-icons"
@@ -42,12 +42,15 @@
             <!-- svelte-ignore missing-declaration -->
 
             <li
-                class="addThisClassForPointer"
+                class="addThisClassForPointer {current === 'all'
+                    ? 'selected'
+                    : ''}"
                 on:click={() => {
                     tsvscode.postMessage({
                         type: "onHelloWorld",
                         value: "valueForOnHelloWorld",
                     });
+                    current = "all";
                 }}
             >
                 <p class="indent-left">All</p>
@@ -55,12 +58,15 @@
 
             <!-- svelte-ignore missing-declaration -->
             <li
-                class="addThisClassForPointer"
+                class="addThisClassForPointer {current === 'base64'
+                    ? 'selected'
+                    : ''}"
                 on:click={() => {
                     tsvscode.postMessage({
                         type: "onBase64",
                         value: "notusingthisvalue",
                     });
+                    current = "base64";
                 }}
             >
                 <p class="indent-left">Base64</p>
@@ -205,21 +211,20 @@
         user-select: none;
         height: 22px;
     }
-
     /* Create the caret/arrow with a unicode, and style it */
     .caret::before {
         content: "\276F";
         color: grey;
         display: inline-block;
-        font-size: 14px;
-        margin-right: 10px;
-        margin-left: 15px;
+        font-size: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
     .caret-down::before {
         transform: rotate(90deg);
-        transform-origin: 4px;
+        /* transform-origin: 3px; */
         /* transition-duration: 50ms; */
     }
 
@@ -237,14 +242,6 @@
     .sidebar-icons {
         padding-right: 3px;
     }
-    /* hovering individually :( */
-    /* .basechan:hover {
-        background-color: #44475a75;
-    }
-
-    .hello:hover {
-        background-color: #44475a75;
-    } */
 
     .nested > li:hover {
         background-color: #44475a75;
@@ -269,5 +266,9 @@
 
     .indent-left {
         margin-left: 37px;
+    }
+
+    .selected {
+        background-color: #44475a75;
     }
 </style>
