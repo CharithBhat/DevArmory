@@ -7,14 +7,30 @@
     // }
     function onAddingSource(e: any): void {
         regularText = (e.target as HTMLInputElement).value;
-        convertedText = btoa(regularText);
+        // convertedText = btoa(regularText);
+        convertedText = encodeHTMLEntities(regularText);
         tsvscode.setState({ regularText, convertedText });
     }
 
     function onAddingBase64(e: any): void {
         convertedText = (e.target as HTMLInputElement).value;
-        regularText = atob(convertedText);
+        // regularText = atob(convertedText);
+        regularText = decodeHTMLEntities(convertedText);
         tsvscode.setState({ regularText, convertedText });
+    }
+
+    function encodeHTMLEntities(rawStr: string) {
+        return rawStr.replace(
+            /[\u00A0-\u9999<>\&]/g,
+            (i) => `&#${i.charCodeAt(0)};`
+        );
+    }
+
+    function decodeHTMLEntities(rawStr: string) {
+        return rawStr.replace(
+            /&#(\d+);/g,
+            (match, dec) => `${String.fromCharCode(dec)}`
+        );
     }
 
     function copyBase64() {
@@ -37,6 +53,23 @@
         document!.getSelection()!.addRange(document.createRange());
     }
 
+    function clearRegularText(){
+        regularText = '';
+        let textarea = document.getElementById(
+            "source-textarea"
+        ) as HTMLInputElement;
+        textarea.select()!;
+        tsvscode.setState({ regularText, convertedText });
+    }
+
+    function clearConvertedText(){
+        convertedText = '';
+        let textarea = document.getElementById(
+            "base64-textarea"
+        ) as HTMLInputElement;
+        textarea.select()!;
+        tsvscode.setState({ regularText, convertedText });
+    }
 </script>
 
 <!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
@@ -45,11 +78,11 @@
     <h1>HTML Encoder / Decoder</h1>
     <br />
 
-    <p class="padding-for-textarea-below">Source (Input/Output)</p>
+    <p class="padding-for-textarea-below">HTML (Input/Output)</p>
 
     <button
         class="short-button margin-for-textarea-below margin-right"
-        on:click={() => {regularText = '';}}>Clear</button
+        on:click={clearRegularText}>Clear</button
     >
     <button class="short-button margin-for-textarea-below" on:click={copySource}
         >Copy</button
@@ -66,11 +99,11 @@
     />
     <br />
 
-    <p class="padding-for-textarea-below">Base64 (Input/Output)</p>
+    <p class="padding-for-textarea-below">Encoded HTML (Input/Output)</p>
 
     <button
         class="short-button margin-for-textarea-below margin-right"
-        on:click={() => {convertedText = '';}}>Clear</button
+        on:click={clearConvertedText}>Clear</button
     >
 
     <button class="short-button margin-for-textarea-below" on:click={copyBase64}

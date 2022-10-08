@@ -36,6 +36,24 @@
         document!.getSelection()!.removeAllRanges();
         document!.getSelection()!.addRange(document.createRange());
     }
+
+    function clearRegularText(){
+        regularText = '';
+        let textarea = document.getElementById(
+            "source-textarea"
+        ) as HTMLInputElement;
+        textarea.select()!;
+        tsvscode.setState({ regularText, convertedText });
+    }
+
+    function clearConvertedText(){
+        convertedText = '';
+        let textarea = document.getElementById(
+            "base64-textarea"
+        ) as HTMLInputElement;
+        textarea.select()!;
+        tsvscode.setState({ regularText, convertedText });
+    }
 </script>
 
 <!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
@@ -48,7 +66,7 @@
 
     <button
         class="short-button margin-for-textarea-below margin-right"
-        on:click={() => {regularText = '';}}>Clear</button
+        on:click={clearRegularText}>Clear</button
     >
     <button class="short-button margin-for-textarea-below" on:click={copySource}
         >Copy</button
@@ -69,7 +87,7 @@
 
     <button
         class="short-button margin-for-textarea-below margin-right"
-        on:click={() => {convertedText = '';}}>Clear</button
+        on:click={clearConvertedText}>Clear</button
     >
 
     <button class="short-button margin-for-textarea-below" on:click={copyBase64}
