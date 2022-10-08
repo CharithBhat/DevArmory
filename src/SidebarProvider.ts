@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import { Base64Panel } from "./Base64Panel";
 import { getNonce } from "./getNonce";
-import { HelloWorldPanel } from "./HelloWordPanel";
+import { HtmlPanel } from "./HtmlPanel";
 
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
@@ -44,11 +44,11 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           break;
         }
 
-        case "onHelloWorld": {
+        case "onHTML": {
           // if (!data.value) {
           //   return;
           // }
-          HelloWorldPanel.createOrShow(this._extensionUri);
+          HtmlPanel.createOrShow(this._extensionUri);
 
           break;
         }
@@ -86,9 +86,6 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     );
 
     // images
-    const activityImageUrl: string = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "media", "activity.svg")
-    ).toString();
     
     const rocketImageUrl: string = webview.asWebviewUri(
       vscode.Uri.joinPath(this._extensionUri, "media", "rocket.svg")

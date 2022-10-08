@@ -1,7 +1,6 @@
 
 import * as vscode from 'vscode';
 import { Base64Panel } from './Base64Panel';
-import { HelloWorldPanel } from './HelloWordPanel';
 import { SidebarProvider } from './SidebarProvider';
 
 export function activate(context: vscode.ExtensionContext) {
@@ -42,11 +41,11 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 	
 	// maybe change this later
-	context.subscriptions.push(
-		vscode.commands.registerCommand('devarmory.helloWorld', () => {
-			HelloWorldPanel.createOrShow(context.extensionUri);
-		})
-	);
+	// context.subscriptions.push(
+	// 	vscode.commands.registerCommand('devarmory.helloWorld', () => {
+	// 		HelloWorldPanel.createOrShow(context.extensionUri);
+	// 	})
+	// );
 	
 	// using for noww i guess
 	context.subscriptions.push(

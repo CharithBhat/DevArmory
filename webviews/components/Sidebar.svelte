@@ -35,7 +35,7 @@
                 style="vertical-align: middle;"
                 src={activityImage}
                 alt="damn"
-            /> All</span
+            />All Tools</span
         >
 
         <ul class="nested" class:active={allBoolean}>
@@ -47,13 +47,13 @@
                     : ''}"
                 on:click={() => {
                     tsvscode.postMessage({
-                        type: "onHelloWorld",
+                        type: "onHTML",
                         value: "valueForOnHelloWorld",
                     });
                     current = "all";
                 }}
             >
-                <p class="indent-left">All</p>
+                <p class="indent-left">HTML</p>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -152,7 +152,7 @@
 
 <div class="want-some-margin">
     <form>
-        <input type="text" />
+        <input type="text" placeholder="make it workd for themes"/>
     </form>
 
     <!-- svelte-ignore missing-declaration -->

@@ -2,13 +2,13 @@ import * as vscode from "vscode";
 import { getNonce } from "./getNonce";
 
 
-export class HelloWorldPanel {
+export class HtmlPanel {
     /**
      * Track the currently panel. Only allow a single panel to exist at a time.
      */
-    public static currentPanel: HelloWorldPanel | undefined;
+    public static currentPanel: HtmlPanel | undefined;
 
-    public static readonly viewType = "hello-world";
+    public static readonly viewType = "HTML Encoder/Decoder";
 
     private readonly _panel: vscode.WebviewPanel;
     private readonly _extensionUri: vscode.Uri;
@@ -20,21 +20,21 @@ export class HelloWorldPanel {
             : undefined;
 
         // If we already have a panel, show it.
-        if (HelloWorldPanel.currentPanel) {
-            HelloWorldPanel.currentPanel._panel.reveal(column);
-            HelloWorldPanel.currentPanel._update();
+        if (HtmlPanel.currentPanel) {
+            HtmlPanel.currentPanel._panel.reveal(column);
+            HtmlPanel.currentPanel._update();
             return;
         }
 
         // Otherwise, create a new panel.
         const panel = vscode.window.createWebviewPanel(
-            HelloWorldPanel.viewType,
-            "Hello-World",
+            HtmlPanel.viewType,
+            "HTML Encoder/Decoder",
             column || vscode.ViewColumn.One,
             {
                 // Enable javascript in the webview
                 enableScripts: true,
-                
+
                 // And restrict the webview to only loading content from our extension's `media` directory.
                 localResourceRoots: [
                     vscode.Uri.joinPath(extensionUri, "media"),
@@ -43,16 +43,16 @@ export class HelloWorldPanel {
             }
         );
 
-        HelloWorldPanel.currentPanel = new HelloWorldPanel(panel, extensionUri);
+        HtmlPanel.currentPanel = new HtmlPanel(panel, extensionUri);
     }
 
     public static kill() {
-        HelloWorldPanel.currentPanel?.dispose();
-        HelloWorldPanel.currentPanel = undefined;
+        HtmlPanel.currentPanel?.dispose();
+        HtmlPanel.currentPanel = undefined;
     }
 
     public static revive(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
-        HelloWorldPanel.currentPanel = new HelloWorldPanel(panel, extensionUri);
+        HtmlPanel.currentPanel = new HtmlPanel(panel, extensionUri);
     }
 
     private constructor(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
@@ -66,22 +66,10 @@ export class HelloWorldPanel {
         // This happens when the user closes the panel or when the panel is closed programatically
         this._panel.onDidDispose(() => this.dispose(), null, this._disposables);
 
-        // // Handle messages from the webview
-        // this._panel.webview.onDidReceiveMessage(
-        //   (message) => {
-        //     switch (message.command) {
-        //       case "alert":
-        //         vscode.window.showErrorMessage(message.text);
-        //         return;
-        //     }
-        //   },
-        //   null,
-        //   this._disposables
-        // );
     }
 
     public dispose() {
-        HelloWorldPanel.currentPanel = undefined;
+        HtmlPanel.currentPanel = undefined;
 
         // Clean up our resources
         this._panel.dispose();
@@ -115,11 +103,7 @@ export class HelloWorldPanel {
                     vscode.window.showErrorMessage(data.value);
                     break;
                 }
-                // case "tokens": {
-                //   await Util.globalState.update(accessTokenKey, data.accessToken);
-                //   await Util.globalState.update(refreshTokenKey, data.refreshToken);
-                //   break;
-                // }
+
             }
         });
     }
@@ -135,23 +119,14 @@ export class HelloWorldPanel {
             vscode.Uri.joinPath(this._extensionUri, "media", "vscode.css")
         );
         const scriptUri = webview.asWebviewUri(
-            vscode.Uri.joinPath(this._extensionUri, "out", "compiled/HelloWorld.js")
+            vscode.Uri.joinPath(this._extensionUri, "out", "compiled/HTML.js")
         );
         const styleMainUri = webview.asWebviewUri(
-            vscode.Uri.joinPath(this._extensionUri, "out", "compiled/HelloWorld.css")
+            vscode.Uri.joinPath(this._extensionUri, "out", "compiled/HTML.css")
         );
 
-        const ourImageUri = webview.asWebviewUri(
-            vscode.Uri.joinPath(this._extensionUri, "media", "codice-fiscale.svg")
-        );
 
-        
-
-        // let theString: string = ourImageUri.toString();
-        
-            // http://www.w3.org/2000/svg
-        // // Use a nonce to only allow specific scripts to be run 
-        // <img src="${ourImageUri}" alt="damn" height="50px" width='50px'/>
+        // // Use a nonce to only allow specific scripts to be run
         const nonce = getNonce();
 
         return `<!DOCTYPE html>
@@ -165,17 +140,17 @@ export class HelloWorldPanel {
         <meta http-equiv="Content-Security-Policy" content="default-src ${webview.cspSource} ; img-src ${webview.cspSource} https:; style-src 'unsafe-inline' ${webview.cspSource
             }; script-src 'nonce-${nonce}';">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel='icon' type='image/svg' href='${ourImageUri}'>
-        <link href="${styleVSCodeUri}" rel="stylesheet">	
+                <link href="${styleVSCodeUri}" rel="stylesheet">		
         <link href="${styleResetUri}" rel="stylesheet">
         <link href="${styleMainUri}" rel="stylesheet">
         <script nonce="${nonce}">
             const tsvscode = acquireVsCodeApi();
         </script>
 			</head>
-      <body>
-			</body>
-            <script src="${scriptUri}" nonce="${nonce}">
+        <body>
+            
+		</body>
+        <script src="${scriptUri}" nonce="${nonce}">
 			</html>`;
     }
 }

@@ -36,12 +36,13 @@
         document!.getSelection()!.removeAllRanges();
         document!.getSelection()!.addRange(document.createRange());
     }
+
 </script>
 
 <!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
 <!-- --config ./build/node-extension.webpack.config.js  -->
 <div class="padding-for-whole-page">
-    <h1>Base64 Encoder / Decoder</h1>
+    <h1>HTML Encoder / Decoder</h1>
     <br />
 
     <p class="padding-for-textarea-below">Source (Input/Output)</p>
