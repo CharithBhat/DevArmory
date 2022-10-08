@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import { Base64Panel } from "./Base64Panel";
 import { getNonce } from "./getNonce";
 import { HtmlPanel } from "./HtmlPanel";
+import { UrlPanel } from "./UrlPanel";
 
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
@@ -58,6 +59,15 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           //   return;
           // }
           Base64Panel.createOrShow(this._extensionUri);
+
+          break;
+        }
+
+        case "onURL": {
+          // if (!data.value) {
+          //   return;
+          // }
+          UrlPanel.createOrShow(this._extensionUri);
 
           break;
         }

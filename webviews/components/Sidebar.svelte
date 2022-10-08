@@ -71,6 +71,22 @@
             >
                 <p class="indent-left">Base64</p>
             </li>
+
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current === 'url'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onURL",
+                        value: "notusingthisvalue",
+                    });
+                    current = "url";
+                }}
+            >
+                <p class="indent-left">URL</p>
+            </li>
         </ul>
     </li>
     <!-- converters item here-->
