@@ -7,13 +7,15 @@
     // }
     function onAddingSource(e: any): void {
         regularText = (e.target as HTMLInputElement).value;
-        convertedText = btoa(regularText);
+        // convertedText = btoa(regularText);
+        convertedText = encodeURIComponent(regularText);
         tsvscode.setState({ regularText, convertedText });
     }
 
     function onAddingBase64(e: any): void {
         convertedText = (e.target as HTMLInputElement).value;
-        regularText = atob(convertedText);
+        // regularText = atob(convertedText);
+        regularText = decodeURIComponent(convertedText);
         tsvscode.setState({ regularText, convertedText });
     }
 
