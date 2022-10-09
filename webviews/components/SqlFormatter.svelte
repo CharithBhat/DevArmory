@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { format } from "sql-formatter";
 
     let regularText: string = tsvscode.getState()?.regularText || "";
     let convertedText: string = tsvscode.getState()?.convertedText || "";
@@ -8,13 +9,14 @@
     // // }
     function onAddingSource(e: any): void {
         regularText = (e.target as HTMLInputElement).value;
-        try {
-            convertedText =
-                JSON.stringify(JSON.parse(regularText), null, 4) || "";
-        } catch (e) {
-            convertedText = "";
-            console.log(e);
-        }
+        // try {
+        //     convertedText =
+        //         JSON.stringify(JSON.parse(regularText), null, 4) || "";
+        // } catch (e) {
+        //     convertedText = "";
+        //     console.log(e);
+        // }
+        convertedText = format(regularText);
         tsvscode.setState({ regularText, convertedText });
     }
 
@@ -79,7 +81,7 @@
 } -->
 
 <div class="padding-for-whole-page">
-    <h1>Json Formatter</h1>
+    <h1>Sql Formatter</h1>
     <br />
 
     <div class="grid-container">
@@ -92,11 +94,10 @@
                 class="short-button margin-for-textarea-below"
                 on:click={onAddingSource}>Copy</button
             > -->
-            <p class="padding-for-textarea-below">JSON (Input)</p>
+            <p class="padding-for-textarea-below">SQL (Input)</p>
         </div>
         <div class="small" />
         <div class="small">
-            
             <!-- <button
                 class="short-button margin-for-textarea-below margin-right"
                 on:click={onAddingSource}>Clear</button
@@ -105,7 +106,7 @@
                 class="short-button margin-for-textarea-below margin-right"
                 on:click={copyBase64}>Copy</button
             >
-            <p class="padding-for-textarea-below">Formated JSON (Output)</p>
+            <p class="padding-for-textarea-below">Formated SQL (Output)</p>
         </div>
 
         <textarea
@@ -175,21 +176,6 @@
         min-width: 600px;
         /* gap: 20px; */
     }
-
-    /* .large-area {
-        height: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-        color: #aaaaaa;
-        color: white;
-        background: #444444;
-        border: none;
-        border-radius: 10px;
-        outline: none;
-        resize: none;
-        font-family: monospace;
-        transition: background 0.25s, color 0.25s;
-    } */
 
     .large-area {
         height: 100%;

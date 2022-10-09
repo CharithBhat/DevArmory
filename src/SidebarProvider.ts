@@ -3,6 +3,7 @@ import { Base64Panel } from "./Base64Panel";
 import { getNonce } from "./getNonce";
 import { HtmlPanel } from "./HtmlPanel";
 import { JsonFormatterPanel } from "./JsonFormatterPanel";
+import { SqlFormatterPanel } from "./SqlFormatterPanel";
 import { UrlPanel } from "./UrlPanel";
 
 
@@ -78,6 +79,15 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           //   return;
           // }
           JsonFormatterPanel.createOrShow(this._extensionUri);
+
+          break;
+        }
+
+        case "onSqlFormatter": {
+          // if (!data.value) {
+          //   return;
+          // }
+          SqlFormatterPanel.createOrShow(this._extensionUri);
 
           break;
         }

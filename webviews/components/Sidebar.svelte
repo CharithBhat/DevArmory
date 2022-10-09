@@ -103,6 +103,22 @@
             >
                 <p class="indent-left">Json Formatter</p>
             </li>
+
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current === 'sqlFormatter'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onSqlFormatter",
+                        value: "notusingthisvalue",
+                    });
+                    current = "sqlFormatter";
+                }}
+            >
+                <p class="indent-left">Sql Formatter</p>
+            </li>
         </ul>
     </li>
     <!-- converters item here-->
