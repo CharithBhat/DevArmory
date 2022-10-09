@@ -1,15 +1,20 @@
 <script lang="ts">
-    // let regularText: string = tsvscode.getState()?.regularText || "";
-    // let convertedText: string = tsvscode.getState()?.convertedText || "";
+    let regularText: string = tsvscode.getState()?.regularText || "";
+    let convertedText: string = tsvscode.getState()?.convertedText || "";
     // // $: {
     // //     convertedText = regularText.toLocaleUpperCase();
     // //     tsvscode.setState({ regularText, convertedText });
     // // }
-    // function onAddingSource(e: any): void {
-    //     regularText = (e.target as HTMLInputElement).value;
-    //     convertedText = btoa(regularText);
-    //     tsvscode.setState({ regularText, convertedText });
-    // }
+    function onAddingSource(e: any): void {
+        regularText = (e.target as HTMLInputElement).value;
+        convertedText= JSON.stringify(JSON.parse(regularText), null, 4);
+        tsvscode.setState({ regularText, convertedText });
+    }
+
+    function minify(){
+        convertedText= JSON.stringify(JSON.parse(regularText));
+        tsvscode.setState({ regularText, convertedText });
+    }
 
     // function onAddingBase64(e: any): void {
     //     convertedText = (e.target as HTMLInputElement).value;
@@ -54,11 +59,11 @@
     //     textarea.select()!;
     //     tsvscode.setState({ regularText, convertedText });
     // }
+
 </script>
 
 <!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
 <!-- --config ./build/node-extension.webpack.config.js  -->
-
 
 <!-- HEY!!!! this is for text escaping -->
 <!-- function addslashes( str ) {
@@ -67,6 +72,35 @@
 <div class="padding-for-whole-page">
     <h1>Json Formatter</h1>
     <br />
+
+    <!-- new code here -->
+
+    <div class="container">
+        <textarea
+            class="large-area large-area--input"
+            placeholder="Enter your JSON here..."
+            value={regularText}
+            on:input={onAddingSource}
+        />
+        <div class="controls">
+            <!-- <button
+                type="button"
+                class="controls__button controls__button--format"
+                on:click={onAddingSource}>Format</button
+            >
+            <button
+                type="button"
+                class="controls__button controls__button--minify"
+                on:click={minify}>Minify</button
+            > -->
+        </div>
+        <textarea
+            readonly
+            class="large-area large-area--output"
+            placeholder="Your JSON will appear here..."
+            value={convertedText}
+        />
+    </div>
 
     <!-- <p class="padding-for-textarea-below">Source (Input/Output)</p>
 
@@ -136,4 +170,56 @@
         float: right;
         border-radius: 5px;
     } */
+
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 100px 1fr;
+        align-items: center;
+        height: 100vh;
+        box-sizing: border-box;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .large-area {
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        /* color: #aaaaaa; */
+        background: #444444;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        resize: none;
+        font-family: monospace;
+        transition: background 0.25s, color 0.25s;
+    }
+
+    .large-area:hover,
+    .large-area:focus {
+        background: #4a4a4a;
+    }
+
+    .large-area:focus {
+        color: #eeeeee;
+    }
+
+    .controls__button {
+        padding: 8px 14px;
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background: #009578;
+        color: #ffffff;
+        font-weight: bold;
+        font-family: "Roboto";
+    }
+
+    .controls__button:active {
+        background: #00705a;
+    }
 </style>
