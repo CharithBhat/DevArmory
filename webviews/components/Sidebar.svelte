@@ -119,6 +119,21 @@
             >
                 <p class="indent-left">Sql Formatter</p>
             </li>
+            <!-- svelte-ignore missing-declaration -->
+            <li
+            class="addThisClassForPointer {current === 'xmlFormatter'
+                ? 'selected'
+                : ''}"
+            on:click={() => {
+                tsvscode.postMessage({
+                    type: "onXmlFormatter",
+                    value: "notusingthisvalue",
+                });
+                current = "xmlFormatter";
+            }}
+        >
+            <p class="indent-left">Xml Formatter</p>
+        </li>
         </ul>
     </li>
     <!-- converters item here-->

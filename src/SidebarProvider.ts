@@ -4,6 +4,7 @@ import { getNonce } from "./getNonce";
 import { HtmlPanel } from "./HtmlPanel";
 import { JsonFormatterPanel } from "./JsonFormatterPanel";
 import { SqlFormatterPanel } from "./SqlFormatterPanel";
+import { XmlFormatterPanel } from "./XmlFormatterPanel";
 import { UrlPanel } from "./UrlPanel";
 
 
@@ -88,6 +89,15 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           //   return;
           // }
           SqlFormatterPanel.createOrShow(this._extensionUri);
+
+          break;
+        }
+
+        case "onXmlFormatter": {
+          // if (!data.value) {
+          //   return;
+          // }
+          XmlFormatterPanel.createOrShow(this._extensionUri);
 
           break;
         }

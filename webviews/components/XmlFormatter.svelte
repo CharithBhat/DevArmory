@@ -4,9 +4,22 @@
     let regularText: string = tsvscode.getState()?.regularText || "";
     let convertedText: string = tsvscode.getState()?.convertedText || "";
 
+    function formatXml(xml: string, tab: string | any[]) {
+        // tab = optional indent value, default is tab (\t)
+        var formatted = "",
+            indent = "";
+        tab = tab || "\t";
+        xml.split(/>\s*</).forEach(function (node) {
+            if (node.match(/^\/\w/)) indent = indent.substring(tab.length); // decrease indent by one 'tab'
+            formatted += indent + "<" + node + ">\r\n";
+            if (node.match(/^<?\w[^>]*[^\/]$/)) indent += tab; // increase indent
+        });
+        return formatted.substring(1, formatted.length - 3);
+    }
+
     function onAddingSource(e: any): void {
         regularText = (e.target as HTMLInputElement).value;
-        convertedText = format(regularText);
+        convertedText = formatXml(regularText, '\t');
         tsvscode.setState({ regularText, convertedText });
     }
 
@@ -71,7 +84,7 @@
 } -->
 
 <div class="padding-for-whole-page">
-    <h1>Sql Formatter</h1>
+    <h1>Xml Formatter</h1>
     <br />
 
     <div class="grid-container">
@@ -84,7 +97,7 @@
                 class="short-button margin-for-textarea-below"
                 on:click={onAddingSource}>Copy</button
             > -->
-            <p class="padding-for-textarea-below">SQL (Input)</p>
+            <p class="padding-for-textarea-below">XML (Input)</p>
         </div>
         <div class="small" />
         <div class="small">
@@ -96,7 +109,7 @@
                 class="short-button margin-for-textarea-below margin-right"
                 on:click={copyBase64}>Copy</button
             >
-            <p class="padding-for-textarea-below">Formated SQL (Output)</p>
+            <p class="padding-for-textarea-below">Formated XML (Output)</p>
         </div>
 
         <textarea
@@ -182,7 +195,7 @@
         color: #eeeeee;
     } */
 
-    .controls__button {
+    /* .controls__button {
         padding: 8px 14px;
         width: 100%;
         margin-bottom: 10px;
@@ -198,5 +211,5 @@
 
     .controls__button:active {
         background: #00705a;
-    }
+    } */
 </style>
