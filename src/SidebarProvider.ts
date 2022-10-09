@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import { Base64Panel } from "./Base64Panel";
 import { getNonce } from "./getNonce";
 import { HtmlPanel } from "./HtmlPanel";
+import { JsonFormatterPanel } from "./JsonFormatterPanel";
 import { UrlPanel } from "./UrlPanel";
 
 
@@ -68,6 +69,15 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           //   return;
           // }
           UrlPanel.createOrShow(this._extensionUri);
+
+          break;
+        }
+
+        case "onJsonFormatter": {
+          // if (!data.value) {
+          //   return;
+          // }
+          JsonFormatterPanel.createOrShow(this._extensionUri);
 
           break;
         }

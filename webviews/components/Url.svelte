@@ -97,7 +97,7 @@
     >
 
     <textarea
-        placeholder="Add converted text here"
+        placeholder="Add encoded text here"
         name="hoe"
         id="base64-textarea"
         cols="30"

@@ -87,6 +87,22 @@
             >
                 <p class="indent-left">URL</p>
             </li>
+
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current === 'jsonFormatter'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onJsonFormatter",
+                        value: "notusingthisvalue",
+                    });
+                    current = "jsonFormatter";
+                }}
+            >
+                <p class="indent-left">Json Formatter</p>
+            </li>
         </ul>
     </li>
     <!-- converters item here-->
@@ -168,7 +184,11 @@
 
 <div class="want-some-margin">
     <form>
-        <input type="text" placeholder="make it workd for themes"/>
+        <input
+            type="text"
+            placeholder="Might Remove This"
+            class="placeholder-whitener"
+        />
     </form>
 
     <!-- svelte-ignore missing-declaration -->
@@ -286,5 +306,10 @@
 
     .selected {
         background-color: #44475a75;
+    }
+
+    .placeholder-whitener::placeholder {
+        color: white;
+        text-align: center;
     }
 </style>

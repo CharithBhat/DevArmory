@@ -58,6 +58,12 @@
 
 <!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
 <!-- --config ./build/node-extension.webpack.config.js  -->
+
+
+<!-- HEY!!!! this is for text escaping -->
+<!-- function addslashes( str ) {
+    return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
+} -->
 <div class="padding-for-whole-page">
     <h1>Base64 Encoder / Decoder</h1>
     <br />
@@ -95,7 +101,7 @@
     >
 
     <textarea
-        placeholder="Add converted text here"
+        placeholder="Add encoded text here"
         name="hoe"
         id="base64-textarea"
         cols="30"
