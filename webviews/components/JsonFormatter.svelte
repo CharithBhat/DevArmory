@@ -8,12 +8,13 @@
     function onAddingSource(e: any): void {
         regularText = (e.target as HTMLInputElement).value;
         try {
-            convertedText = JSON.stringify(JSON.parse(regularText), null, 4) || '';
-        } catch (e){
-            convertedText = '';
+            convertedText =
+                JSON.stringify(JSON.parse(regularText), null, 4) || "";
+        } catch (e) {
+            convertedText = "";
             console.log(e);
         }
-        
+
         tsvscode.setState({ regularText, convertedText });
     }
 
@@ -49,13 +50,13 @@
     //     document!.getSelection()!.addRange(document.createRange());
     // }
 
-    function clearRegularText(){
-        regularText = '';
+    function clearRegularText() {
+        regularText = "";
         let textarea = document.getElementById(
             "source-textarea"
         ) as HTMLInputElement;
         textarea.select()!;
-        convertedText = '';
+        convertedText = "";
         tsvscode.setState({ regularText, convertedText });
     }
 
@@ -78,7 +79,7 @@
 } -->
 
 <div class="padding-for-whole-page">
-    <h1>HTML Encoder / Decoder</h1>
+    <h1>Json Formatter</h1>
     <br />
 
     <div class="grid-container">
@@ -87,21 +88,24 @@
                 class="short-button margin-for-textarea-below margin-right"
                 on:click={clearRegularText}>Clear</button
             >
-            <!-- <button
+            <!-- <button    
                 class="short-button margin-for-textarea-below"
                 on:click={onAddingSource}>Copy</button
             > -->
+            <p class="padding-for-textarea-below">JSON (Input)</p>
         </div>
         <div class="small" />
         <div class="small">
+            
             <!-- <button
                 class="short-button margin-for-textarea-below margin-right"
                 on:click={onAddingSource}>Clear</button
             > -->
             <button
-                class="short-button margin-for-textarea-below"
+                class="short-button margin-for-textarea-below margin-right"
                 on:click={copyBase64}>Copy</button
             >
+            <p class="padding-for-textarea-below">Formated JSON (Output)</p>
         </div>
 
         <textarea
@@ -162,20 +166,21 @@
 
     .grid-container {
         display: grid;
-        grid-template-columns: 1fr 100px 1fr;
+        grid-template-columns: 1fr 50px 1fr;
         grid-template-rows: 40px 1fr;
         align-items: center;
         height: 80vh;
         box-sizing: border-box;
         padding: 20px;
+        min-width: 600px;
         /* gap: 20px; */
     }
 
-    .large-area {
+    /* .large-area {
         height: 100%;
         padding: 20px;
         box-sizing: border-box;
-        /* color: #aaaaaa; */
+        color: #aaaaaa;
         color: white;
         background: #444444;
         border: none;
@@ -184,16 +189,22 @@
         resize: none;
         font-family: monospace;
         transition: background 0.25s, color 0.25s;
+    } */
+
+    .large-area {
+        height: 100%;
+        padding: 20px;
+        font-family: monospace;
     }
 
-    .large-area:hover,
+    /* .large-area:hover,
     .large-area:focus {
         background: #4a4a4a;
     }
 
     .large-area:focus {
         color: #eeeeee;
-    }
+    } */
 
     .controls__button {
         padding: 8px 14px;
