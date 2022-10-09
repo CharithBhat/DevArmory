@@ -7,12 +7,13 @@
     // // }
     function onAddingSource(e: any): void {
         regularText = (e.target as HTMLInputElement).value;
-        convertedText= JSON.stringify(JSON.parse(regularText), null, 4);
+        convertedText = JSON.stringify(JSON.parse(regularText), null, 4);
         tsvscode.setState({ regularText, convertedText });
     }
 
-    function minify(){
-        convertedText= JSON.stringify(JSON.parse(regularText));
+    function minify() {
+        // convertedText = JSON.stringify(JSON.parse(regularText));
+        // convertedText = util.inspect(object, showHidden=false, depth=2, colorize=true);
         tsvscode.setState({ regularText, convertedText });
     }
 
@@ -60,6 +61,41 @@
     //     tsvscode.setState({ regularText, convertedText });
     // }
 
+    function syntaxHighlight(json: any) {
+        json = json
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+        return json.replace(
+            /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
+            function (match: any) {
+                var cls = "number";
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = "key";
+                    } else {
+                        cls = "string";
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = "boolean";
+                } else if (/null/.test(match)) {
+                    cls = "null";
+                }
+                return '<span class="' + cls + '">' + match + "</span>";
+            }
+        );
+    }
+
+    function startprocess() {
+        var obj = {
+            a: 1,
+            b: "foo",
+            c: [false, "false", null, "null", { d: { e: 1.3e5, f: "1.3e5" } }],
+        };
+        var str = JSON.stringify(obj, undefined, 4);
+
+        syntaxHighlight(str);
+    }
 </script>
 
 <!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
@@ -87,11 +123,11 @@
                 type="button"
                 class="controls__button controls__button--format"
                 on:click={onAddingSource}>Format</button
-            >
-            <button
+            > -->
+            <!-- <button
                 type="button"
                 class="controls__button controls__button--minify"
-                on:click={minify}>Minify</button
+                on:click={startprocess}>Minify</button
             > -->
         </div>
         <textarea
@@ -171,7 +207,6 @@
         border-radius: 5px;
     } */
 
-
     .container {
         display: grid;
         grid-template-columns: 1fr 100px 1fr;
@@ -221,5 +256,26 @@
 
     .controls__button:active {
         background: #00705a;
+    }
+
+    pre {
+        outline: 1px solid #ccc;
+        padding: 5px;
+        margin: 5px;
+    }
+    .string {
+        color: green;
+    }
+    .number {
+        color: darkorange;
+    }
+    .boolean {
+        color: blue;
+    }
+    .null {
+        color: magenta;
+    }
+    .key {
+        color: red;
     }
 </style>
