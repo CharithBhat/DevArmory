@@ -26,6 +26,10 @@ form > * {
 	/* margin-block-start: var(--input-margin-vertical); */
 	/* margin-block-end: var(--input-margin-vertical); */
 }
+/* 
+sidebar {
+	background-color: var(--vscode-sidebar-background);
+} */
 
 *:focus {
 	outline-color: var(--vscode-focusBorder) !important;
