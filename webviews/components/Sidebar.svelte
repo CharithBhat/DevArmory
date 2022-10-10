@@ -121,19 +121,35 @@
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
-            class="addThisClassForPointer {current === 'xmlFormatter'
-                ? 'selected'
-                : ''}"
-            on:click={() => {
-                tsvscode.postMessage({
-                    type: "onXmlFormatter",
-                    value: "notusingthisvalue",
-                });
-                current = "xmlFormatter";
-            }}
-        >
-            <p class="indent-left">Xml Formatter</p>
-        </li>
+                class="addThisClassForPointer {current === 'xmlFormatter'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onXmlFormatter",
+                        value: "notusingthisvalue",
+                    });
+                    current = "xmlFormatter";
+                }}
+            >
+                <p class="indent-left">Xml Formatter</p>
+            </li>
+
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current === 'MarkDown'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onMarkDownViewer",
+                        value: "notusingthisvalue",
+                    });
+                    current = "MarkDown";
+                }}
+            >
+                <p class="indent-left">MarkDown Viewer</p>
+            </li>
         </ul>
     </li>
     <!-- converters item here-->

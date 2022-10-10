@@ -54,6 +54,7 @@
         textarea.select()!;
         tsvscode.setState({ regularText, convertedText });
     }
+
 </script>
 
 <!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->

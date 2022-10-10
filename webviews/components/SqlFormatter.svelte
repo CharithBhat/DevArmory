@@ -182,7 +182,7 @@
         color: #eeeeee;
     } */
 
-    .controls__button {
+    /* .controls__button {
         padding: 8px 14px;
         width: 100%;
         margin-bottom: 10px;
@@ -198,5 +198,5 @@
 
     .controls__button:active {
         background: #00705a;
-    }
+    } */
 </style>

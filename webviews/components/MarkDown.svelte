@@ -83,7 +83,7 @@
 } -->
 
 <div class="padding-for-whole-page">
-    <h1>Xml Formatter</h1>
+    <h1>MarkDown Viewer</h1>
     <br />
 
     <div class="grid-container">
