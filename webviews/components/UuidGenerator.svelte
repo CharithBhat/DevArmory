@@ -1,31 +1,30 @@
 <script lang="ts">
-    let regularText: string = tsvscode.getState()?.regularText || "";
-    let convertedText: string = tsvscode.getState()?.convertedText || "";
-    // $: {
-    //     convertedText = regularText.toLocaleUpperCase();
-    //     tsvscode.setState({ regularText, convertedText });
-    // }
-    function onAddingSource(e: any): void {
-        regularText = (e.target as HTMLInputElement).value;
-        convertedText = btoa(regularText);
-        tsvscode.setState({ regularText, convertedText });
+
+    let answer: string = tsvscode.getState()?.answer || "";
+
+    function onGenerate(count: number) {
+        let temp: string = "";
+        for (let i = 0; i < count; i++) {
+            temp = create_UUID() + "\n" + temp;
+        }
+        answer = temp;
+        tsvscode.setState({ answer });
     }
 
-    function onAddingBase64(e: any): void {
-        convertedText = (e.target as HTMLInputElement).value;
-        regularText = atob(convertedText);
-        tsvscode.setState({ regularText, convertedText });
+    function create_UUID() {
+    
+        var dt = new Date().getTime();
+        var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+            /[xy]/g,
+            function (c) {
+                var r = (dt + Math.random() * 16) % 16 | 0;
+                dt = Math.floor(dt / 16);
+                return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
+            }
+        );
+        return uuid;
     }
 
-    function copyBase64() {
-        let textarea = document.getElementById(
-            "base64-textarea"
-        ) as HTMLInputElement;
-        textarea!.select()!;
-        document.execCommand("copy");
-        document!.getSelection()!.removeAllRanges();
-        document!.getSelection()!.addRange(document.createRange());
-    }
 
     function copySource() {
         let textarea = document.getElementById(
@@ -37,29 +36,18 @@
         document!.getSelection()!.addRange(document.createRange());
     }
 
-    function clearRegularText(){
-        regularText = '';
+    function clearGeneratedUUIDS() {
+        answer = '';
         let textarea = document.getElementById(
             "source-textarea"
         ) as HTMLInputElement;
         textarea.select()!;
-        tsvscode.setState({ regularText, convertedText });
+        tsvscode.setState({ answer });
     }
-
-    function clearConvertedText(){
-        convertedText = '';
-        let textarea = document.getElementById(
-            "base64-textarea"
-        ) as HTMLInputElement;
-        textarea.select()!;
-        tsvscode.setState({ regularText, convertedText });
-    }
-
 </script>
 
 <!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
 <!-- --config ./build/node-extension.webpack.config.js  -->
-
 
 <!-- HEY!!!! this is for text escaping -->
 <!-- function addslashes( str ) {
@@ -70,47 +58,28 @@
     <br />
 
     <p class="padding-for-textarea-below">Source (Input/Output)</p>
-
+    <button
+        class="medium-button margin-for-textarea-below margin-right"
+        on:click={() => {onGenerate(3)}}>Generate</button
+    >
     <button
         class="short-button margin-for-textarea-below margin-right"
-        on:click={clearRegularText}>Clear</button
+        on:click={clearGeneratedUUIDS}>Clear</button
     >
     <button class="short-button margin-for-textarea-below" on:click={copySource}
         >Copy</button
     >
     <textarea
+    readonly
         placeholder="Add text here"
         name="yo?"
         id="source-textarea"
         cols="5"
         rows="10"
         type="text"
-        value={regularText}
-        on:input={onAddingSource}
+        value={answer}
     />
     <br />
-
-    <p class="padding-for-textarea-below">Base64 (Input/Output)</p>
-
-    <button
-        class="short-button margin-for-textarea-below margin-right"
-        on:click={clearConvertedText}>Clear</button
-    >
-
-    <button class="short-button margin-for-textarea-below" on:click={copyBase64}
-        >Copy</button
-    >
-
-    <textarea
-        placeholder="Add encoded text here"
-        name="hoe"
-        id="base64-textarea"
-        cols="30"
-        rows="10"
-        type="text"
-        value={convertedText}
-        on:input={onAddingBase64}
-    />
 </div>
 
 <style>
@@ -133,6 +102,13 @@
 
     .short-button {
         width: 60px;
+        margin-left: 10px;
+        float: right;
+        border-radius: 5px;
+    }
+
+    .medium-button {
+        width: 80px;
         margin-left: 10px;
         float: right;
         border-radius: 5px;

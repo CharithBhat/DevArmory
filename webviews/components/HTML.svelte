@@ -105,7 +105,7 @@
         class="short-button margin-for-textarea-below margin-right"
         on:click={clearConvertedText}>Clear</button
     >
-
+ 
     <button class="short-button margin-for-textarea-below" on:click={copyBase64}
         >Copy</button
     >
