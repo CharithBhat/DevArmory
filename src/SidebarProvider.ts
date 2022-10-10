@@ -7,6 +7,7 @@ import { SqlFormatterPanel } from "./SqlFormatterPanel";
 import { XmlFormatterPanel } from "./XmlFormatterPanel";
 import { UrlPanel } from "./UrlPanel";
 import { MarkDownPanel } from "./MarkDownPanel";
+import { UuidGeneratorPanel } from "./UuidGeneratorPanel";
 
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
@@ -108,6 +109,15 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           //   return;
           // }
           MarkDownPanel.createOrShow(this._extensionUri);
+
+          break;
+        }
+
+        case "onUuidGenerator": {
+          // if (!data.value) {
+          //   return;
+          // }
+          UuidGeneratorPanel.createOrShow(this._extensionUri);
 
           break;
         }

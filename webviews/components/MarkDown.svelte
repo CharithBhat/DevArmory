@@ -3,22 +3,22 @@
     let regularText: string = tsvscode.getState()?.regularText || "";
     let convertedText: string = tsvscode.getState()?.convertedText || "";
 
-    function formatXml(xml: string, tab: string | any[]) {
-        // tab = optional indent value, default is tab (\t)
-        var formatted = "",
-            indent = "";
-        tab = tab || "\t";
-        xml.split(/>\s*</).forEach(function (node) {
-            if (node.match(/^\/\w/)) indent = indent.substring(tab.length); // decrease indent by one 'tab'
-            formatted += indent + "<" + node + ">\r\n";
-            if (node.match(/^<?\w[^>]*[^\/]$/)) indent += tab; // increase indent
-        });
-        return formatted.substring(1, formatted.length - 3);
-    }
+    // function formatXml(xml: string, tab: string | any[]) {
+    //     // tab = optional indent value, default is tab (\t)
+    //     var formatted = "",
+    //         indent = "";
+    //     tab = tab || "\t";
+    //     xml.split(/>\s*</).forEach(function (node) {
+    //         if (node.match(/^\/\w/)) indent = indent.substring(tab.length); // decrease indent by one 'tab'
+    //         formatted += indent + "<" + node + ">\r\n";
+    //         if (node.match(/^<?\w[^>]*[^\/]$/)) indent += tab; // increase indent
+    //     });
+    //     return formatted.substring(1, formatted.length - 3);
+    // }
 
     function onAddingSource(e: any): void {
         regularText = (e.target as HTMLInputElement).value;
-        convertedText = formatXml(regularText, '\t');
+        // convertedText = formatXml(regularText, '\t');
         tsvscode.setState({ regularText, convertedText });
     }
 
@@ -85,6 +85,9 @@
 <div class="padding-for-whole-page">
     <h1>MarkDown Viewer</h1>
     <br />
+
+
+    <div class="markdown-class"></div>
 
     <div class="grid-container">
         <div class="small">

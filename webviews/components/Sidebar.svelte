@@ -150,6 +150,22 @@
             >
                 <p class="indent-left">MarkDown Viewer</p>
             </li>
+
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current === 'UuidGenerator'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onUuidGenerator",
+                        value: "notusingthisvalue",
+                    });
+                    current = "UuidGenerator";
+                }}
+            >
+                <p class="indent-left">UUID Generator</p>
+            </li>
         </ul>
     </li>
     <!-- converters item here-->
