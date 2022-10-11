@@ -1,32 +1,37 @@
 <script lang="ts">
-    // function copySource() {
-    //     let textarea = document.getElementById(
-    //         "source-textarea"
-    //     ) as HTMLInputElement;
-    //     textarea!.select()!;
-    //     document.execCommand("copy");
-    //     document!.getSelection()!.removeAllRanges();
-    //     document!.getSelection()!.addRange(document.createRange());
-    // }
-
-    // function clearGeneratedUUIDS() {
-    //     answer = "";
-    //     temp = "";
-    //     let textarea = document.getElementById(
-    //         "source-textarea"
-    //     ) as HTMLInputElement;
-    //     textarea.select()!;
-    //     // tsvscode.setState({ answer, count });
-    // }
-
-    let regularText: string = "";
-    let convertedText: string = regularText;
+    let regularText: string = tsvscode.getState()?.regularText ||  "";
+    let convertedText: string = tsvscode.getState()?.convertedText ||  regularText;
 
     let currentCase: string = "original-text";
 
-    // $: {
+    $: {
+        tsvscode.setState({ regularText, convertedText});
+    }
 
-    // }
+    function changeRegularText(e: any): void {
+        regularText = (e.target as HTMLInputElement).value;
+        convertedText = regularText;
+    }
+
+    function copySource() {
+        let textarea = document.getElementById(
+            "source-textarea"
+        ) as HTMLInputElement;
+        textarea!.select()!;
+        document.execCommand("copy");
+        document!.getSelection()!.removeAllRanges();
+        document!.getSelection()!.addRange(document.createRange());
+    }
+
+    function clearOuput() {
+        regularText = "";
+        convertedText = "";
+        let textarea = document.getElementById(
+            "source-textarea"
+        ) as HTMLInputElement;
+        textarea.select()!;
+        // tsvscode.setState({ answer, count });
+    }
 
     function changeOutput() {
         switch (currentCase) {
@@ -35,6 +40,7 @@
                 break;
             }
             case "sentence-case": {
+                convertedText = regularText;
                 function toSentenceCase(theString: string) {
                     var newString = theString
                         .toLowerCase()
@@ -47,14 +53,17 @@
                 break;
             }
             case "lower-case": {
+                convertedText = regularText;
                 convertedText = convertedText.toLowerCase();
                 break;
             }
             case "upper-case": {
+                convertedText = regularText;
                 convertedText = convertedText.toUpperCase();
                 break;
             }
             case "title-case": {
+                convertedText = regularText;
                 function toTitleCase(str: string) {
                     return str.replace(/\w\S*/g, function (txt) {
                         return (
@@ -68,6 +77,7 @@
             }
 
             case "camel-case": {
+                convertedText = regularText;
                 function toCamelCase(str: string) {
                     return str.replace(
                         /(?:^\w|[A-Z]|\b\w|\s+)/g,
@@ -82,24 +92,31 @@
                 convertedText = toCamelCase(convertedText);
                 break;
             }
-            // case "pascal-case": {
-            //     function toCamelCase(str: string) {
-            //         return str.replace(
-            //             /(?:^\w|[A-Z]|\b\w|\s+)/g,
-            //             function (match, index) {
-            //                 if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
-            //                 return index === 0
-            //                     ? match.toLowerCase()
-            //                     : match.toUpperCase();
-            //             }
-            //         );
-            //     }
-            //     convertedText = toCamelCase(convertedText);
-            //     break;
-            // }
+            case "pascal-case": {
+                convertedText = regularText;
+                function toCamelCase(str: string) {
+                    return str.replace(
+                        /(?:^\w|[A-Z]|\b\w|\s+)/g,
+                        function (match, index) {
+                            if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+                            return index === 0
+                                ? match.toLowerCase()
+                                : match.toUpperCase();
+                        }
+                    );
+                }
+                function toPascalCase(string: string) {
+                    string = toCamelCase(string);
+                    return string.charAt(0).toUpperCase() + string.slice(1);
+                }
+                convertedText = toPascalCase(convertedText);
+                break;
+            }
             case "snake-case": {
+                convertedText = regularText;
                 function toSnakeCase(str: string) {
-                    return str.toLocaleLowerCase()
+                    return str
+                        .toLocaleLowerCase()
                         .replace(/\W+/g, " ")
                         .split(/ |\B(?=[A-Z])/)
                         .map((word) => word.toLowerCase())
@@ -109,8 +126,10 @@
                 break;
             }
             case "constant-case": {
+                convertedText = regularText;
                 function toConstantCase(str: string) {
-                    return str.toLocaleLowerCase()
+                    return str
+                        .toLocaleLowerCase()
                         .replace(/\W+/g, " ")
                         .split(/ |\B(?=[A-Z])/)
                         .join("_")
@@ -120,6 +139,7 @@
                 break;
             }
             case "kebab-case": {
+                convertedText = regularText;
                 function toKebabCase(str: string) {
                     return str
                         .toLocaleLowerCase()
@@ -132,8 +152,10 @@
                 break;
             }
             case "cobol-case": {
+                convertedText = regularText;
                 function toCobolCase(str: string) {
-                    return str.toLocaleLowerCase()
+                    return str
+                        .toLocaleLowerCase()
                         .replace(/\W+/g, " ")
                         .split(/ |\B(?=[A-Z])/)
                         .map((word) => word.toUpperCase())
@@ -143,6 +165,7 @@
                 break;
             }
             case "train-case": {
+                convertedText = regularText;
                 function toTitleCase(str: string) {
                     return str.replace(/\w\S*/g, function (txt) {
                         return (
@@ -228,6 +251,13 @@
         <button
             class="regular-button margin-for-textarea-below"
             on:click={() => {
+                currentCase = "pascal-case";
+                changeOutput();
+            }}>PascalCase</button
+        >
+        <button
+            class="regular-button margin-for-textarea-below"
+            on:click={() => {
                 currentCase = "snake-case";
                 changeOutput();
             }}>snake_case</button
@@ -268,12 +298,12 @@
 
     <button
         class="short-button margin-for-textarea-below margin-right"
-        on:click={() => {}}>Clear</button
+        on:click={clearOuput}>Clear</button
     >
-    <button class="short-button margin-for-textarea-below" on:click={() => {}}
+    <button class="short-button margin-for-textarea-below" on:click={copySource}
         >Copy</button
     >
-    <button class="medium-button " on:click={() => {}}>Refresh</button>
+
     <textarea
         name="yo?"
         id="source-textarea"
@@ -281,7 +311,8 @@
         cols="5"
         rows="20"
         type="text"
-        bind:value={convertedText}
+        value={convertedText}
+        on:input={changeRegularText}
     />
 
     <br />
@@ -320,12 +351,6 @@
         border-radius: 5px;
     }
 
-    .medium-button {
-        width: 130px;
-        float: right;
-        border-radius: 5px;
-    }
-
     .regular-button {
         width: 100px;
         margin-right: 10px;
@@ -338,9 +363,4 @@
         border-radius: 5px;
     }
 
-    /* .options-div {
-        display: flex;
-        align-content: center;
-        height: 30px;
-    } */
 </style>
