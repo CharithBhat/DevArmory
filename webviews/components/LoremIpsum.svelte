@@ -14,11 +14,9 @@
     let selected: any;
 
     $: {
-        // console.log(selected);
         tsvscode.setState({
             answer,
             count,
-            // selected,
         });
     }
 
@@ -71,17 +69,9 @@
             "source-textarea"
         ) as HTMLInputElement;
         textarea.select()!;
-        // tsvscode.setState({ answer, count });
     }
 </script>
 
-<!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
-<!-- --config ./build/node-extension.webpack.config.js  -->
-
-<!-- HEY!!!! this is for text escaping -->
-<!-- function addslashes( str ) {
-    return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
-} -->
 <div class="padding-for-whole-page">
     <h1>Lorem Ipsum Generator</h1>
     <br /><br />
@@ -89,10 +79,16 @@
     <div class="options-div">
         <p class="multiply-symbol">Length</p>
 
-        <input class="countInput" type="number" bind:value={count} min="0" on:change={onGenerate}/>
+        <input
+            class="countInput"
+            type="number"
+            bind:value={count}
+            min="0"
+            on:change={onGenerate}
+        />
 
         <p class="multiply-symbol">Type</p>
-       
+
         <select bind:value={selected} on:change={onGenerate}>
             {#each questions as question}
                 <option value={question} on:change={() => {}}>

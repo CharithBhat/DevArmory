@@ -1,11 +1,12 @@
 <script lang="ts">
-    let regularText: string = tsvscode.getState()?.regularText ||  "";
-    let convertedText: string = tsvscode.getState()?.convertedText ||  regularText;
+    let regularText: string = tsvscode.getState()?.regularText || "";
+    let convertedText: string =
+        tsvscode.getState()?.convertedText || regularText;
 
     let currentCase: string = "original-text";
 
     $: {
-        tsvscode.setState({ regularText, convertedText});
+        tsvscode.setState({ regularText, convertedText });
     }
 
     function changeRegularText(e: any): void {
@@ -30,7 +31,6 @@
             "source-textarea"
         ) as HTMLInputElement;
         textarea.select()!;
-        // tsvscode.setState({ answer, count });
     }
 
     function changeOutput() {
@@ -82,7 +82,7 @@
                     return str.replace(
                         /(?:^\w|[A-Z]|\b\w|\s+)/g,
                         function (match, index) {
-                            if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+                            if (+match === 0) return "";
                             return index === 0
                                 ? match.toLowerCase()
                                 : match.toUpperCase();
@@ -98,7 +98,7 @@
                     return str.replace(
                         /(?:^\w|[A-Z]|\b\w|\s+)/g,
                         function (match, index) {
-                            if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+                            if (+match === 0) return "";
                             return index === 0
                                 ? match.toLowerCase()
                                 : match.toUpperCase();
@@ -194,13 +194,6 @@
     }
 </script>
 
-<!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
-<!-- --config ./build/node-extension.webpack.config.js  -->
-
-<!-- HEY!!!! this is for text escaping -->
-<!-- function addslashes( str ) {
-    return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
-} -->
 <div class="padding-for-whole-page">
     <h1>Text Case Converter</h1>
     <br /><br />
@@ -327,12 +320,6 @@
         border-radius: 5px;
     }
 
-    /* input {
-        outline-style: solid;
-        outline-color: #191a21;
-        outline-width: 1px;
-        border-radius: 5px;
-    } */
     .padding-for-whole-page {
         margin: 40px;
     }
@@ -362,5 +349,4 @@
         margin-right: 10px;
         border-radius: 5px;
     }
-
 </style>

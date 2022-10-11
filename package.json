@@ -10,11 +10,6 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:devarmory.helloWorld",
-    "onCommand:devarmory.devarmory.dummyWorld",
-    "onCommand:devarmory.askQuestion",
-    "onCommand:devarmory.refresh",
-    "onCommand:devarmory.addTodo",
     "onView:devarmory-sidebar"
   ],
   "main": "./dist/extension.js",
@@ -40,31 +35,7 @@
       ]
     },
     "commands": [
-      {
-        "command": "devarmory.helloWorld",
-        "category": "DevArmory",
-        "title": "Hello World"
-      },
-      {
-        "command": "devarmory.dummyWorld",
-        "category": "DevArmory",
-        "title": "Dummy World"
-      },
-      {
-        "command": "devarmory.askQuestion",
-        "category": "DevArmory",
-        "title": "askQuestion"
-      },
-      {
-        "command": "devarmory.refresh",
-        "category": "DevArmory",
-        "title": "Refresh"
-      },
-      {
-        "command": "devarmory.addTodo",
-        "category": "DevArmory",
-        "title": "Add Todo From Selection"
-      }
+      
     ]
   },
   "scripts": {

@@ -1,10 +1,7 @@
 <script lang="ts">
     let regularText: string = tsvscode.getState()?.regularText || "";
     let convertedText: string = tsvscode.getState()?.convertedText || "";
-    // $: {
-    //     convertedText = regularText.toLocaleUpperCase();
-    //     tsvscode.setState({ regularText, convertedText });
-    // }
+
     function onAddingSource(e: any): void {
         regularText = (e.target as HTMLInputElement).value;
         // convertedText = btoa(regularText);
@@ -53,8 +50,8 @@
         document!.getSelection()!.addRange(document.createRange());
     }
 
-    function clearRegularText(){
-        regularText = '';
+    function clearRegularText() {
+        regularText = "";
         let textarea = document.getElementById(
             "source-textarea"
         ) as HTMLInputElement;
@@ -62,8 +59,8 @@
         tsvscode.setState({ regularText, convertedText });
     }
 
-    function clearConvertedText(){
-        convertedText = '';
+    function clearConvertedText() {
+        convertedText = "";
         let textarea = document.getElementById(
             "base64-textarea"
         ) as HTMLInputElement;
@@ -72,8 +69,6 @@
     }
 </script>
 
-<!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
-<!-- --config ./build/node-extension.webpack.config.js  -->
 <div class="padding-for-whole-page">
     <h1>HTML Encoder / Decoder</h1>
     <br />
@@ -105,7 +100,7 @@
         class="short-button margin-for-textarea-below margin-right"
         on:click={clearConvertedText}>Clear</button
     >
- 
+
     <button class="short-button margin-for-textarea-below" on:click={copyBase64}
         >Copy</button
     >

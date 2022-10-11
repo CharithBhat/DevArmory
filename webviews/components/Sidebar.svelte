@@ -198,8 +198,6 @@
             >
                 <p class="indent-left">Text Escaper/Unescaper</p>
             </li>
-
-            
         </ul>
     </li>
     <!-- converters item here-->

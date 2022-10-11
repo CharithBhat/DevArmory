@@ -15,7 +15,7 @@
 
     function onAddingBase64(e: any): void {
         convertedText = (e.target as HTMLInputElement).value;
-        regularText = convertedText.replace('\\','');
+        regularText = convertedText.replace("\\", "");
         tsvscode.setState({ regularText, convertedText });
     }
 
@@ -57,7 +57,6 @@
         tsvscode.setState({ regularText, convertedText });
     }
 </script>
-
 
 <div class="padding-for-whole-page">
     <h1>Text Escaper/Unescaper</h1>

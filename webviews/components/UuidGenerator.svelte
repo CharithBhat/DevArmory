@@ -1,5 +1,4 @@
 <script lang="ts">
-
     let answer: string = tsvscode.getState()?.answer || "";
 
     let count: number = tsvscode.getState()?.count || 1;
@@ -17,7 +16,6 @@
         for (let i = 0; i < count; i++) {
             temp = create_UUID() + "\n" + temp;
         }
-        // check for uppeercase
         if (uppercaseBoolean) {
             temp = temp.toUpperCase();
         }
@@ -63,13 +61,6 @@
     }
 </script>
 
-<!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
-<!-- --config ./build/node-extension.webpack.config.js  -->
-
-<!-- HEY!!!! this is for text escaping -->
-<!-- function addslashes( str ) {
-    return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
-} -->
 <div class="padding-for-whole-page">
     <h1>UUID Generator</h1>
     <br /><br />
