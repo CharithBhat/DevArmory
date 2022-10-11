@@ -11,7 +11,6 @@
         { id: 3, text: `Word` },
     ];
 
-    // let selected = tsvscode.getState()?.selected || questions[0];
     let selected: any;
 
     $: {
@@ -90,15 +89,11 @@
     <div class="options-div">
         <p class="multiply-symbol">Length</p>
 
-        <input class="countInput" type="number" bind:value={count} min="0" />
+        <input class="countInput" type="number" bind:value={count} min="0" on:change={onGenerate}/>
 
         <p class="multiply-symbol">Type</p>
-        <!-- <select bind:value={beltColour}>
-            <option value="Paragarph">Paragraph</option>
-            <option value="Sentence">Sentence</option>
-            <option value="Words">Words</option>
-        </select> -->
-        <select bind:value={selected} on:change={() => {}}>
+       
+        <select bind:value={selected} on:change={onGenerate}>
             {#each questions as question}
                 <option value={question} on:change={() => {}}>
                     {question.text}
