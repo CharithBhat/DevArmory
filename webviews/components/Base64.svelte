@@ -119,6 +119,7 @@
         outline-style: solid;
         outline-color: #191a21;
         outline-width: 1px;
+        border-radius: 5px;
     }
     .padding-for-whole-page {
         margin: 40px;

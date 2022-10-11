@@ -6,7 +6,6 @@ import { JsonFormatterPanel } from "./JsonFormatterPanel";
 import { SqlFormatterPanel } from "./SqlFormatterPanel";
 import { XmlFormatterPanel } from "./XmlFormatterPanel";
 import { UrlPanel } from "./UrlPanel";
-import { MarkDownPanel } from "./MarkDownPanel";
 import { UuidGeneratorPanel } from "./UuidGeneratorPanel";
 
 
@@ -100,15 +99,6 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           //   return;
           // }
           XmlFormatterPanel.createOrShow(this._extensionUri);
-
-          break;
-        }
-
-        case "onMarkDownViewer": {
-          // if (!data.value) {
-          //   return;
-          // }
-          MarkDownPanel.createOrShow(this._extensionUri);
 
           break;
         }

@@ -137,22 +137,6 @@
 
             <!-- svelte-ignore missing-declaration -->
             <li
-                class="addThisClassForPointer {current === 'MarkDown'
-                    ? 'selected'
-                    : ''}"
-                on:click={() => {
-                    tsvscode.postMessage({
-                        type: "onMarkDownViewer",
-                        value: "notusingthisvalue",
-                    });
-                    current = "MarkDown";
-                }}
-            >
-                <p class="indent-left">MarkDown Viewer</p>
-            </li>
-
-            <!-- svelte-ignore missing-declaration -->
-            <li
                 class="addThisClassForPointer {current === 'UuidGenerator'
                     ? 'selected'
                     : ''}"

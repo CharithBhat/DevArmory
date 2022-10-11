@@ -1,9 +1,11 @@
 <script lang="ts">
+
     let answer: string = tsvscode.getState()?.answer || "";
 
-    let count: number = tsvscode.getState()?.count || 0;
+    let count: number = tsvscode.getState()?.count || 1;
 
-    let uppercaseBoolean: boolean = tsvscode.getState()?.uppercaseBoolean || false;
+    let uppercaseBoolean: boolean =
+        tsvscode.getState()?.uppercaseBoolean || false;
     let hyphenBoolean: boolean = tsvscode.getState()?.hyphenBoolean || false;
 
     $: {
@@ -16,12 +18,12 @@
             temp = create_UUID() + "\n" + temp;
         }
         // check for uppeercase
-        if(uppercaseBoolean){
+        if (uppercaseBoolean) {
             temp = temp.toUpperCase();
         }
 
-        if(!hyphenBoolean){
-            temp = temp.replaceAll('-', '');
+        if (!hyphenBoolean) {
+            temp = temp.replaceAll("-", "");
         }
 
         answer = temp;
@@ -70,10 +72,10 @@
 } -->
 <div class="padding-for-whole-page">
     <h1>UUID Generator</h1>
-    <br /><br>
+    <br /><br />
 
     <div class="options-div">
-        <input type="checkbox"  bind:checked={uppercaseBoolean} />
+        <input type="checkbox" bind:checked={uppercaseBoolean} />
 
         <p style="margin-left: 10px;">UpperCase</p>
 
@@ -83,7 +85,7 @@
         <p style="margin-left: 10px;">Hyphen</p>
     </div>
 
-    <br /><br>
+    <br /><br />
 
     <div class="options-div">
         <input
@@ -118,6 +120,7 @@
         type="text"
         value={answer}
     />
+
     <br />
 </div>
 
@@ -127,12 +130,14 @@
         outline-style: solid;
         outline-color: #191a21;
         outline-width: 1px;
+        border-radius: 5px;
     }
 
     input {
         outline-style: solid;
         outline-color: #191a21;
         outline-width: 1px;
+        border-radius: 5px;
     }
     .padding-for-whole-page {
         margin: 40px;
