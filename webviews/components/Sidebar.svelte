@@ -150,6 +150,22 @@
             >
                 <p class="indent-left">UUID Generator</p>
             </li>
+
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current === 'LoremIpsumGenerator'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onLoremIpsumGenerator",
+                        value: "notusingthisvalue",
+                    });
+                    current = "LoremIpsumGenerator";
+                }}
+            >
+                <p class="indent-left">Lorem Ipsum Generator</p>
+            </li>
         </ul>
     </li>
     <!-- converters item here-->

@@ -7,6 +7,7 @@ import { SqlFormatterPanel } from "./SqlFormatterPanel";
 import { XmlFormatterPanel } from "./XmlFormatterPanel";
 import { UrlPanel } from "./UrlPanel";
 import { UuidGeneratorPanel } from "./UuidGeneratorPanel";
+import { LoremIpsumPanel } from "./LoremIpsumPanel";
 
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
@@ -108,6 +109,15 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           //   return;
           // }
           UuidGeneratorPanel.createOrShow(this._extensionUri);
+
+          break;
+        }
+
+        case "onLoremIpsumGenerator": {
+          // if (!data.value) {
+          //   return;
+          // }
+          LoremIpsumPanel.createOrShow(this._extensionUri);
 
           break;
         }
