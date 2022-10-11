@@ -8,13 +8,14 @@ import { XmlFormatterPanel } from "./XmlFormatterPanel";
 import { UrlPanel } from "./UrlPanel";
 import { UuidGeneratorPanel } from "./UuidGeneratorPanel";
 import { LoremIpsumPanel } from "./LoremIpsumPanel";
+import { TextCaseConverterPanel } from "./TextCaseConverterPanel";
 
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
   _view?: vscode.WebviewView;
   _doc?: vscode.TextDocument;
 
-  constructor(private readonly _extensionUri: vscode.Uri) { } 
+  constructor(private readonly _extensionUri: vscode.Uri) { }
 
   public resolveWebviewView(webviewView: vscode.WebviewView) {
     this._view = webviewView;
@@ -51,73 +52,64 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
         }
 
         case "onHTML": {
-          // if (!data.value) {
-          //   return;
-          // }
+
           HtmlPanel.createOrShow(this._extensionUri);
 
           break;
         }
 
         case "onBase64": {
-          // if (!data.value) {
-          //   return;
-          // }
+
           Base64Panel.createOrShow(this._extensionUri);
 
           break;
         }
 
         case "onURL": {
-          // if (!data.value) {
-          //   return;
-          // }
+
           UrlPanel.createOrShow(this._extensionUri);
 
           break;
         }
 
         case "onJsonFormatter": {
-          // if (!data.value) {
-          //   return;
-          // }
+
           JsonFormatterPanel.createOrShow(this._extensionUri);
 
           break;
         }
 
         case "onSqlFormatter": {
-          // if (!data.value) {
-          //   return;
-          // }
+
           SqlFormatterPanel.createOrShow(this._extensionUri);
 
           break;
         }
 
         case "onXmlFormatter": {
-          // if (!data.value) {
-          //   return;
-          // }
+
           XmlFormatterPanel.createOrShow(this._extensionUri);
 
           break;
         }
 
         case "onUuidGenerator": {
-          // if (!data.value) {
-          //   return;
-          // }
+
           UuidGeneratorPanel.createOrShow(this._extensionUri);
 
           break;
         }
 
         case "onLoremIpsumGenerator": {
-          // if (!data.value) {
-          //   return;
-          // }
+
           LoremIpsumPanel.createOrShow(this._extensionUri);
+
+          break;
+        }
+
+        case "onTextCaseConverter": {
+
+          TextCaseConverterPanel.createOrShow(this._extensionUri);
 
           break;
         }
@@ -146,15 +138,15 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     );
 
     // images
-    
+
     const rocketImageUrl: string = webview.asWebviewUri(
       vscode.Uri.joinPath(this._extensionUri, "media", "rocket.svg")
     ).toString();
-    
+
     console.log(rocketImageUrl);
 
-      
-      
+
+
     //img-src https: data:; style-src 'unsafe-inline'
     // Use a nonce to only allow a specific script to be run.
 

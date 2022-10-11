@@ -166,6 +166,22 @@
             >
                 <p class="indent-left">Lorem Ipsum Generator</p>
             </li>
+
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current === 'TextCaseConverter'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onTextCaseConverter",
+                        value: "notusingthisvalue",
+                    });
+                    current = "TextCaseConverter";
+                }}
+            >
+                <p class="indent-left">Text Case Converter</p>
+            </li>
         </ul>
     </li>
     <!-- converters item here-->
