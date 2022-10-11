@@ -1,15 +1,26 @@
 <script lang="ts">
-
     let answer: string = tsvscode.getState()?.answer || "";
 
     let count: number = tsvscode.getState()?.count || 1;
 
     let uppercaseBoolean: boolean =
         tsvscode.getState()?.uppercaseBoolean || false;
+
     let hyphenBoolean: boolean = tsvscode.getState()?.hyphenBoolean || false;
 
+    let beltColour: string = tsvscode.getState()?.beltColour || "Paragraph";
+    let skills: string[] = tsvscode.getState()?.skills || [];
+
     $: {
-        tsvscode.setState({ answer, count, uppercaseBoolean, hyphenBoolean });
+        console.log(skills, beltColour);
+        tsvscode.setState({
+            answer,
+            count,
+            uppercaseBoolean,
+            hyphenBoolean,
+            skills,
+            beltColour,
+        });
     }
 
     function onGenerate() {
@@ -74,20 +85,10 @@
     <h1>Lorem Ipsum Generator</h1>
     <br /><br />
 
-    <div class="options-div">
-        <input type="checkbox" bind:checked={uppercaseBoolean} />
-
-        <p style="margin-left: 10px;">UpperCase</p>
-
-        <div style="width: 10px;" />
-
-        <input type="checkbox" bind:checked={hyphenBoolean} />
-        <p style="margin-left: 10px;">Hyphen</p>
-    </div>
-
-    <br /><br />
 
     <div class="options-div">
+        <p class="multiply-symbol">Length</p>
+
         <input
             class="countInput"
             type="number"
@@ -95,10 +96,13 @@
             min="0"
             max="10"
         />
-        <p class="multiply-symbol">X</p>
-        <button class="medium-button " on:click={onGenerate}
-            >Generate UUID(s)</button
-        >
+
+        <p class="multiply-symbol">Type</p>
+        <select bind:value={beltColour}>
+            <option value="Paragarph">Paragraph</option>
+            <option value="Sentence">Sentence</option>
+            <option value="Words">Words</option>
+        </select>
     </div>
     <br />
 
@@ -111,6 +115,7 @@
     <button class="short-button margin-for-textarea-below" on:click={copySource}
         >Copy</button
     >
+    <button class="medium-button " on:click={onGenerate}>Refresh</button>
     <textarea
         readonly
         name="yo?"
@@ -165,15 +170,22 @@
 
     .countInput {
         width: 100px;
+        margin-right: 20px;
     }
 
     .multiply-symbol {
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: 5px;
+        margin-right: 15px;
+        line-height: 30px;
+    }
+
+    select {
+        color-scheme: dark;
+        width: 100px;
     }
 
     .options-div {
         display: flex;
+        align-content: center;
+        height: 30px;
     }
 </style>
