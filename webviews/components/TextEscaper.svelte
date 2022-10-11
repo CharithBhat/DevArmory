@@ -1,19 +1,21 @@
 <script lang="ts">
     let regularText: string = tsvscode.getState()?.regularText || "";
     let convertedText: string = tsvscode.getState()?.convertedText || "";
-    // $: {
-    //     convertedText = regularText.toLocaleUpperCase();
-    //     tsvscode.setState({ regularText, convertedText });
-    // }
+
     function onAddingSource(e: any): void {
         regularText = (e.target as HTMLInputElement).value;
-        convertedText = btoa(regularText);
+        convertedText = addslashes(regularText);
+        function addslashes(str: string) {
+            return (str + "")
+                .replace(/[\\"']/g, "\\$&")
+                .replace(/\u0000/g, "\\0");
+        }
         tsvscode.setState({ regularText, convertedText });
     }
 
     function onAddingBase64(e: any): void {
         convertedText = (e.target as HTMLInputElement).value;
-        regularText = atob(convertedText);
+        regularText = convertedText.replace('\\','');
         tsvscode.setState({ regularText, convertedText });
     }
 
@@ -37,8 +39,8 @@
         document!.getSelection()!.addRange(document.createRange());
     }
 
-    function clearRegularText(){
-        regularText = '';
+    function clearRegularText() {
+        regularText = "";
         let textarea = document.getElementById(
             "source-textarea"
         ) as HTMLInputElement;
@@ -46,30 +48,22 @@
         tsvscode.setState({ regularText, convertedText });
     }
 
-    function clearConvertedText(){
-        convertedText = '';
+    function clearConvertedText() {
+        convertedText = "";
         let textarea = document.getElementById(
             "base64-textarea"
         ) as HTMLInputElement;
         textarea.select()!;
         tsvscode.setState({ regularText, convertedText });
     }
-
 </script>
 
-<!-- HEY!!!!! If you plan to create a new svelte page. then try adding the below command in your package json as subscript -->
-<!-- --config ./build/node-extension.webpack.config.js  -->
 
-
-<!-- HEY!!!! this is for text escaping -->
-<!-- function addslashes( str ) {
-    return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
-} -->
 <div class="padding-for-whole-page">
     <h1>Text Escaper/Unescaper</h1>
     <br />
 
-    <p class="padding-for-textarea-below">Regular Text (Input/Output)</p>
+    <p class="padding-for-textarea-below">Plain Text (Input/Output)</p>
 
     <button
         class="short-button margin-for-textarea-below margin-right"

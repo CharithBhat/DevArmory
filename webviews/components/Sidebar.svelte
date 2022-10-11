@@ -185,16 +185,21 @@
 
             <!-- svelte-ignore missing-declaration -->
             <li
-                class="addThisClassForPointer"
+                class="addThisClassForPointer {current === 'TextEscaper'
+                    ? 'selected'
+                    : ''}"
                 on:click={() => {
                     tsvscode.postMessage({
                         type: "onTextEscaper",
                         value: "notusingthisvalue",
                     });
+                    current = "TextEscaper";
                 }}
             >
                 <p class="indent-left">Text Escaper/Unescaper</p>
             </li>
+
+            
         </ul>
     </li>
     <!-- converters item here-->
