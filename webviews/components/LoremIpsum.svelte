@@ -3,56 +3,56 @@
 
     let count: number = tsvscode.getState()?.count || 1;
 
-    let beltColour: string = tsvscode.getState()?.beltColour || "Paragraph";
-    let skills: string[] = tsvscode.getState()?.skills || [];
+    let temp: string = "";
+
+    let questions = [
+        { id: 1, text: `Paragraph` },
+        { id: 2, text: `Sentence` },
+        { id: 3, text: `Word` },
+    ];
+
+    // let selected = tsvscode.getState()?.selected || questions[0];
+    let selected: any;
 
     $: {
-        console.log(skills, beltColour);
+        // console.log(selected);
         tsvscode.setState({
             answer,
             count,
-            skills,
-            beltColour,
+            // selected,
         });
     }
 
     function onGenerate() {
-        // check the  val
+        answer = "";
+        temp = "";
         let stringToAdd: string = "";
-        if (beltColour === "Paragraph") {
+        // paragh
+        if (selected.id === 1) {
             stringToAdd =
                 "Duo nulla dolores ut diam sanctus stet minim tempor mazim magna nonumy. Invidunt vero quis gubergren vel vero nonummy. Magna feugiat consequat dolor takimata lorem sed eos at sanctus et erat. Stet justo iriure at iriure dolor at sed dolor duis consequat dolor no.";
-        }
-        else if (beltColour === "Sentence"){
-            stringToAdd = "Duo nulla dolores ut diam sanctus stet minim tempor mazim magna nonumy.";
-        }
-        else {
-            stringToAdd = "Lorem";
-        }
-        let temp: string = answer;
-        for (let i: number = 0; i < count; i++) {
-            temp = temp + stringToAdd;
-        }
-        answer = temp;
-        // tsvscode.setState({
-        //     answer,
-        //     count,
-        //     skills,
-        //     beltColour,
-        // });
-    }
-
-    function create_UUID() {
-        var dt = new Date().getTime();
-        var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-            /[xy]/g,
-            function (c) {
-                var r = (dt + Math.random() * 16) % 16 | 0;
-                dt = Math.floor(dt / 16);
-                return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
+            for (let i: number = 0; i < count; i++) {
+                temp = temp + stringToAdd + "\n" + "\n";
             }
-        );
-        return uuid;
+        }
+        // sentence
+        else if (selected.id === 2) {
+            stringToAdd =
+                "Duo nulla dolores ut diam sanctus stet minim tempor mazim magna nonumy. ";
+
+            for (let i: number = 0; i < count; i++) {
+                temp = temp + stringToAdd;
+            }
+        }
+        //word
+        else {
+            stringToAdd = "Lorem ";
+            for (let i: number = 0; i < count; i++) {
+                temp = temp + stringToAdd;
+            }
+        }
+
+        answer = temp;
     }
 
     function copySource() {
@@ -67,11 +67,12 @@
 
     function clearGeneratedUUIDS() {
         answer = "";
+        temp = "";
         let textarea = document.getElementById(
             "source-textarea"
         ) as HTMLInputElement;
         textarea.select()!;
-        tsvscode.setState({ answer, count });
+        // tsvscode.setState({ answer, count });
     }
 </script>
 
@@ -89,24 +90,25 @@
     <div class="options-div">
         <p class="multiply-symbol">Length</p>
 
-        <input
-            class="countInput"
-            type="number"
-            bind:value={count}
-            min="0"
-            max="10"
-        />
+        <input class="countInput" type="number" bind:value={count} min="0" />
 
         <p class="multiply-symbol">Type</p>
-        <select bind:value={beltColour}>
+        <!-- <select bind:value={beltColour}>
             <option value="Paragarph">Paragraph</option>
             <option value="Sentence">Sentence</option>
             <option value="Words">Words</option>
+        </select> -->
+        <select bind:value={selected} on:change={() => {}}>
+            {#each questions as question}
+                <option value={question} on:change={() => {}}>
+                    {question.text}
+                </option>
+            {/each}
         </select>
     </div>
     <br />
 
-    <p class="padding-for-textarea-below">UUID(s)</p>
+    <p class="padding-for-textarea-below">Output</p>
 
     <button
         class="short-button margin-for-textarea-below margin-right"
@@ -121,7 +123,7 @@
         name="yo?"
         id="source-textarea"
         cols="5"
-        rows="10"
+        rows="20"
         type="text"
         value={answer}
     />
