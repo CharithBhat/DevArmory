@@ -1,77 +1,173 @@
 <script lang="ts">
-    let answer: string = tsvscode.getState()?.answer || "";
+    // function copySource() {
+    //     let textarea = document.getElementById(
+    //         "source-textarea"
+    //     ) as HTMLInputElement;
+    //     textarea!.select()!;
+    //     document.execCommand("copy");
+    //     document!.getSelection()!.removeAllRanges();
+    //     document!.getSelection()!.addRange(document.createRange());
+    // }
 
-    let count: number = tsvscode.getState()?.count || 1;
+    // function clearGeneratedUUIDS() {
+    //     answer = "";
+    //     temp = "";
+    //     let textarea = document.getElementById(
+    //         "source-textarea"
+    //     ) as HTMLInputElement;
+    //     textarea.select()!;
+    //     // tsvscode.setState({ answer, count });
+    // }
 
-    let temp: string = "";
+    let regularText: string = "";
+    let convertedText: string = regularText;
 
-    let questions = [
-        { id: 1, text: `Paragraph` },
-        { id: 2, text: `Sentence` },
-        { id: 3, text: `Word` },
-    ];
+    let currentCase: string = "original-text";
 
-    let selected: any;
+    // $: {
 
-    $: {
-        // console.log(selected);
-        tsvscode.setState({
-            answer,
-            count,
-            // selected,
-        });
-    }
+    // }
 
-    function onGenerate() {
-        answer = "";
-        temp = "";
-        let stringToAdd: string = "";
-        // paragh
-        if (selected.id === 1) {
-            stringToAdd =
-                "Duo nulla dolores ut diam sanctus stet minim tempor mazim magna nonumy. Invidunt vero quis gubergren vel vero nonummy. Magna feugiat consequat dolor takimata lorem sed eos at sanctus et erat. Stet justo iriure at iriure dolor at sed dolor duis consequat dolor no.";
-            for (let i: number = 0; i < count; i++) {
-                temp = temp + stringToAdd + "\n" + "\n";
+    function changeOutput() {
+        switch (currentCase) {
+            case "original-text": {
+                convertedText = regularText;
+                break;
+            }
+            case "sentence-case": {
+                function toSentenceCase(theString: string) {
+                    var newString = theString
+                        .toLowerCase()
+                        .replace(/(^\s*\w|[\.\!\?]\s*\w)/g, function (c) {
+                            return c.toUpperCase();
+                        });
+                    return newString;
+                }
+                convertedText = toSentenceCase(convertedText);
+                break;
+            }
+            case "lower-case": {
+                convertedText = convertedText.toLowerCase();
+                break;
+            }
+            case "upper-case": {
+                convertedText = convertedText.toUpperCase();
+                break;
+            }
+            case "title-case": {
+                function toTitleCase(str: string) {
+                    return str.replace(/\w\S*/g, function (txt) {
+                        return (
+                            txt.charAt(0).toUpperCase() +
+                            txt.substr(1).toLowerCase()
+                        );
+                    });
+                }
+                convertedText = toTitleCase(convertedText);
+                break;
+            }
+
+            case "camel-case": {
+                function toCamelCase(str: string) {
+                    return str.replace(
+                        /(?:^\w|[A-Z]|\b\w|\s+)/g,
+                        function (match, index) {
+                            if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+                            return index === 0
+                                ? match.toLowerCase()
+                                : match.toUpperCase();
+                        }
+                    );
+                }
+                convertedText = toCamelCase(convertedText);
+                break;
+            }
+            // case "pascal-case": {
+            //     function toCamelCase(str: string) {
+            //         return str.replace(
+            //             /(?:^\w|[A-Z]|\b\w|\s+)/g,
+            //             function (match, index) {
+            //                 if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+            //                 return index === 0
+            //                     ? match.toLowerCase()
+            //                     : match.toUpperCase();
+            //             }
+            //         );
+            //     }
+            //     convertedText = toCamelCase(convertedText);
+            //     break;
+            // }
+            case "snake-case": {
+                function toSnakeCase(str: string) {
+                    return str.toLocaleLowerCase()
+                        .replace(/\W+/g, " ")
+                        .split(/ |\B(?=[A-Z])/)
+                        .map((word) => word.toLowerCase())
+                        .join("_");
+                }
+                convertedText = toSnakeCase(convertedText);
+                break;
+            }
+            case "constant-case": {
+                function toConstantCase(str: string) {
+                    return str.toLocaleLowerCase()
+                        .replace(/\W+/g, " ")
+                        .split(/ |\B(?=[A-Z])/)
+                        .join("_")
+                        .toLocaleUpperCase();
+                }
+                convertedText = toConstantCase(convertedText);
+                break;
+            }
+            case "kebab-case": {
+                function toKebabCase(str: string) {
+                    return str
+                        .toLocaleLowerCase()
+                        .replace(/\W+/g, " ")
+                        .split(/ |\B(?=[A-Z])/)
+                        .map((word) => word.toLowerCase())
+                        .join("-");
+                }
+                convertedText = toKebabCase(convertedText);
+                break;
+            }
+            case "cobol-case": {
+                function toCobolCase(str: string) {
+                    return str.toLocaleLowerCase()
+                        .replace(/\W+/g, " ")
+                        .split(/ |\B(?=[A-Z])/)
+                        .map((word) => word.toUpperCase())
+                        .join("-");
+                }
+                convertedText = toCobolCase(convertedText);
+                break;
+            }
+            case "train-case": {
+                function toTitleCase(str: string) {
+                    return str.replace(/\w\S*/g, function (txt) {
+                        return (
+                            txt.charAt(0).toUpperCase() +
+                            txt.substr(1).toLowerCase()
+                        );
+                    });
+                }
+                function toKebabCase(str: string) {
+                    return str
+                        .replace(/\W+/g, " ")
+                        .split(/ |\B(?=[A-Z])/)
+                        .join("-");
+                }
+                function toTrainCase(str: string): string {
+                    return toKebabCase(toTitleCase(str));
+                }
+                convertedText = toTrainCase(convertedText);
+                break;
+            }
+
+            default: {
+                break;
             }
         }
-        // sentence
-        else if (selected.id === 2) {
-            stringToAdd =
-                "Duo nulla dolores ut diam sanctus stet minim tempor mazim magna nonumy. ";
-
-            for (let i: number = 0; i < count; i++) {
-                temp = temp + stringToAdd;
-            }
-        }
-        //word
-        else {
-            stringToAdd = "Lorem ";
-            for (let i: number = 0; i < count; i++) {
-                temp = temp + stringToAdd;
-            }
-        }
-
-        answer = temp;
-    }
-
-    function copySource() {
-        let textarea = document.getElementById(
-            "source-textarea"
-        ) as HTMLInputElement;
-        textarea!.select()!;
-        document.execCommand("copy");
-        document!.getSelection()!.removeAllRanges();
-        document!.getSelection()!.addRange(document.createRange());
-    }
-
-    function clearGeneratedUUIDS() {
-        answer = "";
-        temp = "";
-        let textarea = document.getElementById(
-            "source-textarea"
-        ) as HTMLInputElement;
-        textarea.select()!;
-        // tsvscode.setState({ answer, count });
     }
 </script>
 
@@ -86,41 +182,106 @@
     <h1>Text Case Converter</h1>
     <br /><br />
 
-    <div class="options-div">
-        <p class="multiply-symbol">Length</p>
-
-        <input class="countInput" type="number" bind:value={count} min="0" on:change={onGenerate}/>
-
-        <p class="multiply-symbol">Type</p>
-       
-        <select bind:value={selected} on:change={onGenerate}>
-            {#each questions as question}
-                <option value={question} on:change={() => {}}>
-                    {question.text}
-                </option>
-            {/each}
-        </select>
+    <div>
+        <button
+            class="regular-button margin-for-textarea-below"
+            on:click={() => {
+                currentCase = "original-text";
+                changeOutput();
+            }}>Original text</button
+        >
+        <button
+            class="regular-button margin-for-textarea-below"
+            on:click={() => {
+                currentCase = "sentence-case";
+                changeOutput();
+            }}>Sentence Case</button
+        >
+        <button
+            class="regular-button margin-for-textarea-below"
+            on:click={() => {
+                currentCase = "lower-case";
+                changeOutput();
+            }}>lower case</button
+        >
+        <button
+            class="regular-button margin-for-textarea-below"
+            on:click={() => {
+                currentCase = "upper-case";
+                changeOutput();
+            }}>UPPER CASE</button
+        >
+        <button
+            class="regular-button margin-for-textarea-below"
+            on:click={() => {
+                currentCase = "title-case";
+                changeOutput();
+            }}>Title Case</button
+        >
+        <button
+            class="regular-button margin-for-textarea-below"
+            on:click={() => {
+                currentCase = "camel-case";
+                changeOutput();
+            }}>camelCase</button
+        >
+        <button
+            class="regular-button margin-for-textarea-below"
+            on:click={() => {
+                currentCase = "snake-case";
+                changeOutput();
+            }}>snake_case</button
+        >
+        <button
+            class="long-button margin-for-textarea-below"
+            on:click={() => {
+                currentCase = "constant-case";
+                changeOutput();
+            }}>CONSTANT_CASE</button
+        >
+        <button
+            class="regular-button margin-for-textarea-below"
+            on:click={() => {
+                currentCase = "kebab-case";
+                changeOutput();
+            }}>kebab-case</button
+        >
+        <button
+            class="regular-button margin-for-textarea-below"
+            on:click={() => {
+                currentCase = "cobol-case";
+                changeOutput();
+            }}>COBOL-CASE</button
+        >
+        <button
+            class="regular-button margin-for-textarea-below"
+            on:click={() => {
+                currentCase = "train-case";
+                changeOutput();
+            }}>Train-Case</button
+        >
     </div>
-    <br />
 
-    <p class="padding-for-textarea-below">Output</p>
+    <br /><br />
+
+    <p class="padding-for-textarea-below">String</p>
 
     <button
         class="short-button margin-for-textarea-below margin-right"
-        on:click={clearGeneratedUUIDS}>Clear</button
+        on:click={() => {}}>Clear</button
     >
-    <button class="short-button margin-for-textarea-below" on:click={copySource}
+    <button class="short-button margin-for-textarea-below" on:click={() => {}}
         >Copy</button
     >
-    <button class="medium-button " on:click={onGenerate}>Refresh</button>
+    <button class="medium-button " on:click={() => {}}>Refresh</button>
     <textarea
-        readonly
         name="yo?"
         id="source-textarea"
+        placeholder="Add string here"
         cols="5"
         rows="20"
         type="text"
-        value={answer}
+        bind:value={convertedText}
     />
 
     <br />
@@ -135,12 +296,12 @@
         border-radius: 5px;
     }
 
-    input {
+    /* input {
         outline-style: solid;
         outline-color: #191a21;
         outline-width: 1px;
         border-radius: 5px;
-    }
+    } */
     .padding-for-whole-page {
         margin: 40px;
     }
@@ -165,24 +326,21 @@
         border-radius: 5px;
     }
 
-    .countInput {
+    .regular-button {
         width: 100px;
-        margin-right: 20px;
+        margin-right: 10px;
+        border-radius: 5px;
     }
 
-    .multiply-symbol {
-        margin-right: 15px;
-        line-height: 30px;
+    .long-button {
+        width: 140px;
+        margin-right: 10px;
+        border-radius: 5px;
     }
 
-    select {
-        color-scheme: dark;
-        width: 100px;
-    }
-
-    .options-div {
+    /* .options-div {
         display: flex;
         align-content: center;
         height: 30px;
-    }
+    } */
 </style>
