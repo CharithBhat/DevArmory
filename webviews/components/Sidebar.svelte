@@ -182,6 +182,19 @@
             >
                 <p class="indent-left">Text Case Converter</p>
             </li>
+
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onTextEscaper",
+                        value: "notusingthisvalue",
+                    });
+                }}
+            >
+                <p class="indent-left">Text Escaper/Unescaper</p>
+            </li>
         </ul>
     </li>
     <!-- converters item here-->
@@ -214,7 +227,6 @@
             >
                 <p class="indent-left">Hello</p>
             </li>
-
             <!-- svelte-ignore missing-declaration -->
             <li
                 class="addThisClassForPointer"

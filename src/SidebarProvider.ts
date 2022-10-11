@@ -9,6 +9,7 @@ import { UrlPanel } from "./UrlPanel";
 import { UuidGeneratorPanel } from "./UuidGeneratorPanel";
 import { LoremIpsumPanel } from "./LoremIpsumPanel";
 import { TextCaseConverterPanel } from "./TextCaseConverterPanel";
+import { TextEscaperPanel } from "./TextEscaperPanel";
 
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
@@ -110,6 +111,13 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
         case "onTextCaseConverter": {
 
           TextCaseConverterPanel.createOrShow(this._extensionUri);
+
+          break;
+        }
+
+        case "onTextEscaper": {
+
+          TextEscaperPanel.createOrShow(this._extensionUri);
 
           break;
         }
