@@ -3,11 +3,6 @@
 
     let count: number = tsvscode.getState()?.count || 1;
 
-    let uppercaseBoolean: boolean =
-        tsvscode.getState()?.uppercaseBoolean || false;
-
-    let hyphenBoolean: boolean = tsvscode.getState()?.hyphenBoolean || false;
-
     let beltColour: string = tsvscode.getState()?.beltColour || "Paragraph";
     let skills: string[] = tsvscode.getState()?.skills || [];
 
@@ -16,29 +11,35 @@
         tsvscode.setState({
             answer,
             count,
-            uppercaseBoolean,
-            hyphenBoolean,
             skills,
             beltColour,
         });
     }
 
     function onGenerate() {
-        let temp: string = "";
-        for (let i = 0; i < count; i++) {
-            temp = create_UUID() + "\n" + temp;
+        // check the  val
+        let stringToAdd: string = "";
+        if (beltColour === "Paragraph") {
+            stringToAdd =
+                "Duo nulla dolores ut diam sanctus stet minim tempor mazim magna nonumy. Invidunt vero quis gubergren vel vero nonummy. Magna feugiat consequat dolor takimata lorem sed eos at sanctus et erat. Stet justo iriure at iriure dolor at sed dolor duis consequat dolor no.";
         }
-        // check for uppeercase
-        if (uppercaseBoolean) {
-            temp = temp.toUpperCase();
+        else if (beltColour === "Sentence"){
+            stringToAdd = "Duo nulla dolores ut diam sanctus stet minim tempor mazim magna nonumy.";
         }
-
-        if (!hyphenBoolean) {
-            temp = temp.replaceAll("-", "");
+        else {
+            stringToAdd = "Lorem";
         }
-
+        let temp: string = answer;
+        for (let i: number = 0; i < count; i++) {
+            temp = temp + stringToAdd;
+        }
         answer = temp;
-        tsvscode.setState({ answer, count });
+        // tsvscode.setState({
+        //     answer,
+        //     count,
+        //     skills,
+        //     beltColour,
+        // });
     }
 
     function create_UUID() {
@@ -84,7 +85,6 @@
 <div class="padding-for-whole-page">
     <h1>Lorem Ipsum Generator</h1>
     <br /><br />
-
 
     <div class="options-div">
         <p class="multiply-symbol">Length</p>
