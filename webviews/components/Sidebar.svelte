@@ -156,7 +156,15 @@
                     current = "url";
                 }}
             >
-                <p class="indent-left">URL</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={urlIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">URL</p>
+            </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -172,7 +180,15 @@
                     current = "jsonFormatter";
                 }}
             >
-                <p class="indent-left">Json Formatter</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={jsonIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">JSON</p>
+            </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -188,7 +204,15 @@
                     current = "sqlFormatter";
                 }}
             >
-                <p class="indent-left">Sql Formatter</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={sqlIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">SQL</p>
+            </span>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -203,7 +227,15 @@
                     current = "xmlFormatter";
                 }}
             >
-                <p class="indent-left">Xml Formatter</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={xmlIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">XML</p>
+            </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -219,7 +251,15 @@
                     current = "UuidGenerator";
                 }}
             >
-                <p class="indent-left">UUID Generator</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={uuidIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">UUID</p>
+            </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -235,7 +275,15 @@
                     current = "LoremIpsumGenerator";
                 }}
             >
-                <p class="indent-left">Lorem Ipsum Generator</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={loremIpsumIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">Lorem Ipsum</p>
+            </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -251,7 +299,15 @@
                     current = "TextCaseConverter";
                 }}
             >
-                <p class="indent-left">Text Case Converter</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={caseConverterIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">Text Case</p>
+            </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -267,7 +323,15 @@
                     current = "TextEscaper";
                 }}
             >
-                <p class="indent-left">Text Escaper/Unescaper</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={escaperIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">Text Escaper</p>
+            </span>
             </li>
         </ul>
     </li>
