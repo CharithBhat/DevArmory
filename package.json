@@ -1,13 +1,36 @@
 {
   "name": "devarmory",
   "displayName": "DevArmory",
-  "description": "Build faster with all your frequently used tools in one extension.",
+  "description": "Build Faster With Your Dev Switch Blade.",
   "version": "0.0.1",
+  "publisher": "Charith Bhat",
+  "author": {
+    "name": "Charith Bhat"
+  },
+  "license": "GPLv3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CharithBhat/DevArmory"
+  },
+  "keywords": [
+    "DevArmory",
+    "Dev Armory",
+    "dev armory",
+    "devarmory",
+    "devarmor",
+    "armor",
+    "dev armor",
+    "Dev Armor",
+    "Dev armor"
+  ],
   "engines": {
     "vscode": "^1.71.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Formatters",
+    "Linters",
+    "Snippets"
   ],
   "activationEvents": [
     "onView:devarmory-sidebar"

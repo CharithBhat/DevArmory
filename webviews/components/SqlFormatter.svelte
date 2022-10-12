@@ -32,7 +32,7 @@
 </script>
 
 <div class="padding-for-whole-page">
-    <h1>Sql Formatter</h1>
+    <h1>SQL Formatter</h1>
     <br />
 
     <div class="grid-container">

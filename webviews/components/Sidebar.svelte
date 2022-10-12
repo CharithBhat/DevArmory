@@ -23,6 +23,13 @@
         });
     }
 
+    function unselectButton(){
+        let textarea = document.getElementById(
+            "dummy-button"
+        ) as HTMLInputElement;
+        textarea.select()!;
+    }
+
     let current = tsvscode.getState().current || "";
 
     // variables for images
@@ -131,16 +138,15 @@
                     current = "base64";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={base64Icon}
-                    alt="damn"
-                />
-                <p style="display: inline;">Base64</p>
-            </span>
-              
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={base64Icon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">Base64</p>
+                </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -156,15 +162,15 @@
                     current = "url";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={urlIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">URL</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={urlIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">URL</p>
+                </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -180,15 +186,15 @@
                     current = "jsonFormatter";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={jsonIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">JSON</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={jsonIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">JSON</p>
+                </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -204,15 +210,15 @@
                     current = "sqlFormatter";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={sqlIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">SQL</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={sqlIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">SQL</p>
+                </span>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -227,15 +233,15 @@
                     current = "xmlFormatter";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={xmlIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">XML</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={xmlIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">XML</p>
+                </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -251,15 +257,15 @@
                     current = "UuidGenerator";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={uuidIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">UUID</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={uuidIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">UUID</p>
+                </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -275,15 +281,15 @@
                     current = "LoremIpsumGenerator";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={loremIpsumIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">Lorem Ipsum</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={loremIpsumIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">Lorem Ipsum</p>
+                </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -299,15 +305,15 @@
                     current = "TextCaseConverter";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={caseConverterIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">Text Case</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={caseConverterIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">Text Case</p>
+                </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -323,15 +329,15 @@
                     current = "TextEscaper";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={escaperIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">Text Escaper</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={escaperIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">Text Escaper</p>
+                </span>
             </li>
         </ul>
     </li>
@@ -373,15 +379,15 @@
                     current = "text-escaper-inside";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={escaperIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">Text Escaper</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={escaperIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">Text Escaper</p>
+                </span>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -397,15 +403,15 @@
                     current = "text-converter-inside";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={caseConverterIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">Text Case Converter</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={caseConverterIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">Text Case</p>
+                </span>
             </li>
         </ul>
     </li>
@@ -450,15 +456,15 @@
                     current = "base64-encoder-inside";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={base64Icon}
-                    alt="damn"
-                />
-                <p style="display: inline;">Base64</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={base64Icon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">Base64</p>
+                </span>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -473,15 +479,15 @@
                     current = "html-encoder-inside";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={htmlIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">HTML</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={htmlIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">HTML</p>
+                </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -497,15 +503,15 @@
                     current = "url-encoder-inside";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={urlIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">URL</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={urlIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">URL</p>
+                </span>
             </li>
         </ul>
     </li>
@@ -550,15 +556,15 @@
                     current = "json-formatter-inside";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={jsonIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">JSON</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={jsonIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">JSON</p>
+                </span>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -574,15 +580,15 @@
                     current = "sql-formatter-inside";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={sqlIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">SQL</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={sqlIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">SQL</p>
+                </span>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -598,15 +604,15 @@
                     current = "xml-formatter-inside";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={xmlIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">XML</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={xmlIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">XML</p>
+                </span>
             </li>
         </ul>
     </li>
@@ -651,15 +657,15 @@
                     current = "lorem-ipsum-generator-inside";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={loremIpsumIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">Lorem Ipsum</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={loremIpsumIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">Lorem Ipsum</p>
+                </span>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -675,15 +681,15 @@
                     current = "uuid-generator-inside";
                 }}
             >
-            <span>
-                <img
-                    class="nested-sidebar-icons indent-left"
-                    style="vertical-align: middle;"
-                    src={uuidIcon}
-                    alt="damn"
-                />
-                <p style="display: inline;">UUID</p>
-            </span>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={uuidIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">UUID</p>
+                </span>
             </li>
         </ul>
     </li>
@@ -693,6 +699,7 @@
 <!-- helmet-pointy -->
 
 <svg
+id="logo"
     class="huge-logo"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -716,13 +723,14 @@
 >
     DevArmory
 </h1>
-<br /><br />
-
+<!-- <br /><br /> -->
+<br><br>
 <!-- remove this form -->
 
 <div class="want-some-margin">
     <form>
         <input
+        id="switch-blade"
             readonly
             type="text"
             placeholder="Your Dev Switch Blade"
@@ -731,17 +739,14 @@
     </form>
 
     <!-- svelte-ignore missing-declaration -->
-    <button
-        class="margin-please"
-        on:click={() => {
-            tsvscode.postMessage({
-                type: "onInfo",
-                value: "info message",
-            });
-        }}>click me</button
-    >
+    <!-- <a href="https://github.com/CharithBhat/DevArmory/blob/main/README.md">
+        <button id="read-me-button" class="margin-please" on:click={unselectButton}>Read Me</button>
+    </a>
+
+    <button id="dummy-button" style="background-color: var(--vscode-sidebar-background);">yo</button> -->
+
     <!-- svelte-ignore missing-declaration -->
-    <button
+    <!-- <button
         class="margin-please"
         on:click={() => {
             tsvscode.postMessage({
@@ -749,7 +754,7 @@
                 value: "Error message",
             });
         }}>click me for error</button
-    >
+    > -->
 
     <br /><br />
 </div>

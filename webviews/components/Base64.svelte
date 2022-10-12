@@ -57,7 +57,7 @@
     <h1>Base64 Encoder / Decoder</h1>
     <br />
 
-    <p class="padding-for-textarea-below">Source (Input/Output)</p>
+    <p class="padding-for-textarea-below">Plain Text (Input/Output)</p>
 
     <button
         class="short-button margin-for-textarea-below margin-right"

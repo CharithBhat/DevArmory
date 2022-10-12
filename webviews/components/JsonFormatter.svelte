@@ -36,7 +36,7 @@
 </script>
 
 <div class="padding-for-whole-page">
-    <h1>Json Formatter</h1>
+    <h1>JSON Formatter</h1>
     <br />
 
     <div class="grid-container">
