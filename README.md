@@ -18,11 +18,11 @@ Or you can also install through this link. *will have the link here*
 ## Screenshots
 <!-- case converter -->
 <p align="center">
-    <a  target='_blank'><img src='https://i.postimg.cc/PxFhY6c3/image.png' border='0' alt='image' height="300"/></a>   
+    <a ><img src="https://i.imgur.com/x6VqqgC.png" title="source: imgur.com" /></a> 
 </p>
 <!-- text escaper -->
 <p align="center">
-    <a href="https://imgur.com/UcOVGts"><img src="https://i.imgur.com/UcOVGts.png" title="source: imgur.com" height="300"/></a>
+    <a><img src="https://i.imgur.com/UcOVGts.png" title="source: imgur.com" height="300"/></a>
 <p>
 <!-- need to add sizes from here -->
 <!-- html encoder -->
