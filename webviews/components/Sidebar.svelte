@@ -846,10 +846,6 @@ id="logo"
         padding: 0 20px;
     }
 
-    .margin-please {
-        margin-top: 4px;
-    }
-
     .indent-left {
         margin-left: 54px;
     }
