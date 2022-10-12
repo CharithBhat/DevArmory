@@ -42,9 +42,33 @@
 
     let htmlIcon: string =
         "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/html-icon.svg";
-        
-    let textsIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/text-icon.svg";
+
+    let base64Icon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/base64-icon.svg";
+
+    let urlIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/url-icon.svg";
+
+    let jsonIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/json-icon.svg";
+
+    let sqlIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/sql-icon.svg";
+
+    let xmlIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/xml-icon.svg";
+
+    let uuidIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/uuid-icon.svg";
+
+    let loremIpsumIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/lorem-ipsum-icon.svg";
+
+    let caseConverterIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/text-2-icon.svg";
+
+    let escaperIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/escaper-icon.svg";
 </script>
 
 <!-- Responsible for webview sidebar items -->
@@ -107,7 +131,16 @@
                     current = "base64";
                 }}
             >
-                <p class="indent-left">Base64</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={base64Icon}
+                    alt="damn"
+                />
+                <p style="display: inline;">Base64</p>
+            </span>
+              
             </li>
 
             <!-- svelte-ignore missing-declaration -->
