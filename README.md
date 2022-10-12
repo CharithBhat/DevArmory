@@ -18,7 +18,7 @@ Or you can also install through this link. *will have the link here*
 ## Screenshots
 <!-- case converter -->
 <p align="center">
-    <a href='https://postimg.cc/1n6LZKyw' target='_blank'><img src='https://i.postimg.cc/PxFhY6c3/image.png' border='0' alt='image' height="300"/></a>   
+    <a  target='_blank'><img src='https://i.postimg.cc/PxFhY6c3/image.png' border='0' alt='image' height="300"/></a>   
 </p>
 <!-- text escaper -->
 <p align="center">
