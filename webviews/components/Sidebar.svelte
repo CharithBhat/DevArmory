@@ -1,8 +1,8 @@
 <script lang="ts">
     // variables for webview sidebar
     let allBoolean: boolean = tsvscode.getState().allBoolean || false;
-    let convertersBoolean: boolean =
-        tsvscode.getState()?.convertersBoolean || false;
+    let textConvertersBoolean: boolean =
+        tsvscode.getState()?.textConvertersBoolean || false;
     let encodersBoolean: boolean =
         tsvscode.getState()?.encodersBoolean || false;
     let formattersBoolean: boolean =
@@ -14,7 +14,7 @@
     $: {
         tsvscode.setState({
             allBoolean,
-            convertersBoolean,
+            textConvertersBoolean,
             encodersBoolean,
             formattersBoolean,
             generatorsBoolean,
@@ -225,54 +225,70 @@
             </li>
         </ul>
     </li>
+
+    <!--  
+
+        NEW secTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        -->
     <!-- converters item here-->
     <li>
         <span
-            class="caret {current === 'converters' ? 'selected' : ''}"
-            class:caret-down={convertersBoolean}
+            class="caret {current === 'textConverters' ? 'selected' : ''}"
+            class:caret-down={textConvertersBoolean}
             on:click={() => {
-                convertersBoolean = !convertersBoolean;
-                current = "converters";
+                textConvertersBoolean = !textConvertersBoolean;
+                current = "textConverters";
             }}
             ><img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
                 src={convertersIcon}
                 alt="damn"
-            /> Converters</span
+            />Text Converters</span
         >
 
-        <ul class="nested" class:active={convertersBoolean}>
+        <ul class="nested" class:active={textConvertersBoolean}>
             <!-- svelte-ignore missing-declaration -->
 
             <li
-                class="addThisClassForPointer {current === 'html-inside'
+                class="addThisClassForPointer {current === 'text-escaper-inside'
                     ? 'selected'
                     : ''}"
                 on:click={() => {
                     tsvscode.postMessage({
-                        type: "onHelloWorld",
+                        type: "onTextEscaper",
                         value: "valueForOnHelloWorld",
                     });
-                    current = "html-inside";
+                    current = "text-escaper-inside";
                 }}
             >
-                <p class="indent-left">HTML</p>
+                <p class="indent-left">Text Escaper</p>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
-                class="addThisClassForPointer"
+                class="addThisClassForPointer {current ===
+                'text-converter-inside'
+                    ? 'selected'
+                    : ''}"
                 on:click={() => {
                     tsvscode.postMessage({
-                        type: "onBase64",
+                        type: "onTextCaseConverter",
                         value: "notusingthisvalue",
                     });
+                    current = "text-converter-inside";
                 }}
             >
-                <p class="indent-left">Base64</p>
+                <p class="indent-left">Text Case Converter</p>
             </li>
         </ul>
     </li>
+
+    <!--  
+
+        NEW secTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        -->
 
     <!-- encoders items here -->
 
@@ -296,36 +312,59 @@
             <!-- svelte-ignore missing-declaration -->
 
             <li
-                class="addThisClassForPointer {current === 'base64-encoder'
-                    ? 'selected'
-                    : ''}"
-                on:click={() => {
-                    tsvscode.postMessage({
-                        type: "onHelloWorld",
-                        value: "valueForOnHelloWorld",
-                    });
-                    current = "base64-encoder";
-                }}
-            >
-                <p class="indent-left">HTML</p>
-            </li>
-            <!-- svelte-ignore missing-declaration -->
-            <li
-                class="addThisClassForPointer {current === 'base-encoder'
+                class="addThisClassForPointer {current ===
+                'base64-encoder-inside'
                     ? 'selected'
                     : ''}"
                 on:click={() => {
                     tsvscode.postMessage({
                         type: "onBase64",
-                        value: "notusingthisvalue",
+                        value: "valueForOnHelloWorld",
                     });
-                    current = "base-encoder";
+                    current = "base64-encoder-inside";
                 }}
             >
                 <p class="indent-left">Base64</p>
             </li>
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current === 'html-encoder-inside'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onHTML",
+                        value: "notusingthisvalue",
+                    });
+                    current = "html-encoder-inside";
+                }}
+            >
+                <p class="indent-left">HTML</p>
+            </li>
+
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current === 'url-encoder-inside'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onURL",
+                        value: "notusingthisvalue",
+                    });
+                    current = "url-encoder-inside";
+                }}
+            >
+                <p class="indent-left">URL</p>
+            </li>
         </ul>
     </li>
+
+    <!--  
+
+        NEW secTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        -->
 
     <!-- formatters items here -->
 
@@ -342,40 +381,119 @@
                 style="vertical-align: middle;"
                 src={formattersIcon}
                 alt="damn"
-            /> Encoders</span
+            /> Formatters</span
         >
 
         <ul class="nested" class:active={formattersBoolean}>
             <!-- svelte-ignore missing-declaration -->
 
             <li
-                class="addThisClassForPointer {current === 'base64-encoder'
+                class="addThisClassForPointer {current ===
+                'json-formatter-inside'
                     ? 'selected'
                     : ''}"
                 on:click={() => {
                     tsvscode.postMessage({
-                        type: "onHelloWorld",
+                        type: "onJsonFormatter",
                         value: "valueForOnHelloWorld",
                     });
-                    current = "base64-encoder";
+                    current = "json-formatter-inside";
                 }}
             >
-                <p class="indent-left">HTML</p>
+                <p class="indent-left">Json</p>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
-                class="addThisClassForPointer {current === 'base-encoder'
+                class="addThisClassForPointer {current ===
+                'sql-formatter-inside'
                     ? 'selected'
                     : ''}"
                 on:click={() => {
                     tsvscode.postMessage({
-                        type: "onBase64",
-                        value: "notusingthisvalue",
+                        type: "onSqlFormatter",
+                        value: "valueForOnHelloWorld",
                     });
-                    current = "base-encoder";
+                    current = "sql-formatter-inside";
                 }}
             >
-                <p class="indent-left">Base64</p>
+                <p class="indent-left">SQL</p>
+            </li>
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current ===
+                'xml-formatter-inside'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onXmlFormatter",
+                        value: "valueForOnHelloWorld",
+                    });
+                    current = "xml-formatter-inside";
+                }}
+            >
+                <p class="indent-left">XML</p>
+            </li>
+        </ul>
+    </li>
+
+    <!--  
+
+        NEW secTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        -->
+
+    <!-- Generators items here -->
+
+    <li>
+        <span
+            class="caret {current === 'generators' ? 'selected' : ''}"
+            class:caret-down={generatorsBoolean}
+            on:click={() => {
+                generatorsBoolean = !generatorsBoolean;
+                current = "generators";
+            }}
+            ><img
+                class="sidebar-icons"
+                style="vertical-align: middle;"
+                src={generatorsIcon}
+                alt="damn"
+            /> Generators</span
+        >
+
+        <ul class="nested" class:active={generatorsBoolean}>
+            <!-- svelte-ignore missing-declaration -->
+
+            <li
+                class="addThisClassForPointer {current ===
+                'lorem-ipsum-generator-inside'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onLoremIpsumGenerator",
+                        value: "valueForOnHelloWorld",
+                    });
+                    current = "lorem-ipsum-generator-inside";
+                }}
+            >
+                <p class="indent-left">Lorem Ipsum</p>
+            </li>
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current ===
+                'uuid-generator-inside'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onUuidGenerator",
+                        value: "valueForOnHelloWorld",
+                    });
+                    current = "uuid-generator-inside";
+                }}
+            >
+                <p class="indent-left">UUID</p>
             </li>
         </ul>
     </li>
