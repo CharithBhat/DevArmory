@@ -39,6 +39,10 @@
         "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/formatter-icon.svg";
     let generatorsIcon: string =
         "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/generator-icon.svg";
+
+    let htmlIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/html-icon.svg";
+        
     let textsIcon: string =
         "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/text-icon.svg";
 </script>
@@ -78,7 +82,16 @@
                     current = "html";
                 }}
             >
-                <p class="indent-left">HTML</p>
+                <span>
+                    <img
+                        class="nested-sidebar-icons indent-left"
+                        style="vertical-align: middle;"
+                        src={htmlIcon}
+                        alt="damn"
+                    />
+                    <p style="display: inline;">HTML</p>
+                </span>
+                <!-- <p class="indent-left">HTML</p> -->
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -305,7 +318,7 @@
                 style="vertical-align: middle;"
                 src={encodersIcon}
                 alt="damn"
-            /> Encoders</span
+            />Encoders</span
         >
 
         <ul class="nested" class:active={encodersBoolean}>
@@ -381,7 +394,7 @@
                 style="vertical-align: middle;"
                 src={formattersIcon}
                 alt="damn"
-            /> Formatters</span
+            />Formatters</span
         >
 
         <ul class="nested" class:active={formattersBoolean}>
@@ -458,7 +471,7 @@
                 style="vertical-align: middle;"
                 src={generatorsIcon}
                 alt="damn"
-            /> Generators</span
+            />Generators</span
         >
 
         <ul class="nested" class:active={generatorsBoolean}>
@@ -624,6 +637,9 @@
         /* margin-left: 8px; */
     }
 
+    .nested-sidebar-icons {
+        padding-right: 10px;
+    }
     .sidebar-icons {
         padding-right: 10px;
         padding-bottom: 5px;
