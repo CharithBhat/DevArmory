@@ -533,8 +533,9 @@
 <div class="want-some-margin">
     <form>
         <input
+            readonly
             type="text"
-            placeholder="Might Remove This"
+            placeholder="Your Dev Switch Blade"
             class="placeholder-whitener"
         />
     </form>
@@ -652,7 +653,7 @@
     }
 
     .indent-left {
-        margin-left: 37px;
+        margin-left: 44px;
     }
 
     .selected {
@@ -662,5 +663,9 @@
     .placeholder-whitener::placeholder {
         color: white;
         text-align: center;
+    }
+
+    p {
+        white-space: nowrap;
     }
 </style>
