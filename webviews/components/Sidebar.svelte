@@ -62,13 +62,13 @@
         "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/uuid-icon.svg";
 
     let loremIpsumIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/lorem-ipsum-icon.svg";
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/text-converter-icon.svg";
 
     let caseConverterIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/text-2-icon.svg";
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/text-icon.svg";
 
     let escaperIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/escaper-icon.svg";
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/lorem-icon.svg";
 </script>
 
 <!-- Responsible for webview sidebar items -->
@@ -373,7 +373,15 @@
                     current = "text-escaper-inside";
                 }}
             >
-                <p class="indent-left">Text Escaper</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={escaperIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">Text Escaper</p>
+            </span>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -389,7 +397,15 @@
                     current = "text-converter-inside";
                 }}
             >
-                <p class="indent-left">Text Case Converter</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={caseConverterIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">Text Case Converter</p>
+            </span>
             </li>
         </ul>
     </li>
@@ -434,7 +450,15 @@
                     current = "base64-encoder-inside";
                 }}
             >
-                <p class="indent-left">Base64</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={base64Icon}
+                    alt="damn"
+                />
+                <p style="display: inline;">Base64</p>
+            </span>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -449,7 +473,15 @@
                     current = "html-encoder-inside";
                 }}
             >
-                <p class="indent-left">HTML</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={htmlIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">HTML</p>
+            </span>
             </li>
 
             <!-- svelte-ignore missing-declaration -->
@@ -465,7 +497,15 @@
                     current = "url-encoder-inside";
                 }}
             >
-                <p class="indent-left">URL</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={urlIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">URL</p>
+            </span>
             </li>
         </ul>
     </li>
@@ -510,7 +550,15 @@
                     current = "json-formatter-inside";
                 }}
             >
-                <p class="indent-left">Json</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={jsonIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">JSON</p>
+            </span>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -526,7 +574,15 @@
                     current = "sql-formatter-inside";
                 }}
             >
-                <p class="indent-left">SQL</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={sqlIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">SQL</p>
+            </span>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -542,7 +598,15 @@
                     current = "xml-formatter-inside";
                 }}
             >
-                <p class="indent-left">XML</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={xmlIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">XML</p>
+            </span>
             </li>
         </ul>
     </li>
@@ -587,7 +651,15 @@
                     current = "lorem-ipsum-generator-inside";
                 }}
             >
-                <p class="indent-left">Lorem Ipsum</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={loremIpsumIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">Lorem Ipsum</p>
+            </span>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -603,7 +675,15 @@
                     current = "uuid-generator-inside";
                 }}
             >
-                <p class="indent-left">UUID</p>
+            <span>
+                <img
+                    class="nested-sidebar-icons indent-left"
+                    style="vertical-align: middle;"
+                    src={uuidIcon}
+                    alt="damn"
+                />
+                <p style="display: inline;">UUID</p>
+            </span>
             </li>
         </ul>
     </li>
@@ -766,7 +846,7 @@
     }
 
     .indent-left {
-        margin-left: 44px;
+        margin-left: 54px;
     }
 
     .selected {
@@ -779,6 +859,10 @@
     }
 
     p {
+        white-space: nowrap;
+    }
+
+    span {
         white-space: nowrap;
     }
 </style>
