@@ -3,19 +3,44 @@
     let allBoolean: boolean = tsvscode.getState().allBoolean || false;
     let convertersBoolean: boolean =
         tsvscode.getState()?.convertersBoolean || false;
-    let generatorsBoolean: boolean = false;
-    let graphicsBoolean: boolean = false;
-    let codersBoolean: boolean = false;
+    let encodersBoolean: boolean =
+        tsvscode.getState()?.encodersBoolean || false;
+    let formattersBoolean: boolean =
+        tsvscode.getState()?.formattersBoolean || false;
+    let textBoolean: boolean = tsvscode.getState()?.textBoolean || false;
+    let generatorsBoolean: boolean =
+        tsvscode.getState()?.generatorsBoolean || false;
 
     $: {
-        tsvscode.setState({ allBoolean, convertersBoolean, current });
+        tsvscode.setState({
+            allBoolean,
+            convertersBoolean,
+            encodersBoolean,
+            formattersBoolean,
+            generatorsBoolean,
+            textBoolean,
+            current,
+        });
     }
 
     let current = tsvscode.getState().current || "";
 
     // variables for images
-    let activityImage: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/activity.svg";
+    let homeIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/home-hollow.svg";
+
+    let convertersIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/converter-icon.svg";
+
+    let encodersIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/encoder-icon.svg";
+
+    let formattersIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/formatter-icon.svg";
+    let generatorsIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/generator-icon.svg";
+    let textsIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/text-icon.svg";
 </script>
 
 <!-- Responsible for webview sidebar items -->
@@ -24,16 +49,16 @@
     <!-- all item here -->
     <li>
         <span
-            class="caret {current === 'booger' ? 'selected' : ''}"
+            class="caret {current === 'all' ? 'selected' : ''}"
             class:caret-down={allBoolean}
             on:click={() => {
                 allBoolean = !allBoolean;
-                current = "booger";
+                current = "all";
             }}
             ><img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
-                src={activityImage}
+                src={homeIcon}
                 alt="damn"
             />All Tools</span
         >
@@ -42,7 +67,7 @@
             <!-- svelte-ignore missing-declaration -->
 
             <li
-                class="addThisClassForPointer {current === 'all'
+                class="addThisClassForPointer {current === 'html'
                     ? 'selected'
                     : ''}"
                 on:click={() => {
@@ -50,7 +75,7 @@
                         type: "onHTML",
                         value: "valueForOnHelloWorld",
                     });
-                    current = "all";
+                    current = "html";
                 }}
             >
                 <p class="indent-left">HTML</p>
@@ -203,15 +228,16 @@
     <!-- converters item here-->
     <li>
         <span
-            class="caret"
+            class="caret {current === 'converters' ? 'selected' : ''}"
             class:caret-down={convertersBoolean}
             on:click={() => {
                 convertersBoolean = !convertersBoolean;
+                current = "converters";
             }}
             ><img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
-                src={activityImage}
+                src={convertersIcon}
                 alt="damn"
             /> Converters</span
         >
@@ -220,15 +246,18 @@
             <!-- svelte-ignore missing-declaration -->
 
             <li
-                class="addThisClassForPointer"
+                class="addThisClassForPointer {current === 'html-inside'
+                    ? 'selected'
+                    : ''}"
                 on:click={() => {
                     tsvscode.postMessage({
                         type: "onHelloWorld",
                         value: "valueForOnHelloWorld",
                     });
+                    current = "html-inside";
                 }}
             >
-                <p class="indent-left">Hello</p>
+                <p class="indent-left">HTML</p>
             </li>
             <!-- svelte-ignore missing-declaration -->
             <li
@@ -244,12 +273,119 @@
             </li>
         </ul>
     </li>
+
+    <!-- encoders items here -->
+
+    <li>
+        <span
+            class="caret {current === 'encoders' ? 'selected' : ''}"
+            class:caret-down={encodersBoolean}
+            on:click={() => {
+                encodersBoolean = !encodersBoolean;
+                current = "encoders";
+            }}
+            ><img
+                class="sidebar-icons"
+                style="vertical-align: middle;"
+                src={encodersIcon}
+                alt="damn"
+            /> Encoders</span
+        >
+
+        <ul class="nested" class:active={encodersBoolean}>
+            <!-- svelte-ignore missing-declaration -->
+
+            <li
+                class="addThisClassForPointer {current === 'base64-encoder'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onHelloWorld",
+                        value: "valueForOnHelloWorld",
+                    });
+                    current = "base64-encoder";
+                }}
+            >
+                <p class="indent-left">HTML</p>
+            </li>
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current === 'base-encoder'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onBase64",
+                        value: "notusingthisvalue",
+                    });
+                    current = "base-encoder";
+                }}
+            >
+                <p class="indent-left">Base64</p>
+            </li>
+        </ul>
+    </li>
+
+    <!-- formatters items here -->
+
+    <li>
+        <span
+            class="caret {current === 'formatters' ? 'selected' : ''}"
+            class:caret-down={formattersBoolean}
+            on:click={() => {
+                formattersBoolean = !formattersBoolean;
+                current = "formatters";
+            }}
+            ><img
+                class="sidebar-icons"
+                style="vertical-align: middle;"
+                src={formattersIcon}
+                alt="damn"
+            /> Encoders</span
+        >
+
+        <ul class="nested" class:active={formattersBoolean}>
+            <!-- svelte-ignore missing-declaration -->
+
+            <li
+                class="addThisClassForPointer {current === 'base64-encoder'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onHelloWorld",
+                        value: "valueForOnHelloWorld",
+                    });
+                    current = "base64-encoder";
+                }}
+            >
+                <p class="indent-left">HTML</p>
+            </li>
+            <!-- svelte-ignore missing-declaration -->
+            <li
+                class="addThisClassForPointer {current === 'base-encoder'
+                    ? 'selected'
+                    : ''}"
+                on:click={() => {
+                    tsvscode.postMessage({
+                        type: "onBase64",
+                        value: "notusingthisvalue",
+                    });
+                    current = "base-encoder";
+                }}
+            >
+                <p class="indent-left">Base64</p>
+            </li>
+        </ul>
+    </li>
 </ul>
 <!--  -->
 
 <!-- helmet-pointy -->
 
 <svg
+    class="huge-logo"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 306.548 306.548"
@@ -370,14 +506,17 @@
     }
 
     .sidebar-icons {
-        padding-right: 3px;
+        padding-right: 10px;
+        padding-bottom: 5px;
+        /* fill: white;
+        stroke: white; */
     }
 
     .nested > li:hover {
         background-color: #44475a75;
     }
 
-    svg {
+    .huge-logo {
         fill: white;
         height: 150px;
         width: 150px;

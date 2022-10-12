@@ -147,11 +147,13 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 
     // images
 
-    const rocketImageUrl: string = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "media", "rocket.svg")
+    const homeUrl: string = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, "media", "formatter-icon.svg")
     ).toString();
 
-    console.log(rocketImageUrl);
+    console.log(homeUrl);
+    
+
 
 
 
