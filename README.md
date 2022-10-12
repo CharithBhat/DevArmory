@@ -22,7 +22,7 @@ Or you can also install through this link. *will have the link here*
 </p>
 <!-- text escaper -->
 <p align="center">
-    <a><img src="https://i.imgur.com/UcOVGts.png" title="source: imgur.com" height="300"/></a>
+    <a><img src="https://i.imgur.com/UcOVGts.png" title="source: imgur.com"/></a>
 <p>
 <!-- need to add sizes from here -->
 <!-- html encoder -->
@@ -57,9 +57,7 @@ Or you can also install through this link. *will have the link here*
 <p align="center">
     <a href="https://imgur.com/uJAo3Hn"><img src="https://i.imgur.com/uJAo3Hn.png" title="source: imgur.com" /></a>
 <p>
-<p align="center">
-    <a href="https://imgur.com/dgJ2y2q"><img src="https://i.imgur.com/dgJ2y2q.png" title="source: imgur.com" /></a>
-<p>
+
 
 
 ---
