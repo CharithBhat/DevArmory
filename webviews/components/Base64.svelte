@@ -1,3 +1,5 @@
+<!-- --config ./build/node-extension.webpack.config.js -->
+
 <script lang="ts">
     let regularText: string = tsvscode.getState()?.regularText || "";
     let convertedText: string = tsvscode.getState()?.convertedText || "";

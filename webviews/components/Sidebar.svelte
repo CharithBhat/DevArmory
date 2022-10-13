@@ -33,49 +33,49 @@
     let current = tsvscode.getState().current || "";
 
     // variables for images
-    let homeIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/home-hollow.svg";
+    // let homeIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/home-hollow.svg";
 
-    let convertersIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/converter-icon.svg";
+    // let convertersIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/converter-icon.svg";
 
-    let encodersIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/encoder-icon.svg";
+    // let encodersIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/encoder-icon.svg";
 
-    let formattersIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/formatter-icon.svg";
-    let generatorsIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/generator-icon.svg";
+    // let formattersIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/formatter-icon.svg";
+    // let generatorsIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/generator-icon.svg";
 
-    let htmlIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/html-icon.svg";
+    // let htmlIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/html-icon.svg";
 
-    let base64Icon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/base64-icon.svg";
+    // let base64Icon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/base64-icon.svg";
 
-    let urlIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/url-icon.svg";
+    // let urlIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/url-icon.svg";
 
-    let jsonIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/json-icon.svg";
+    // let jsonIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/json-icon.svg";
 
-    let sqlIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/sql-icon.svg";
+    // let sqlIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/sql-icon.svg";
 
-    let xmlIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/xml-icon.svg";
+    // let xmlIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/xml-icon.svg";
 
-    let uuidIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/uuid-icon.svg";
+    // let uuidIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/uuid-icon.svg";
 
-    let loremIpsumIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/text-converter-icon.svg";
+    // let loremIpsumIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/text-converter-icon.svg";
 
-    let caseConverterIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/text-icon.svg";
+    // let caseConverterIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/text-icon.svg";
 
-    let escaperIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/lorem-icon.svg";
+    // let escaperIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/lorem-icon.svg";
 </script>
 
 <!-- Responsible for webview sidebar items -->
@@ -90,12 +90,14 @@
                 allBoolean = !allBoolean;
                 current = "all";
             }}
-            ><img
+            >
+            <!-- <img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
                 src={homeIcon}
                 alt="damn"
-            />All Tools</span
+            /> -->
+            All Tools</span
         >
 
         <ul class="nested" class:active={allBoolean}>
@@ -114,12 +116,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={htmlIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">HTML</p>
                 </span>
                 <!-- <p class="indent-left">HTML</p> -->
@@ -139,12 +141,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={base64Icon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">Base64</p>
                 </span>
             </li>
@@ -163,12 +165,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={urlIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">URL</p>
                 </span>
             </li>
@@ -187,12 +189,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={jsonIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">JSON</p>
                 </span>
             </li>
@@ -211,12 +213,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={sqlIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">SQL</p>
                 </span>
             </li>
@@ -234,12 +236,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={xmlIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">XML</p>
                 </span>
             </li>
@@ -258,12 +260,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={uuidIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">UUID</p>
                 </span>
             </li>
@@ -282,12 +284,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={loremIpsumIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">Lorem Ipsum</p>
                 </span>
             </li>
@@ -306,12 +308,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={caseConverterIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">Text Case</p>
                 </span>
             </li>
@@ -330,12 +332,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={escaperIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">Text Escaper</p>
                 </span>
             </li>
@@ -356,12 +358,14 @@
                 textConvertersBoolean = !textConvertersBoolean;
                 current = "textConverters";
             }}
-            ><img
+            >
+            <!-- <img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
                 src={convertersIcon}
                 alt="damn"
-            />Text Converters</span
+            /> -->
+            Text Converters</span
         >
 
         <ul class="nested" class:active={textConvertersBoolean}>
@@ -380,12 +384,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={escaperIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">Text Escaper</p>
                 </span>
             </li>
@@ -404,12 +408,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={caseConverterIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">Text Case</p>
                 </span>
             </li>
@@ -432,12 +436,14 @@
                 encodersBoolean = !encodersBoolean;
                 current = "encoders";
             }}
-            ><img
+            >
+            <!-- <img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
                 src={encodersIcon}
                 alt="damn"
-            />Encoders</span
+            /> -->
+            Encoders</span
         >
 
         <ul class="nested" class:active={encodersBoolean}>
@@ -457,12 +463,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={base64Icon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">Base64</p>
                 </span>
             </li>
@@ -480,12 +486,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={htmlIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">HTML</p>
                 </span>
             </li>
@@ -504,12 +510,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={urlIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">URL</p>
                 </span>
             </li>
@@ -532,12 +538,14 @@
                 formattersBoolean = !formattersBoolean;
                 current = "formatters";
             }}
-            ><img
+            >
+            <!-- <img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
                 src={formattersIcon}
                 alt="damn"
-            />Formatters</span
+            /> -->
+            Formatters</span
         >
 
         <ul class="nested" class:active={formattersBoolean}>
@@ -557,12 +565,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={jsonIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">JSON</p>
                 </span>
             </li>
@@ -581,12 +589,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={sqlIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">SQL</p>
                 </span>
             </li>
@@ -605,12 +613,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={xmlIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">XML</p>
                 </span>
             </li>
@@ -633,12 +641,14 @@
                 generatorsBoolean = !generatorsBoolean;
                 current = "generators";
             }}
-            ><img
+            >
+            <!-- <img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
                 src={generatorsIcon}
                 alt="damn"
-            />Generators</span
+            /> -->
+            Generators</span
         >
 
         <ul class="nested" class:active={generatorsBoolean}>
@@ -658,12 +668,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={loremIpsumIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">Lorem Ipsum</p>
                 </span>
             </li>
@@ -682,12 +692,12 @@
                 }}
             >
                 <span>
-                    <img
+                    <!-- <img
                         class="nested-sidebar-icons indent-left"
                         style="vertical-align: middle;"
                         src={uuidIcon}
                         alt="damn"
-                    />
+                    /> -->
                     <p style="display: inline;">UUID</p>
                 </span>
             </li>
@@ -698,7 +708,7 @@
 
 <!-- helmet-pointy -->
 
-<svg
+<!-- <svg
 id="logo"
     class="huge-logo"
     version="1.1"
@@ -715,7 +725,7 @@ id="logo"
             d="m132.634,136.733c0.747,5.889 5.757,10.304 11.694,10.304h17.893c5.937,0 10.947-4.415 11.694-10.304l13.094-103.248c0.374-2.95-0.745-5.893-2.984-7.85l-28.274-24.705c-0.709-0.62-1.593-0.93-2.477-0.93s-1.768,0.31-2.477,0.93l-28.273,24.705c-2.239,1.957-3.358,4.9-2.984,7.85l13.094,103.248z"
         />
     </g>
-</svg>
+</svg> -->
 
 <h1
     style="text-align: center

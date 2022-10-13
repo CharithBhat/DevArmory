@@ -147,11 +147,11 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 
     // images
 
-    const homeUrl: string = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "media", "lorem-icon.svg")
-    ).toString();
+    // const homeUrl: string = webview.asWebviewUri(
+    //   vscode.Uri.joinPath(this._extensionUri, "media", "lorem-icon.svg")
+    // ).toString();
 
-    console.log(homeUrl);
+    // console.log(homeUrl);
     
 
 
