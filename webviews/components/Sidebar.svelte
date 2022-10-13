@@ -10,6 +10,7 @@
     let textBoolean: boolean = tsvscode.getState()?.textBoolean || false;
     let generatorsBoolean: boolean =
         tsvscode.getState()?.generatorsBoolean || false;
+    let current = tsvscode.getState()?.current || "";
 
     $: {
         tsvscode.setState({
@@ -23,14 +24,12 @@
         });
     }
 
-    function unselectButton(){
+    function unselectButton() {
         let textarea = document.getElementById(
             "dummy-button"
         ) as HTMLInputElement;
         textarea.select()!;
     }
-
-    let current = tsvscode.getState().current || "";
 
     // variables for images
     // let homeIcon: string =
@@ -90,7 +89,7 @@
                 allBoolean = !allBoolean;
                 current = "all";
             }}
-            >
+        >
             <!-- <img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
@@ -358,7 +357,7 @@
                 textConvertersBoolean = !textConvertersBoolean;
                 current = "textConverters";
             }}
-            >
+        >
             <!-- <img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
@@ -436,7 +435,7 @@
                 encodersBoolean = !encodersBoolean;
                 current = "encoders";
             }}
-            >
+        >
             <!-- <img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
@@ -538,7 +537,7 @@
                 formattersBoolean = !formattersBoolean;
                 current = "formatters";
             }}
-            >
+        >
             <!-- <img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
@@ -641,7 +640,7 @@
                 generatorsBoolean = !generatorsBoolean;
                 current = "generators";
             }}
-            >
+        >
             <!-- <img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
@@ -734,13 +733,13 @@ id="logo"
     DevArmory
 </h1>
 <!-- <br /><br /> -->
-<br><br>
+<br /><br />
 <!-- remove this form -->
 
 <div class="want-some-margin">
     <form>
         <input
-        id="switch-blade"
+            id="switch-blade"
             readonly
             type="text"
             placeholder="Your Dev Switch Blade"
