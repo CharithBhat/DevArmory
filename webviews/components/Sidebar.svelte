@@ -43,8 +43,8 @@
 
     // let formattersIcon: string =
     //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/formatter-icon.svg";
-    // let generatorsIcon: string =
-    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/generator-icon.svg";
+    let generatorsIcon: string =
+        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/generator-icon.svg";
 
     // let htmlIcon: string =
     //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/html-icon.svg";
@@ -641,12 +641,12 @@
                 current = "generators";
             }}
         >
-            <!-- <img
+            <img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
                 src={generatorsIcon}
                 alt="damn"
-            /> -->
+            />
             Generators</span
         >
 
@@ -707,7 +707,7 @@
 
 <!-- helmet-pointy -->
 
-<!-- <svg
+<svg
 id="logo"
     class="huge-logo"
     version="1.1"
@@ -724,7 +724,7 @@ id="logo"
             d="m132.634,136.733c0.747,5.889 5.757,10.304 11.694,10.304h17.893c5.937,0 10.947-4.415 11.694-10.304l13.094-103.248c0.374-2.95-0.745-5.893-2.984-7.85l-28.274-24.705c-0.709-0.62-1.593-0.93-2.477-0.93s-1.768,0.31-2.477,0.93l-28.273,24.705c-2.239,1.957-3.358,4.9-2.984,7.85l13.094,103.248z"
         />
     </g>
-</svg> -->
+</svg>
 
 <h1
     style="text-align: center
