@@ -24,11 +24,11 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     webviewView.webview.options = {
       // Allow scripts in the webview
       enableScripts: true,
-      localResourceRoots: [this._extensionUri],
-      //   localResourceRoots: [
-      //     vscode.Uri.joinPath(this._extensionUri, "media"),
-      //     vscode.Uri.joinPath(this._extensionUri, "out/compiled"),
-      // ],
+      // localResourceRoots: [this._extensionUri],
+        localResourceRoots: [
+          vscode.Uri.joinPath(this._extensionUri, "media"),
+          vscode.Uri.joinPath(this._extensionUri, "out/compiled"),
+      ],
     };
 
     webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
