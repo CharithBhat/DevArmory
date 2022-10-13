@@ -1,6 +1,6 @@
 <script lang="ts">
     // variables for webview sidebar
-    let allBoolean: boolean = tsvscode.getState().allBoolean || false;
+    let allBoolean: boolean = tsvscode.getState()?.allBoolean || false;
     let textConvertersBoolean: boolean =
         tsvscode.getState()?.textConvertersBoolean || false;
     let encodersBoolean: boolean =
