@@ -182,18 +182,10 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 				<link href="${styleVSCodeUri}" rel="stylesheet">
         <link href="${styleMainUri}" rel="stylesheet">
         <script nonce="${nonce}">
-          const tsvscode = acquireVsCodeApi();
-          const homeSvg = 
-
+          const tsvscode = acquireVsCodeApi();  
         </script>
 			</head>
       <body style="background-color: var(--vscode-sidebar-background);">
-      <img
-      class="sidebar-icons"
-      style="vertical-align: middle;"
-      src={homeUrl}
-      alt="damn"
-  />
 			</body>
       <script src="${scriptUri}" nonce="${nonce}">
 			</html>`;

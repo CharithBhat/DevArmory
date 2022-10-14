@@ -13,11 +13,6 @@ declare global {
         setState: (state: any) => void;
     };
 
-    const homeSvg = '';
-    function setHome(homeVar: string){
-         homeSvg = homeVar;
-    }
-
     
 }
 

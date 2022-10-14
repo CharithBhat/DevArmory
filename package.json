@@ -2,15 +2,15 @@
   "name": "devarmory",
   "displayName": "DevArmory",
   "description": "Build Faster With Your Dev Switch Blade.",
-  "version": "0.0.11",
+  "version": "0.0.17",
   "publisher": "CharithBhat",
   "license": "GPLv3",
+  "icon": "media/logo-helmet.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/CharithBhat/DevArmory"
   },
   "keywords": [
-    "DevArmory",
     "Dev Armory",
     "dev armory",
     "devarmory",
