@@ -1,5 +1,7 @@
 import * as _vscode from "vscode";
 
+export {};
+
 declare global {
 
     const tsvscode: {
@@ -10,5 +12,14 @@ declare global {
         getState: () => any;
         setState: (state: any) => void;
     };
+
+    const homeSvg = '';
+    function setHome(homeVar: string){
+         homeSvg = homeVar;
+    }
+
+    
 }
+
+
 

@@ -12,6 +12,7 @@ import { TextCaseConverterPanel } from "./TextCaseConverterPanel";
 import { TextEscaperPanel } from "./TextEscaperPanel";
 
 
+
 export class SidebarProvider implements vscode.WebviewViewProvider {
   _view?: vscode.WebviewView;
   _doc?: vscode.TextDocument;
@@ -151,6 +152,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
       vscode.Uri.joinPath(this._extensionUri, "media", "home-hallow.svg")
     ).toString();
 
+
     // console.log(homeUrl);
     
 
@@ -181,10 +183,17 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
         <link href="${styleMainUri}" rel="stylesheet">
         <script nonce="${nonce}">
           const tsvscode = acquireVsCodeApi();
+          const homeSvg = 
+
         </script>
 			</head>
       <body style="background-color: var(--vscode-sidebar-background);">
-				
+      <img
+      class="sidebar-icons"
+      style="vertical-align: middle;"
+      src={homeUrl}
+      alt="damn"
+  />
 			</body>
       <script src="${scriptUri}" nonce="${nonce}">
 			</html>`;

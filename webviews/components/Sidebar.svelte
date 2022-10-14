@@ -32,8 +32,8 @@
     }
 
     // variables for images
-    let homeIcon: string =
-        "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/home-hollow.svg";
+    // let homeIcon: string =
+    //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/home-hollow.svg";
 
     // let convertersIcon: string =
     //     "https://file%2B.vscode-resource.vscode-cdn.net/d%3A/vs_code_extensions/devarmory/media/converter-icon.svg";
@@ -91,12 +91,12 @@
                 current = "all";
             }}
         >
-            <img
+            <!-- <img
                 class="sidebar-icons"
                 style="vertical-align: middle;"
-                src={homeIcon}
+                src={homeSvg}
                 alt="damn"
-            />
+            /> -->
             
             All Tools</span
         >
