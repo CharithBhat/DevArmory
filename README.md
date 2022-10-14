@@ -1,12 +1,12 @@
-# DevArmory [Vscode extension]
+# DevArmory [VScode extension]
 
-DevArmory is a Switch Blade for Developers. You can perform all your day to day tasks from formatting, encoding/decoding to generating and converting text.
+DevArmory is a Switch Blade for Developers. You can perform all your day-to-day tasks from formatting, encoding/decoding to generating and converting text.
 
-## How to use
+## How to Install
 
-You can search for "dev armory" in your extensions marketplace in Vscode and install it. 
+You can search for "devarmory" in your VScode extensions and install it from there. 
 
-Or you can also install through this link. *will have the link here*
+Or you can also install it from the [marketplace](https://marketplace.visualstudio.com/items?itemName=CharithBhat.devarmory).
 
 ## Features
 
