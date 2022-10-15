@@ -1,6 +1,6 @@
 # DevArmory [VScode extension]
 
-DevArmory is a Switch Blade for Developers. You can perform all your day-to-day tasks from formatting, encoding/decoding to generating and converting text.
+DevArmory is a Switchblade for Developers. You can perform all your day-to-day tasks from formatting, encoding/decoding to generating and converting text. 
 
 ## How to Install
 

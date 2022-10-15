@@ -1575,7 +1575,7 @@
             id="switch-blade"
             readonly
             type="text"
-            placeholder="Your Dev Switch Blade"
+            placeholder="Your Dev Switchblade"
             class="placeholder-whitener"
         />
     </form>
